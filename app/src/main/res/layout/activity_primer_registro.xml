@@ -7,6 +7,16 @@
     android:background="@drawable/fondo_2logos"
     tools:context=".firstapp.paciente.EncuestaActivity.PrimerRegistroActivity">
 
+    <Button
+        android:id="@+id/btn_sig_encuesta"
+        android:layout_width="194dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="788dp"
+        android:layout_marginTop="608dp"
+        android:text="Siguiente"
+        app:cornerRadius="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_fecha"
@@ -22,29 +32,73 @@
         app:layout_constraintStart_toEndOf="@+id/editTextNombreProf"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_sig_encuesta"
-        android:layout_width="194dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="587dp"
-        android:text="Siguiente"
-        app:cornerRadius="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/editTextNombreProf"
         android:layout_width="742dp"
         android:layout_height="45dp"
         android:layout_marginTop="232dp"
-        android:ems="10"
+        android:ems="15"
         android:hint="Nombre del profesional"
         android:inputType="text"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        app:layout_constraintStart_toStartOf="@+id/editTextNombrePaciente"
+        app:layout_constraintStart_toStartOf="@+id/editTextPrimerApellidoPx"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextPrimerApellidoPx"
+        android:layout_width="742dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="23dp"
+        android:ems="15"
+        android:hint="Primer apellido del paciente:"
+        android:inputType="text"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        app:layout_constraintStart_toStartOf="@+id/editTextSegundoApellidoPx"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNombreProf" />
+
+    <EditText
+        android:id="@+id/editTextSegundoApellidoPx"
+        android:layout_width="742dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:hint="Segundo apellido del paciente"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        app:layout_constraintStart_toStartOf="@+id/editTextNombresPx"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPrimerApellidoPx"/>
+
+    <EditText
+        android:id="@+id/editTextNombresPx"
+        android:layout_width="742dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:hint="Nombres del paciente"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        app:layout_constraintStart_toStartOf="@+id/editTextFechaNac"
+        app:layout_constraintTop_toBottomOf="@+id/editTextSegundoApellidoPx" />
+
+    <EditText
+        android:id="@+id/editTextFechaNac"
+        android:layout_width="742dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:hint="Fecha de nacimiento del paciente"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        app:layout_constraintStart_toStartOf="@+id/editTextDiametro"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNombresPx" />
 
     <EditText
         android:id="@+id/editTextDiametro"
@@ -73,33 +127,5 @@
         android:textColorHint="#000000"
         app:layout_constraintTop_toBottomOf="@+id/editTextDiametro"
         tools:layout_editor_absoluteX="40dp" />
-
-    <EditText
-        android:id="@+id/editTextNombrePaciente"
-        android:layout_width="742dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="23dp"
-        android:ems="10"
-        android:hint="Nombre del paciente:"
-        android:inputType="text"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        app:layout_constraintStart_toStartOf="@+id/editTextFechaNac"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNombreProf" />
-
-    <EditText
-        android:id="@+id/editTextFechaNac"
-        android:layout_width="742dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="23dp"
-        android:ems="10"
-        android:hint="Fecha de nacimiento del paciente"
-        android:inputType="text"
-        android:selectAllOnFocus="true"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        app:layout_constraintStart_toStartOf="@+id/editTextDiametro"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNombrePaciente" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

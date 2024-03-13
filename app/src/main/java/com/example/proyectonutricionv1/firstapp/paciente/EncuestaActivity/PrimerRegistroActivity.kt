@@ -23,7 +23,7 @@ class PrimerRegistroActivity : AppCompatActivity() {
         setContentView(R.layout.activity_primer_registro)
 
         editText1 = findViewById(R.id.editTextNombreProf)
-        editText2 = findViewById(R.id.editTextNombrePaciente)
+        editText2 = findViewById(R.id.editTextPrimerApellidoPx)
         editText3 = findViewById(R.id.editTextFechaNac)
         editText4 = findViewById(R.id.editTextDiametro)
         editText5 = findViewById(R.id.editTextLocalidad)
