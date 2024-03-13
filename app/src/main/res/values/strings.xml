@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">ProyectoNutricionV1</string>
+    <string name="button">▶</string>
+    <string name="button_next">GUARDAR RESPUESTAS</string>
+
+    <string name="si">Si</string>
+    <string name="no">No raramuri</string>
+    <string name="ns">No sabe</string>
+    <string name="nr">No responde</string>
+
+    <string name="I1">1. Raramuri</string>
+    <string name="I1_esp">Ahora me gustaría hacerle algunas preguntas relacionadas a la alimentación. Durante los últimos 12 MESES, ha habido algún momento en que:</string>
+
+    <string name="Q1">1. Raramuri</string>
+    <string name="Q1_esp">¿Usted se haya preocupado por no tener suficientes alimentos para comer por falta de dinero u otros recursos?</string>
+
+    <string name="Q2">2. Raramuri</string>
+    <string name="Q2_esp">¿Hubo alguna vez en que usted no haya podido comer alimentos saludables y nutritivos por falta de dinero u otros recursos?</string>
+
+    <string name="Q3">3. Raramuri</string>
+    <string name="Q3_esp"> ¿Hubo alguna vez en que usted haya comido poca variedad de alimentos por falta de dinero u otros recursos?</string>
+
+    <string name="Q4">4. Raramuri</string>
+    <string name="Q4_esp">¿Hubo alguna vez en que usted haya tenido que dejar de desayunar, almorzar o cenar porque no había suficiente dinero u otros recursos para obtener alimentos?</string>
+
+    <string name="Q5">5. Raramuri</string>
+    <string name="Q5_esp">¿Hubo alguna vez en que usted haya comido menos de lo que pensaba que debía comer por falta de dinero u otros recursos?</string>
+
+    <string name="Q6">6. Raramuri</string>
+    <string name="Q6_esp">¿Hubo alguna vez en que su hogar se haya quedado sin alimentos por falta de dinero u otros recursos?</string>
+
+    <string name="Q7">7. Raramuri</string>
+    <string name="Q7_esp"> ¿Hubo alguna vez en que usted haya sentido hambre pero no comió porque no había suficiente dinero u otros recursos para obtener alimentos?</string>
+
+    <string name="Q8">8. Raramuri</string>
+    <string name="Q8_esp">¿Hubo alguna vez en que usted haya dejado de comer todo un día por falta de dinero u otros recursos?</string>
+
+</resources>

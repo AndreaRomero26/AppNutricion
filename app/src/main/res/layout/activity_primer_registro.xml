@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_2logos"
+    tools:context=".firstapp.paciente.EncuestaActivity.PrimerRegistroActivity">
+
+
+    <TextView
+        android:id="@+id/tv_fecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="344dp"
+        android:text="Fecha:"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextNombreProf"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_sig_encuesta"
+        android:layout_width="194dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="587dp"
+        android:text="Siguiente"
+        app:cornerRadius="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextNombreProf"
+        android:layout_width="742dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="232dp"
+        android:ems="10"
+        android:hint="Nombre del profesional"
+        android:inputType="text"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        app:layout_constraintStart_toStartOf="@+id/editTextNombrePaciente"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextDiametro"
+        android:layout_width="742dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:hint="Diametro del brazo:"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        app:layout_constraintStart_toStartOf="@+id/editTextLocalidad"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFechaNac" />
+
+    <EditText
+        android:id="@+id/editTextLocalidad"
+        android:layout_width="742dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Localidad:"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDiametro"
+        tools:layout_editor_absoluteX="40dp" />
+
+    <EditText
+        android:id="@+id/editTextNombrePaciente"
+        android:layout_width="742dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:hint="Nombre del paciente:"
+        android:inputType="text"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        app:layout_constraintStart_toStartOf="@+id/editTextFechaNac"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNombreProf" />
+
+    <EditText
+        android:id="@+id/editTextFechaNac"
+        android:layout_width="742dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:hint="Fecha de nacimiento del paciente"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        app:layout_constraintStart_toStartOf="@+id/editTextDiametro"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNombrePaciente" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_2logos"
+    tools:context=".firstapp.PacienteActivity"
+
+    >
+
+
+    <Button
+        android:id="@+id/btnSeguimiento"
+        android:layout_width="318dp"
+        android:layout_height="364dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="218dp"
+        android:layout_marginBottom="218dp"
+        android:backgroundTint="#D9D9D9"
+        android:gravity="bottom|center"
+        android:text="Seguimiento"
+        android:textColor="#000000"
+        android:textSize="36dp"
+        app:cornerRadius="50dp"
+        app:icon="@drawable/seguimiento"
+        app:iconGravity="textTop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnNuevoPaciente"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnNuevoPaciente"
+        android:layout_width="318dp"
+        android:layout_height="364dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="218dp"
+        android:layout_marginBottom="218dp"
+        android:backgroundTint="#D9D9D9"
+        android:gravity="bottom|center"
+        android:text="Nuevo paciente"
+        android:textColor="#000000"
+        android:textSize="36dp"
+        app:cornerRadius="50dp"
+        app:icon="@drawable/registrarpaciente"
+        app:iconGravity="textTop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnEducacion"
+        android:layout_width="318dp"
+        android:layout_height="364dp"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="218dp"
+        android:layout_marginEnd="101dp"
+        android:layout_marginBottom="218dp"
+        android:backgroundTint="#D9D9D9"
+        android:gravity="bottom|center"
+        android:text="Educacion"
+        android:textColor="#000000"
+        android:textSize="36dp"
+        app:cornerRadius="50dp"
+        app:icon="@drawable/educacion"
+        app:iconGravity="textTop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toEndOf="@+id/btnSeguimiento"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
