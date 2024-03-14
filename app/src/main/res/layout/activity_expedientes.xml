@@ -29,72 +29,84 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="FOLIO"
+                        android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="MUNICIPIO"
+                        android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="LOCALIDAD"
+                        android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="PRIMER APELLIDO"
+                        android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="SEGUNDO APELLIDO"
+                        android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="NOMBRES"
+                        android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="FECHA NACIMIENTO"
+                        android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ULTIMA FECHA DE MEDIDA"
+                        android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ULTIMO PERIMETRO BRAZO"
+                        android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="NOMBRE COC"
+                        android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="DX MUAC"
+                        android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="INSEGURIDAD ALIMENTARIA"
+                        android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"/>
                 </TableRow>
