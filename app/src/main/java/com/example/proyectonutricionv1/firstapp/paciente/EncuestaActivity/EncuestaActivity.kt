@@ -23,7 +23,8 @@ class EncuestaActivity : AppCompatActivity() {
         val value5 = intent.getStringExtra("Nombres")
         val value6 = intent.getStringExtra("FechaNacimiento")
         val value7 = intent.getStringExtra("Perimetro")
-        val value8 = intent.getStringExtra("COC")
+        val value8 = intent.getStringExtra("Sexo")
+        val value9 = intent.getStringExtra("COC")
 
 
 
@@ -80,7 +81,8 @@ class EncuestaActivity : AppCompatActivity() {
                 intentNext.putExtra("Nombres", value5)
                 intentNext.putExtra("FechaNacimiento", value6)
                 intentNext.putExtra("Perimetro", value7)
-                intentNext.putExtra("COC", value8)
+                intentNext.putExtra("Sexo", value8)
+                intentNext.putExtra("COC", value9)
                 startActivity(intentNext)
             }
         }

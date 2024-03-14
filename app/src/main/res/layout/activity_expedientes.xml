@@ -77,6 +77,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="SEXO"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="ULTIMA FECHA DE MEDIDA"
                         android:textSize="20sp"
                         android:padding="8dp"
@@ -91,21 +98,21 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="DX MUAC ACTUAL"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="INSEGURIDAD ALIMENTARIA ACTUAL"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="NOMBRE COC"
-                        android:textSize="20sp"
-                        android:padding="8dp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="DX MUAC"
-                        android:textSize="20sp"
-                        android:padding="8dp"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="INSEGURIDAD ALIMENTARIA"
                         android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"/>

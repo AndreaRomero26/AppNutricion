@@ -24,7 +24,7 @@ class ExpedientesActivity : AppCompatActivity() {
 
         val textSizeSP = 20f
 
-        for ((value1, value2, value3,value4, value5, value6, value7, value8, value9, value10, value11, value12) in dataList) {
+        for ((value1, value2, value3,value4, value5, value6, value7, value8, value9, value10, value11, value12, value13) in dataList) {
             val tableRow = TableRow(this)
             val layoutParams = TableLayout.LayoutParams(
                 TableLayout.LayoutParams.MATCH_PARENT,
@@ -80,6 +80,10 @@ class ExpedientesActivity : AppCompatActivity() {
             textView12.text = value12
             textView12.setPadding(10, 10, 10, 10)
             textView12.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSizeSP)
+            val textView13 = TextView(this)
+            textView13.text = value13
+            textView13.setPadding(10, 10, 10, 10)
+            textView13.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSizeSP)
 
             tableRow.addView(textView1)
             tableRow.addView(textView2)
@@ -93,6 +97,7 @@ class ExpedientesActivity : AppCompatActivity() {
             tableRow.addView(textView10)
             tableRow.addView(textView11)
             tableRow.addView(textView12)
+            tableRow.addView(textView13)
 
             tableLayout.addView(tableRow)
         }

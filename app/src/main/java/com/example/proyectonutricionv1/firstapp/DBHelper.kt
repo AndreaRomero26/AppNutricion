@@ -5,14 +5,14 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-data class DataModel(val value1: String, val value2: String, val value3: String, val value4: String,val value5: String,val value6: String,val value7: String, val value8: String, val value9: String, val value10: String, val value11: String, val value12: String)
+data class DataModel(val value1: String, val value2: String, val value3: String, val value4: String,val value5: String,val value6: String,val value7: String, val value8: String, val value9: String, val value10: String, val value11: String, val value12: String, val value13: String)
 data class DataRegistro(val value1: String, val value2: String, val value3: String, val value4: String)
 
 
 class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
-        val CREATE_TABLE = ("CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_VALUE1 TEXT, $COLUMN_VALUE2 TEXT, $COLUMN_VALUE3 TEXT, $COLUMN_VALUE4 TEXT, $COLUMN_VALUE5 TEXT, $COLUMN_VALUE6 TEXT, $COLUMN_VALUE7 TEXT, $COLUMN_VALUE8 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE9 TEXT, $COLUMN_VALUE10 TEXT, $COLUMN_VALUE11 TEXT, $COLUMN_VALUE12 TEXT)")
+        val CREATE_TABLE = ("CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_VALUE1 TEXT, $COLUMN_VALUE2 TEXT, $COLUMN_VALUE3 TEXT, $COLUMN_VALUE4 TEXT, $COLUMN_VALUE5 TEXT, $COLUMN_VALUE6 TEXT, $COLUMN_VALUE7 TEXT, $COLUMN_VALUE8 TEXT, $COLUMN_VALUE9 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE10 TEXT, $COLUMN_VALUE11 TEXT, $COLUMN_VALUE12 TEXT, $COLUMN_VALUE13 TEXT)")
         db.execSQL(CREATE_TABLE)
         val CREATE_TABLE_REGISTROS = ("CREATE TABLE $TABLE_REGISTROS ($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_PACIENTE_ID INTEGER, $COLUMN_VALUE8 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALOR TEXT, FOREIGN KEY($COLUMN_PACIENTE_ID) REFERENCES $TABLE_NAME($COLUMN_ID))")
         db.execSQL(CREATE_TABLE_REGISTROS)
@@ -26,7 +26,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         onCreate(db)
     }
 
-    fun insertData(value1: String, value2: String, value3: String, value4: String, value5: String,value6: String,value7: String, value9: String, value10: String, value11: String, value12: String): Long {
+    fun insertData(value1: String, value2: String, value3: String, value4: String, value5: String,value6: String,value7: String, value8: String, value10: String, value11: String, value12: String, value13: String): Long {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(COLUMN_VALUE1, value1)
@@ -36,10 +36,11 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         values.put(COLUMN_VALUE5, value5)
         values.put(COLUMN_VALUE6, value6)
         values.put(COLUMN_VALUE7, value7)
-        values.put(COLUMN_VALUE9, value9)
+        values.put(COLUMN_VALUE8, value8)
         values.put(COLUMN_VALUE10, value10)
         values.put(COLUMN_VALUE11, value11)
         values.put(COLUMN_VALUE12, value12)
+        values.put(COLUMN_VALUE13, value13)
         val id = db.insert(TABLE_NAME, null, values)
         db.close()
         return id
@@ -63,7 +64,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
                 val value10 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE10) })
                 val value11 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE11) })
                 val value12 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE12) })
-                dataList.add(DataModel(value1, value2, value3, value4,value5,value6,value7, value8, value9, value10, value11, value12))
+                val value13 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE13) })
+                dataList.add(DataModel(value1, value2, value3, value4,value5,value6,value7, value8, value9, value10, value11, value12, value13))
             } while (cursor.moveToNext())
         }
         cursor.close()
@@ -85,11 +87,12 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         private const val COLUMN_VALUE5 = "SegundoApellido"
         private const val COLUMN_VALUE6 = "Nombres"
         private const val COLUMN_VALUE7 = "Nacimiento"
-        private const val COLUMN_VALUE8 = "MedicionFecha"
-        private const val COLUMN_VALUE9 = "BrazoMedida"
-        private const val COLUMN_VALUE10 = "Muac"
-        private const val COLUMN_VALUE11 = "Inseguridad"
-        private const val COLUMN_VALUE12 = "Profesional"
+        private const val COLUMN_VALUE8 = "Sexo"
+        private const val COLUMN_VALUE9 = "MedicionFecha"
+        private const val COLUMN_VALUE10 = "BrazoMedida"
+        private const val COLUMN_VALUE11 = "Muac"
+        private const val COLUMN_VALUE12 = "Inseguridad"
+        private const val COLUMN_VALUE13 = "Profesional"
 
         // Tabla Registros
         private const val TABLE_REGISTROS = "Registros"

@@ -49,8 +49,9 @@
     <EditText
         android:id="@+id/editTextNombreProf"
         android:layout_width="742dp"
-        android:layout_height="40dp"
+        android:layout_height="42dp"
         android:layout_marginTop="212dp"
+        android:elegantTextHeight="false"
         android:ems="25"
         android:hint="Nombre del profesional:"
         android:inputType="text"
@@ -130,7 +131,7 @@
 
     <EditText
         android:id="@+id/editTextMunicipio"
-        android:layout_width="742dp"
+        android:layout_width="350dp"
         android:layout_height="42dp"
         android:layout_marginTop="23dp"
         android:ems="10"
@@ -139,21 +140,33 @@
         android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        app:layout_constraintStart_toStartOf="@+id/editTextLocalidad"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPerimetro" />
 
     <EditText
         android:id="@+id/editTextLocalidad"
-        android:layout_width="742dp"
+        android:layout_width="380dp"
         android:layout_height="42dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="12dp"
         android:ems="10"
         android:hint="Localidad:"
         android:inputType="text"
         android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMunicipio"
-        tools:layout_editor_absoluteX="40dp" />
-
+        app:layout_constraintStart_toEndOf="@+id/editTextMunicipio"
+        app:layout_constraintTop_toTopOf="@+id/editTextMunicipio" />
+    <EditText
+        android:id="@+id/editTextSexo"
+        android:layout_width="742dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:hint="Sexo del paciente:"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        app:layout_constraintStart_toStartOf="@+id/editTextMunicipio"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMunicipio" />
 </androidx.constraintlayout.widget.ConstraintLayout>

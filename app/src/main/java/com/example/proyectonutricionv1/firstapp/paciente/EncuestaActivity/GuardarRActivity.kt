@@ -30,21 +30,22 @@ class GuardarRActivity : AppCompatActivity() {
         val value5 = intent.getStringExtra("SegundoApellido")!!
         val value6 = intent.getStringExtra("Nombres")!!
         val value7 = intent.getStringExtra("FechaNacimiento")!!
-        val value9 = intent.getStringExtra("Perimetro")!!
-        val value10 = intent.getStringExtra("COC")!!
+        val value8 = intent.getStringExtra("Sexo")!!
+        val value10 = intent.getStringExtra("Perimetro")!!
         val value11="Desnutrición grave"
         val value12 = intent.getStringExtra("clasificacion")!!
+        val value13 = intent.getStringExtra("COC")!!
 
         val nombreCompleto = "$value4 $value5 $value6"
         val ubicacionCompleta = "$value2 $value3"
 
-        textViewClasificacion.text = value12
+        textViewClasificacion.text = value11
         textViewLocalidad.text = ubicacionCompleta
         textViewNombre.text = nombreCompleto
-        textViewBrazo.text = value9
+        textViewBrazo.text = value10
 
         btnGenerarDB.setOnClickListener {
-            dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value9, value10, value11, value12)
+            dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value10, value11, value12, value13)
         }
 
     }
