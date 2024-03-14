@@ -126,20 +126,14 @@
         android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        app:layout_constraintStart_toStartOf="@+id/editTextMunicipio"
+        app:layout_constraintStart_toStartOf="@+id/spinnerMunicipio"
         app:layout_constraintTop_toBottomOf="@+id/editTextFechaNac" />
 
-    <EditText
-        android:id="@+id/editTextMunicipio"
+    <Spinner
+        android:id="@+id/spinnerMunicipio"
         android:layout_width="350dp"
         android:layout_height="42dp"
         android:layout_marginTop="23dp"
-        android:ems="10"
-        android:hint="Municipio:"
-        android:inputType="text"
-        android:selectAllOnFocus="true"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPerimetro" />
 
@@ -154,8 +148,8 @@
         android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        app:layout_constraintStart_toEndOf="@+id/editTextMunicipio"
-        app:layout_constraintTop_toTopOf="@+id/editTextMunicipio" />
+        app:layout_constraintStart_toEndOf="@+id/spinnerMunicipio"
+        app:layout_constraintTop_toTopOf="@+id/spinnerMunicipio" />
     <EditText
         android:id="@+id/editTextSexo"
         android:layout_width="742dp"
@@ -167,6 +161,6 @@
         android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        app:layout_constraintStart_toStartOf="@+id/editTextMunicipio"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMunicipio" />
+        app:layout_constraintStart_toStartOf="@+id/spinnerMunicipio"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMunicipio" />
 </androidx.constraintlayout.widget.ConstraintLayout>

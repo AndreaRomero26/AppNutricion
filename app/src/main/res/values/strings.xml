@@ -35,4 +35,75 @@
     <string name="Q8">8. Raramuri</string>
     <string name="Q8_esp">¿Hubo alguna vez en que usted haya dejado de comer todo un día por falta de dinero u otros recursos?</string>
 
+
+    <string-array name="municipios_array">
+        <item>Municipio</item>
+        <item>Ahumada</item>
+        <item>Aldama</item>
+        <item>Allende</item>
+        <item>Aquiles Serdan</item>
+        <item>Ascension</item>
+        <item>Bachiniva</item>
+        <item>Batopilas</item>
+        <item>Bocoyna</item>
+        <item>Buenaventura</item>
+        <item>Camargo</item>
+        <item>Carichi</item>
+        <item>Casas Grandes</item>
+        <item>Coronado</item>
+        <item>Coyame</item>
+        <item>La Cruz</item>
+        <item>Cuauhtemoc</item>
+        <item>Cusihuiriachi</item>
+        <item>Chihuahua</item>
+        <item>Chinipas</item>
+        <item>Delicias</item>
+        <item>Belisario Dominguez</item>
+        <item>Galeana</item>
+        <item>Santa Isabel</item>
+        <item>Gomez Farias</item>
+        <item>Gran Morelos</item>
+        <item>Guachochi</item>
+        <item>Guadalupe</item>
+        <item>Guadalupe y Calvo</item>
+        <item>Guazapares</item>
+        <item>Guerrero</item>
+        <item>Hidaldo del Parral</item>
+        <item>Huejotitan</item>
+        <item>Ignacio Zaragoza</item>
+        <item>Janos</item>
+        <item>Jimenez</item>
+        <item>Juarez</item>
+        <item>Julimes</item>
+        <item>Lopez</item>
+        <item>Madera</item>
+        <item>Maguarichi</item>
+        <item>Manuel Benavides</item>
+        <item>Matachi</item>
+        <item>Matamoros</item>
+        <item>Meoqui</item>
+        <item>Morelos</item>
+        <item>Moris</item>
+        <item>Namiquima</item>
+        <item>Nonoava</item>
+        <item>Nuevo Casas Grandes</item>
+        <item>Ocampo</item>
+        <item>Ojinaga</item>
+        <item>Praxedis G. Guerrero</item>
+        <item>Riva Palacio</item>
+        <item>Rosales</item>
+        <item>Rosario</item>
+        <item>San Francisco de Borja</item>
+        <item>San Francisco de Conchos</item>
+        <item>San Francisco del Oro</item>
+        <item>Santa Barbara</item>
+        <item>Satevo</item>
+        <item>Saucillo</item>
+        <item>Temosachic</item>
+        <item>El Tule</item>
+        <item>Urique</item>
+        <item>Uruachi</item>
+        <item>Valle de Zaragoza</item>
+    </string-array>
+
 </resources>
