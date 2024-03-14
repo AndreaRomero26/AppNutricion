@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import com.example.proyectonutricionv1.R
 import com.example.proyectonutricionv1.firstapp.DBHelper
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 
 class PrimerRegistroActivity : AppCompatActivity() {
@@ -33,10 +37,16 @@ class PrimerRegistroActivity : AppCompatActivity() {
         editText7 = findViewById(R.id.editTextMunicipio)
         editText8 = findViewById(R.id.editTextLocalidad)
 
+        val textViewFecha = findViewById<TextView>(R.id.respuesta_fecha)
 
         val btn_sig_encuesta = findViewById<Button>(R.id.btn_sig_encuesta)
 
         val intent_sig_encuesta = Intent(this, EncuestaActivity::class.java)
+
+        val currentDate = Calendar.getInstance().time
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val formattedDate = dateFormat.format(currentDate)
+        textViewFecha.setText(formattedDate)
 
         btn_sig_encuesta.setOnClickListener {
             val value1 = editText7.text.toString()

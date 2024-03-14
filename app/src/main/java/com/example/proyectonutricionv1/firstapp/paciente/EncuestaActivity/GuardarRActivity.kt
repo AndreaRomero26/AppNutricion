@@ -38,10 +38,10 @@ class GuardarRActivity : AppCompatActivity() {
         val nombreCompleto = "$value4 $value5 $value6"
         val ubicacionCompleta = "$value2 $value3"
 
-        textViewClasificacion.text = value11
+        textViewClasificacion.text = value12
         textViewLocalidad.text = ubicacionCompleta
         textViewNombre.text = nombreCompleto
-        textViewBrazo.text = value7
+        textViewBrazo.text = value9
 
         btnGenerarDB.setOnClickListener {
             dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value9, value10, value11, value12)

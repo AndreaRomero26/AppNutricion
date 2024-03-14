@@ -32,6 +32,20 @@
         app:layout_constraintStart_toEndOf="@+id/editTextNombreProf"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/respuesta_fecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="290dp"
+        android:text="Fecha:"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/editTextNombreProf"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/editTextNombreProf"
         android:layout_width="742dp"
