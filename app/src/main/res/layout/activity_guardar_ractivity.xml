@@ -240,14 +240,14 @@
         app:layout_constraintTop_toBottomOf="@+id/InstruccionesP" />
 
     <Button
-        android:id="@+id/btn_generar_documento"
+        android:id="@+id/btn_generarDB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="204dp"
         android:layout_marginBottom="32dp"
         android:backgroundTint="#5F248B"
-        android:text="Generar documento"
+        android:text="GUARDAR"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"

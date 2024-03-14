@@ -19,11 +19,10 @@ class ExpedientesActivity : AppCompatActivity() {
 
         dbHelper = DBHelper(this)
         val dataList = dbHelper.getAllData()
-        Log.d("ExpedientesActivity", "Número de registros recuperados: ${dataList.size}")
 
         val tableLayout: TableLayout = findViewById(R.id.tableLayout)
 
-        for ((value1, value2, value3,value4, value5, value6, value7) in dataList) {
+        for ((value1, value2, value3,value4, value5, value6, value7, value8, value9, value10, value11, value12) in dataList) {
             val tableRow = TableRow(this)
             val layoutParams = TableLayout.LayoutParams(
                 TableLayout.LayoutParams.MATCH_PARENT,
@@ -52,6 +51,21 @@ class ExpedientesActivity : AppCompatActivity() {
             val textView7 = TextView(this)
             textView7.text = value7
             textView7.setPadding(10, 10, 10, 10)
+            val textView8 = TextView(this)
+            textView8.text = value8
+            textView8.setPadding(10, 10, 10, 10)
+            val textView9 = TextView(this)
+            textView9.text = value9
+            textView9.setPadding(10, 10, 10, 10)
+            val textView10 = TextView(this)
+            textView10.text = value10
+            textView10.setPadding(10, 10, 10, 10)
+            val textView11 = TextView(this)
+            textView11.text = value11
+            textView11.setPadding(10, 10, 10, 10)
+            val textView12 = TextView(this)
+            textView12.text = value12
+            textView12.setPadding(10, 10, 10, 10)
 
             tableRow.addView(textView1)
             tableRow.addView(textView2)
@@ -60,6 +74,11 @@ class ExpedientesActivity : AppCompatActivity() {
             tableRow.addView(textView5)
             tableRow.addView(textView6)
             tableRow.addView(textView7)
+            tableRow.addView(textView8)
+            tableRow.addView(textView9)
+            tableRow.addView(textView10)
+            tableRow.addView(textView11)
+            tableRow.addView(textView12)
 
             tableLayout.addView(tableRow)
         }

@@ -22,7 +22,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ID"
+                    android:text="FOLIO"
+                    android:padding="8dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MUNICIPIO"
                     android:padding="8dp"
                     android:textStyle="bold"/>
                 <TextView
@@ -34,7 +40,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="NOMBRE PACIENTE"
+                    android:text="PRIMER APELLIDO"
+                    android:padding="8dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SEGUNDO APELLIDO"
+                    android:padding="8dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NOMBRES"
                     android:padding="8dp"
                     android:textStyle="bold"/>
                 <TextView
@@ -52,7 +70,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ULTIMO VALOR DE MEDIDA"
+                    android:text="ULTIMO PERIMETRO BRAZO"
                     android:padding="8dp"
                     android:textStyle="bold"/>
                 <TextView
@@ -61,8 +79,19 @@
                     android:text="NOMBRE COC"
                     android:padding="8dp"
                     android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DX MUAC"
+                    android:padding="8dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="INSEGURDIAD ALIMENTARIA"
+                    android:padding="8dp"
+                    android:textStyle="bold"/>
             </TableRow>
-
         </TableLayout>
     </ScrollView>
 </RelativeLayout>

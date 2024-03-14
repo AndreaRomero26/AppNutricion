@@ -1,29 +1,29 @@
 package com.example.proyectonutricionv1.firstapp.paciente.EncuestaActivity
 
 import android.content.Intent
-import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.Toast
 import com.example.proyectonutricionv1.R
-import com.example.proyectonutricionv1.firstapp.StaffActivity
 
 class EncuestaActivity : AppCompatActivity() {
-    private var clasificacion: String = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_encuesta)
 
-        var clasificacion = intent.getStringExtra("clasificacion")
-        val value1 = intent.getStringExtra("COC")
-        val value2 = intent.getStringExtra("Paciente")
-        val value3 = intent.getStringExtra("Nacimiento")
-        val value4 = intent.getStringExtra("Brazo")
-        val value5 = intent.getStringExtra("Localidad")
+        var clasificacion: String?
+        val value1 = intent.getStringExtra("Municipio")
+        val value2 = intent.getStringExtra("Localidad")
+        val value3 = intent.getStringExtra("PrimerApellido")
+        val value4 = intent.getStringExtra("SegundoApellido")
+        val value5 = intent.getStringExtra("Nombres")
+        val value6 = intent.getStringExtra("FechaNacimiento")
+        val value7 = intent.getStringExtra("Perimetro")
+        val value8 = intent.getStringExtra("COC")
 
 
 
@@ -73,17 +73,20 @@ class EncuestaActivity : AppCompatActivity() {
             }
             else {
                 intentNext.putExtra("clasificacion", clasificacion)
-                intentNext.putExtra("COC", value1)
-                intentNext.putExtra("Paciente", value2)
-                intentNext.putExtra("Nacimiento", value3)
-                intentNext.putExtra("Brazo", value4)
-                intentNext.putExtra("Localidad", value5)
+                intentNext.putExtra("Municipio", value1)
+                intentNext.putExtra("Localidad", value2)
+                intentNext.putExtra("PrimerApellido", value3)
+                intentNext.putExtra("SegundoApellido", value4)
+                intentNext.putExtra("Nombres", value5)
+                intentNext.putExtra("FechaNacimiento", value6)
+                intentNext.putExtra("Perimetro", value7)
+                intentNext.putExtra("COC", value8)
                 startActivity(intentNext)
             }
         }
     }
 
-    fun encontrarUltimoSi(respuestas: List<Int>): Int {
+    private fun encontrarUltimoSi(respuestas: List<Int>): Int {
         for (i in respuestas.indices.reversed()) {
             if (respuestas[i] == 1) {
                 return i

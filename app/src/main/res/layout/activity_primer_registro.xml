@@ -35,10 +35,10 @@
     <EditText
         android:id="@+id/editTextNombreProf"
         android:layout_width="742dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="232dp"
-        android:ems="15"
-        android:hint="Nombre del profesional"
+        android:layout_height="40dp"
+        android:layout_marginTop="212dp"
+        android:ems="25"
+        android:hint="Nombre del profesional:"
         android:inputType="text"
         android:textColor="#000000"
         android:textColorHint="#000000"
@@ -48,7 +48,7 @@
     <EditText
         android:id="@+id/editTextPrimerApellidoPx"
         android:layout_width="742dp"
-        android:layout_height="45dp"
+        android:layout_height="42dp"
         android:layout_marginTop="23dp"
         android:ems="15"
         android:hint="Primer apellido del paciente:"
@@ -61,10 +61,10 @@
     <EditText
         android:id="@+id/editTextSegundoApellidoPx"
         android:layout_width="742dp"
-        android:layout_height="45dp"
+        android:layout_height="42dp"
         android:layout_marginTop="23dp"
-        android:ems="10"
-        android:hint="Segundo apellido del paciente"
+        android:ems="15"
+        android:hint="Segundo apellido del paciente:"
         android:inputType="text"
         android:selectAllOnFocus="true"
         android:textColor="#000000"
@@ -75,10 +75,10 @@
     <EditText
         android:id="@+id/editTextNombresPx"
         android:layout_width="742dp"
-        android:layout_height="45dp"
+        android:layout_height="42dp"
         android:layout_marginTop="23dp"
         android:ems="10"
-        android:hint="Nombres del paciente"
+        android:hint="Nombres del paciente:"
         android:inputType="text"
         android:selectAllOnFocus="true"
         android:textColor="#000000"
@@ -89,35 +89,49 @@
     <EditText
         android:id="@+id/editTextFechaNac"
         android:layout_width="742dp"
-        android:layout_height="45dp"
+        android:layout_height="42dp"
         android:layout_marginTop="23dp"
         android:ems="10"
-        android:hint="Fecha de nacimiento del paciente"
+        android:hint="Fecha de nacimiento del paciente:"
         android:inputType="text"
         android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        app:layout_constraintStart_toStartOf="@+id/editTextDiametro"
+        app:layout_constraintStart_toStartOf="@+id/editTextPerimetro"
         app:layout_constraintTop_toBottomOf="@+id/editTextNombresPx" />
 
     <EditText
-        android:id="@+id/editTextDiametro"
+        android:id="@+id/editTextPerimetro"
         android:layout_width="742dp"
-        android:layout_height="45dp"
+        android:layout_height="42dp"
         android:layout_marginTop="23dp"
         android:ems="10"
-        android:hint="Diametro del brazo:"
+        android:hint="Perímetro del brazo:"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        app:layout_constraintStart_toStartOf="@+id/editTextMunicipio"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFechaNac" />
+
+    <EditText
+        android:id="@+id/editTextMunicipio"
+        android:layout_width="742dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:hint="Municipio:"
         android:inputType="text"
         android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
         app:layout_constraintStart_toStartOf="@+id/editTextLocalidad"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFechaNac" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPerimetro" />
 
     <EditText
         android:id="@+id/editTextLocalidad"
         android:layout_width="742dp"
-        android:layout_height="45dp"
+        android:layout_height="42dp"
         android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Localidad:"
@@ -125,7 +139,7 @@
         android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDiametro"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMunicipio"
         tools:layout_editor_absoluteX="40dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
