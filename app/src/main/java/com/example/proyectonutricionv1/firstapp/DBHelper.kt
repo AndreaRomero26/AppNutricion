@@ -1,5 +1,6 @@
 package com.example.proyectonutricionv1.firstapp
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
@@ -72,7 +73,22 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return dataList
     }
-
+    @SuppressLint("Range")
+    fun getNuevoRegistro(folio: String): ArrayList<Pair<String, String>> {
+        val dataList = ArrayList<Pair<String, String>>() // ArrayList de pares de cadenas (String, String)
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT $COLUMN_VALUE10, $COLUMN_VALUE12 FROM $TABLE_NAME WHERE $COLUMN_VALUE1='$folio'", null)
+        if (cursor.moveToFirst()) {
+            do {
+                val value1 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE10))
+                val value2 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE12))
+                dataList.add(Pair(value1, value2)) // Agregar un par de valores a dataList
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+        return dataList
+    }
     companion object {
         private const val DATABASE_VERSION = 1
         private const val DATABASE_NAME = "HIECH"
