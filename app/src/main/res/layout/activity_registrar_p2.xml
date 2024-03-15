@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".firstapp.paciente.seguimiento.MostrarPActivity"
+    android:background="@drawable/fondo_2logos">
+    <TextView
+        android:id="@+id/nombreRP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="220dp"
+        android:text="Nombre:"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/rNombreRP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="220dp"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@id/nombreRP2"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/folioRP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="260dp"
+        android:text="Folio:"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/rFolioRP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="220dp"
+        android:text="019ROAFA1"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@id/folioRP2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dosisRP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="16dp"
+        android:text="Dosis Actual:"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nombreRP2" />
+
+    <Button
+        android:id="@+id/btnInstruccionesRP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="244dp"
+        android:layout_marginTop="320dp"
+        android:backgroundTint="#5F248B"
+        android:text="INSTRUCCIONES"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btnSobresRP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="320dp"
+        android:backgroundTint="#5F248B"
+        android:text="30 Sobres"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="50dp"
+        app:layout_constraintStart_toEndOf="@id/btnInstruccionesRP2"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/btnDosisRP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="320dp"
+        android:backgroundTint="#5F248B"
+        android:text="1 vez al dia"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="50dp"
+        app:layout_constraintStart_toEndOf="@id/btnSobresRP2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/brazoAnterior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="1. Perimetro de brazo anterior:"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnInstruccionesRP2" />
+
+    <TextView
+        android:id="@+id/seguridadAlimAnterior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="2. Seguridad alimentaria anterior:"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/brazoAnterior" />
+    <TextView
+        android:id="@+id/brazoNuevo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="3. Perimetro de brazo nuevo:"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seguridadAlimAnterior" />
+    <TextView
+        android:id="@+id/seguridadAlimNuevo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="4. Seguridad alimentaria nueva:"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/brazoNuevo" />
+
+    <TextView
+        android:id="@+id/rBrazoAnterior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="32dp"
+        android:text="25 cm"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@id/brazoAnterior"
+        app:layout_constraintTop_toBottomOf="@id/btnInstruccionesRP2" />
+
+    <TextView
+        android:id="@+id/rSeguridadAlimAnterior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:text="Inseguridad alimentaria grave"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@id/seguridadAlimAnterior"
+        app:layout_constraintTop_toBottomOf="@id/rBrazoAnterior" />
+
+    <TextView
+        android:id="@+id/rSeguridadAlimNuevo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="20dp"
+        android:text="Seguridad alimentaria"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@id/seguridadAlimNuevo"
+        app:layout_constraintTop_toBottomOf="@id/brazoNuevo" />
+    <EditText
+        android:id="@+id/rBrazoNuevo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="16dp"
+        android:text="28 cm"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@id/brazoNuevo"
+        app:layout_constraintTop_toBottomOf="@id/rSeguridadAlimAnterior" />
+    <Button
+        android:id="@+id/btnGuardarRegistro"
+        android:layout_width="194dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="788dp"
+        android:layout_marginTop="608dp"
+        android:text="Guardar Registro"
+        app:cornerRadius="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

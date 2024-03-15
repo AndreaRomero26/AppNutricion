@@ -23,7 +23,7 @@ class GuardarRActivity : AppCompatActivity() {
         val textViewLocalidad = findViewById<TextView>(R.id.Respuesta_localidad)
         val textViewNombre = findViewById<TextView>(R.id.Respuesta_nombre)
         val textViewBrazo = findViewById<TextView>(R.id.Respuesta_diametro)
-
+        val textViewFolio = findViewById<TextView>(R.id.Respuesta_folio)
 
         val value2 = intent.getStringExtra("Municipio")!!
         val value3 = intent.getStringExtra("Localidad")!!
@@ -36,6 +36,7 @@ class GuardarRActivity : AppCompatActivity() {
         val value11="Desnutrición grave"
         val value12 = intent.getStringExtra("clasificacion")!!
         val value13 = intent.getStringExtra("COC")!!
+        val value1 = generarFolio(value2, value4, value6, value8)
 
         val nombreCompleto = "$value4 $value5 $value6"
         val ubicacionCompleta = "$value2 $value3"
@@ -44,9 +45,9 @@ class GuardarRActivity : AppCompatActivity() {
         textViewLocalidad.text = ubicacionCompleta
         textViewNombre.text = nombreCompleto
         textViewBrazo.text = value10
+        textViewFolio.text=value1
 
         btnGenerarDB.setOnClickListener {
-            val value1 = generarFolio(value2, value4, value6, value8)
             dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value10, value11, value12, value13)
         }
 
