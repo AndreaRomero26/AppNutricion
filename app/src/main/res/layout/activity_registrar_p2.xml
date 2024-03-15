@@ -126,30 +126,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/brazoAnterior" />
     <TextView
-        android:id="@+id/brazoNuevo"
+        android:id="@+id/dxAnterior"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="3. Perimetro de brazo nuevo:"
+        android:text="3. Diagnostico MUAC anterior:"
         android:textColor="#000000"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/seguridadAlimAnterior" />
     <TextView
-        android:id="@+id/seguridadAlimNuevo"
+        android:id="@+id/brazoNuevo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="4. Seguridad alimentaria nueva:"
+        android:text="4. Perimetro de brazo nuevo:"
         android:textColor="#000000"
         android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/brazoNuevo" />
-
+        app:layout_constraintTop_toBottomOf="@id/dxAnterior"/>
+    <TextView
+        android:id="@+id/dxNuevo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="5. Diagnostico MUAC nuevo:"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/brazoNuevo"/>
     <TextView
         android:id="@+id/rBrazoAnterior"
         android:layout_width="wrap_content"
@@ -171,17 +182,26 @@
         android:textSize="25dp"
         app:layout_constraintStart_toEndOf="@id/seguridadAlimAnterior"
         app:layout_constraintTop_toBottomOf="@id/rBrazoAnterior" />
-
     <TextView
-        android:id="@+id/rSeguridadAlimNuevo"
+        android:id="@+id/rDxAnterior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        app:layout_constraintStart_toEndOf="@id/dxAnterior"
+        app:layout_constraintTop_toBottomOf="@id/rSeguridadAlimAnterior" />
+    <TextView
+        android:id="@+id/rDxNuevo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginTop="20dp"
-        android:text="Seguridad alimentaria"
+        android:text="Desnutricion grave"
         android:textColor="#000000"
         android:textSize="25dp"
-        app:layout_constraintStart_toEndOf="@id/seguridadAlimNuevo"
+        app:layout_constraintStart_toEndOf="@id/dxNuevo"
         app:layout_constraintTop_toBottomOf="@id/brazoNuevo" />
     <EditText
         android:id="@+id/rBrazoNuevo"
@@ -192,7 +212,7 @@
         android:textColor="#000000"
         android:textSize="25dp"
         app:layout_constraintStart_toEndOf="@id/brazoNuevo"
-        app:layout_constraintTop_toBottomOf="@id/rSeguridadAlimAnterior" />
+        app:layout_constraintTop_toBottomOf="@id/rDxAnterior"/>
     <Button
         android:id="@+id/btnGuardarRegistro"
         android:layout_width="194dp"

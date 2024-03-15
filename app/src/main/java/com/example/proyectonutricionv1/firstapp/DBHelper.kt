@@ -74,15 +74,16 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         return dataList
     }
     @SuppressLint("Range")
-    fun getNuevoRegistro(folio: String): ArrayList<Pair<String, String>> {
-        val dataList = ArrayList<Pair<String, String>>() // ArrayList de pares de cadenas (String, String)
+    fun getNuevoRegistro(folio: String): ArrayList<Triple<String, String, String>> {
+        val dataList = ArrayList<Triple<String, String, String>>() // ArrayList de triples de cadenas (String, String, String)
         val db = this.readableDatabase
-        val cursor = db.rawQuery("SELECT $COLUMN_VALUE10, $COLUMN_VALUE12 FROM $TABLE_NAME WHERE $COLUMN_VALUE1='$folio'", null)
+        val cursor = db.rawQuery("SELECT $COLUMN_VALUE10, $COLUMN_VALUE11, $COLUMN_VALUE12 FROM $TABLE_NAME WHERE $COLUMN_VALUE1='$folio'", null)
         if (cursor.moveToFirst()) {
             do {
                 val value1 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE10))
-                val value2 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE12))
-                dataList.add(Pair(value1, value2)) // Agregar un par de valores a dataList
+                val value2 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE11))
+                val value3 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE12))
+                dataList.add(Triple(value1, value2, value3)) // Agregar un triple de valores a dataList
             } while (cursor.moveToNext())
         }
         cursor.close()
