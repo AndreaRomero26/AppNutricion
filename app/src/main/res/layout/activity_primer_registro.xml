@@ -22,13 +22,14 @@
         android:id="@+id/tv_fecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
+        android:layout_marginTop="136dp"
         android:layout_marginEnd="344dp"
         android:text="Fecha:"
         android:textColor="#000000"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toEndOf="@+id/editTextNombreProf"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +37,7 @@
         android:id="@+id/respuesta_fecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
+        android:layout_marginTop="136dp"
         android:layout_marginEnd="290dp"
         android:text="Fecha:"
         android:textColor="#000000"
@@ -54,9 +55,9 @@
         android:elegantTextHeight="false"
         android:ems="25"
         android:hint="Nombre del profesional:"
-        android:inputType="text"
         android:textColor="#000000"
         android:textColorHint="#000000"
+        android:inputType="textCapWords"
         app:layout_constraintStart_toStartOf="@+id/editTextPrimerApellidoPx"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,7 +68,7 @@
         android:layout_marginTop="23dp"
         android:ems="15"
         android:hint="Primer apellido del paciente:"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:textColor="#000000"
         android:textColorHint="#000000"
         app:layout_constraintStart_toStartOf="@+id/editTextSegundoApellidoPx"
@@ -80,7 +81,7 @@
         android:layout_marginTop="23dp"
         android:ems="15"
         android:hint="Segundo apellido del paciente:"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
@@ -94,10 +95,11 @@
         android:layout_marginTop="23dp"
         android:ems="10"
         android:hint="Nombres del paciente:"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
+        android:nextFocusForward="@id/editTextFechaNac"
         app:layout_constraintStart_toStartOf="@+id/editTextFechaNac"
         app:layout_constraintTop_toBottomOf="@+id/editTextSegundoApellidoPx" />
 
@@ -108,10 +110,13 @@
         android:layout_marginTop="23dp"
         android:ems="10"
         android:hint="Fecha de nacimiento del paciente:"
-        android:inputType="text"
-        android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
+        android:inputType="none"
+        android:imeOptions="actionNext"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:cursorVisible="false"
         app:layout_constraintStart_toStartOf="@+id/editTextPerimetro"
         app:layout_constraintTop_toBottomOf="@+id/editTextNombresPx" />
 
@@ -121,30 +126,29 @@
         android:layout_height="42dp"
         android:layout_marginTop="23dp"
         android:ems="10"
-        android:hint="Perímetro del brazo:"
+        android:hint="Perimetro del brazo:"
         android:inputType="text"
         android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
         app:layout_constraintStart_toStartOf="@+id/spinnerMunicipio"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFechaNac" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextSexo" />
 
     <Spinner
         android:id="@+id/spinnerMunicipio"
         android:layout_width="350dp"
         android:layout_height="42dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPerimetro" />
-
     <EditText
         android:id="@+id/editTextLocalidad"
         android:layout_width="380dp"
         android:layout_height="42dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="10dp"
         android:ems="10"
         android:hint="Localidad:"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
@@ -157,10 +161,10 @@
         android:layout_marginTop="23dp"
         android:ems="10"
         android:hint="Sexo del paciente:"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:selectAllOnFocus="true"
         android:textColor="#000000"
         android:textColorHint="#000000"
-        app:layout_constraintStart_toStartOf="@+id/spinnerMunicipio"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerMunicipio" />
+        app:layout_constraintStart_toStartOf="@+id/editTextPerimetro"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFechaNac" />
 </androidx.constraintlayout.widget.ConstraintLayout>
