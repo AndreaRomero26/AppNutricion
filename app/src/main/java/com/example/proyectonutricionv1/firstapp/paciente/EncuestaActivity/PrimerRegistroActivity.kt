@@ -1,5 +1,6 @@
 package com.example.proyectonutricionv1.firstapp.paciente.EncuestaActivity
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -119,6 +120,31 @@ class PrimerRegistroActivity : AppCompatActivity() {
             intent_sig_encuesta.putExtra("COC", value9)
             startActivity(intent_sig_encuesta)
         }
+    // Manejar clic para abrir el DatePickerDialog
+            editText5.setOnClickListener {
+                showDatePickerDialog()
+            }
+
+    // Manejar el foco para abrir el DatePickerDialog cuando se navega con el botón "Siguiente"
+            editText5.setOnFocusChangeListener { _, hasFocus ->
+                if (hasFocus) showDatePickerDialog()
+            }
+    }
+
+    private fun showDatePickerDialog() {
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(this, { _, year, monthOfYear, dayOfMonth ->
+            // Establecer la fecha en el EditText en el formato deseado
+            val formattedDate = String.format("%02d/%02d/%04d", dayOfMonth, monthOfYear + 1, year)
+            editText5.setText(formattedDate)
+        }, year, month, day)
+
+        datePickerDialog.show()
+        editText5.clearFocus()  // Para evitar múltiples aperturas del diálogo
     }
 
     private fun checkEditTexts() {
@@ -138,4 +164,5 @@ class PrimerRegistroActivity : AppCompatActivity() {
         // Habilitar o deshabilitar el botón según si todos los campos tienen valores
         btn_sig_encuesta.isEnabled = allFilled
     }
+
 }

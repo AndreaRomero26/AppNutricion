@@ -12,8 +12,8 @@ import java.util.*
 class GuardarRActivity : AppCompatActivity() {
 
     private lateinit var dbHelper: DBHelper
-    private lateinit var numSombres: String
-    private lateinit var dosisDiaria: String
+    private lateinit var value14: String
+    private lateinit var value15: String
     private lateinit var btnInst30: Button
     private lateinit var btnInst60: Button
     private lateinit var btnInst90: Button
@@ -61,31 +61,30 @@ class GuardarRActivity : AppCompatActivity() {
         textViewBrazo.text = value10
         textViewFolio.text=value1
 
-        btnGenerarDB.setOnClickListener {
-            dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value10, value11, value12, value13)
-        }
-
         btnInst30.setOnClickListener {
-            numSombres = "30"
+            value14 = "30"
             changeButtonInstColor(btnInst30)
         }
 
         btnInst60.setOnClickListener {
-            numSombres = "60"
+            value14 = "60"
             changeButtonInstColor(btnInst60)
         }
 
         btnInst90.setOnClickListener {
-            numSombres = "90"
+            value14 = "90"
             changeButtonInstColor(btnInst90)
         }
         btnDosis1.setOnClickListener {
-            dosisDiaria = "1"
+            value15 = "1"
             changeButtonDosisColor(btnDosis1)
         }
         btnDosis2.setOnClickListener {
-            dosisDiaria = "2"
+            value15 = "2"
             changeButtonDosisColor(btnDosis2)
+        }
+        btnGenerarDB.setOnClickListener {
+            dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value10, value11, value12, value13)
         }
 
     }
