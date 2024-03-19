@@ -21,9 +21,9 @@ class RegistrarP2Activity : AppCompatActivity() {
         val textViewDx = findViewById<TextView>(R.id.rDxAnterior)
         val textViewInseguridad = findViewById<TextView>(R.id.rSeguridadAlimAnterior)
 
-        val nombre = intent.getStringExtra("Nombre")
+        val nombre = intent.getStringExtra("Nombre")!!
         val folio = intent.getStringExtra("Folio")!!
-        textViewNombre.text = nombre
+        textViewNombre.text = nombre.uppercase()
         textViewFolio.text = folio
 
         val dataRP = dbHelper.getNuevoRegistro(folio)
@@ -32,7 +32,7 @@ class RegistrarP2Activity : AppCompatActivity() {
         val inseguridadAnterior: String = dataRP.first().third // Tercer valor del primer par
 
         textViewBrazo.text = brazoAnterior
-        textViewDx.text = dxAnterior
+        textViewDx.text = dxAnterior.uppercase()
         textViewInseguridad.text = inseguridadAnterior
 
     }

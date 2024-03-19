@@ -51,7 +51,7 @@ class RegistrarPActivity : AppCompatActivity() {
             textView1.setOnClickListener {
                 Toast.makeText(this, "Seleccionaste el paciente: $value1", Toast.LENGTH_SHORT).show()
                 textViewFolioRP.text= value1
-                val nombreRP= "$value4 $value5 $value6"
+                val nombreRP= "$value4 $value5 $value6".uppercase()
                 textViewNombreRP.text=nombreRP
                 checkFieldsForEmptyValues()
                 intentRP2.putExtra("Nombre", nombreRP)

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import com.example.proyectonutricionv1.R
 import com.example.proyectonutricionv1.firstapp.DBHelper
 import java.util.*
@@ -11,6 +12,14 @@ import java.util.*
 class GuardarRActivity : AppCompatActivity() {
 
     private lateinit var dbHelper: DBHelper
+    private lateinit var numSombres: String
+    private lateinit var dosisDiaria: String
+    private lateinit var btnInst30: Button
+    private lateinit var btnInst60: Button
+    private lateinit var btnInst90: Button
+    private lateinit var btnDosis1: Button
+    private lateinit var btnDosis2: Button
+    private var lastButton: Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guardar_ractivity)
@@ -18,6 +27,11 @@ class GuardarRActivity : AppCompatActivity() {
         dbHelper = DBHelper(this)
 
         val btnGenerarDB = findViewById<Button>(R.id.btn_generarDB)
+        btnInst30 = findViewById<Button>(R.id.btn_inst30)
+        btnInst60 = findViewById<Button>(R.id.btn_inst60)
+        btnInst90 = findViewById<Button>(R.id.btn_inst90)
+        btnDosis1 = findViewById<Button>(R.id.btn_inst_1vez)
+        btnDosis2 = findViewById<Button>(R.id.btn_inst_2vez)
 
         val textViewClasificacion = findViewById<TextView>(R.id.Respuesta_inseguridad)
         val textViewLocalidad = findViewById<TextView>(R.id.Respuesta_localidad)
@@ -33,7 +47,7 @@ class GuardarRActivity : AppCompatActivity() {
         val value7 = intent.getStringExtra("FechaNacimiento")!!
         val value8 = intent.getStringExtra("Sexo")!!
         val value10 = intent.getStringExtra("Perimetro")!!
-        val value11="Desnutrición grave"
+        val value11="Desnutricion grave"
         val value12 = intent.getStringExtra("clasificacion")!!
         val value13 = intent.getStringExtra("COC")!!
         val value1 = generarFolio(value2, value4, value6, value8)
@@ -51,6 +65,50 @@ class GuardarRActivity : AppCompatActivity() {
             dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value10, value11, value12, value13)
         }
 
+        btnInst30.setOnClickListener {
+            numSombres = "30"
+            changeButtonInstColor(btnInst30)
+        }
+
+        btnInst60.setOnClickListener {
+            numSombres = "60"
+            changeButtonInstColor(btnInst60)
+        }
+
+        btnInst90.setOnClickListener {
+            numSombres = "90"
+            changeButtonInstColor(btnInst90)
+        }
+        btnDosis1.setOnClickListener {
+            dosisDiaria = "1"
+            changeButtonDosisColor(btnDosis1)
+        }
+        btnDosis2.setOnClickListener {
+            dosisDiaria = "2"
+            changeButtonDosisColor(btnDosis2)
+        }
+
+    }
+    fun changeButtonInstColor(button: Button) {
+        btnInst30.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
+        btnInst60.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
+        btnInst90.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
+
+        // Cambiar el color de fondo del botón presionado a rosa
+        button.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPressed))
+
+        // Actualizar el último botón presionado
+        lastButton = button
+    }
+    fun changeButtonDosisColor(button: Button) {
+        btnDosis1.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
+        btnDosis2.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
+
+        // Cambiar el color de fondo del botón presionado a rosa
+        button.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPressed))
+
+        // Actualizar el último botón presionado
+        lastButton = button
     }
 }
 fun generarFolio(municipio: String, primerApellido: String, primerNombre: String, sexo: String): String {
