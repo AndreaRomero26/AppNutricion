@@ -140,7 +140,7 @@
             android:layout_height="42dp"
             android:ems="10"
             android:layout_marginTop="18dp"
-            android:hint="Perimetro del brazo:"
+            android:hint="Perimetro del brazo del paciente:"
             android:inputType="text"
             android:selectAllOnFocus="true"
             android:textColor="#000000"
@@ -148,18 +148,45 @@
             app:layout_constraintStart_toStartOf="@+id/spinnerMunicipio"
             app:layout_constraintTop_toBottomOf="@+id/radioGroupSexo" />
 
+        <EditText
+            android:id="@+id/editTextEstatura"
+            android:layout_width="742dp"
+            android:layout_height="42dp"
+            android:ems="10"
+            android:layout_marginTop="18dp"
+            android:hint="Estatura del paciente:"
+            android:inputType="text"
+            android:selectAllOnFocus="true"
+            android:textColor="#000000"
+            android:textColorHint="#000000"
+            app:layout_constraintStart_toStartOf="@+id/spinnerMunicipio"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPerimetro" />
+            <EditText
+                android:id="@+id/editTextPeso"
+                android:layout_width="742dp"
+                android:layout_height="42dp"
+                android:ems="10"
+                android:layout_marginTop="18dp"
+                android:hint="Peso del paciente:"
+                android:inputType="text"
+                android:selectAllOnFocus="true"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="@+id/spinnerMunicipio"
+                app:layout_constraintTop_toBottomOf="@+id/editTextEstatura" />
+
         <Spinner
             android:id="@+id/spinnerMunicipio"
             android:layout_width="350dp"
             android:layout_height="42dp"
             android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextPerimetro" />
+            app:layout_constraintStart_toStartOf="@id/editTextPeso"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPeso" />
         <EditText
             android:id="@+id/editTextLocalidad"
-            android:layout_width="380dp"
+            android:layout_width="378dp"
             android:layout_height="42dp"
-            android:layout_marginStart="18dp"
+            android:layout_marginStart="14dp"
             android:ems="10"
             android:hint="Localidad:"
             android:inputType="textCapWords"
@@ -169,16 +196,16 @@
             app:layout_constraintStart_toEndOf="@+id/spinnerMunicipio"
             app:layout_constraintTop_toTopOf="@+id/spinnerMunicipio" />
 
-            <TextView
-                android:id="@+id/tvSexo"
-                android:layout_width="742dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="18dp"
-                android:textSize="19dp"
-                android:text="Sexo del paciente:"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="@+id/editTextPerimetro"
-                app:layout_constraintTop_toBottomOf="@+id/editTextFechaNac" />
+        <TextView
+            android:id="@+id/tvSexo"
+            android:layout_width="742dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="18dp"
+            android:textSize="19dp"
+            android:text="Sexo del paciente:"
+            android:textColor="#000000"
+            app:layout_constraintStart_toStartOf="@+id/editTextPerimetro"
+            app:layout_constraintTop_toBottomOf="@+id/editTextFechaNac" />
 
             <RadioGroup
                 android:id="@+id/radioGroupSexo"
@@ -206,6 +233,32 @@
                     android:textColor="#000000"/>
             </RadioGroup>
 
+            <EditText
+                android:id="@+id/editTextPadre"
+                android:layout_width="742dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="12dp"
+                android:ems="10"
+                android:hint="Nombre del padre del paciente:"
+                android:inputType="textCapWords"
+                android:selectAllOnFocus="true"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerMunicipio" />
+            <EditText
+                android:id="@+id/editTextPadrino"
+                android:layout_width="742dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="12dp"
+                android:ems="10"
+                android:hint="Nombre del padrino:"
+                android:inputType="textCapWords"
+                android:selectAllOnFocus="true"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextPadre" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
