@@ -17,6 +17,7 @@
             android:exported="false" />
         <activity
             android:name=".firstapp.paciente.EncuestaActivity.PrimerRegistroActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".firstapp.paciente.EncuestaActivity.GuardarRActivity"

@@ -11,6 +11,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TextView
 import com.example.proyectonutricionv1.R
@@ -29,8 +30,9 @@ class PrimerRegistroActivity : AppCompatActivity() {
     private lateinit var editText6: EditText
     private lateinit var spinnerMunicipio: Spinner
     private lateinit var editText7: EditText
-    private lateinit var editText8: EditText
+    private lateinit var btnsexo: RadioGroup
     private lateinit var btn_sig_encuesta: Button
+    private var value8: String="Hombre"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +47,7 @@ class PrimerRegistroActivity : AppCompatActivity() {
         editText6 = findViewById(R.id.editTextPerimetro)
         spinnerMunicipio = findViewById(R.id.spinnerMunicipio)
         editText7 = findViewById(R.id.editTextLocalidad)
-        editText8 = findViewById(R.id.editTextSexo)
+        btnsexo = findViewById(R.id.radioGroupSexo)
 
         val textViewFecha = findViewById<TextView>(R.id.respuesta_fecha)
         btn_sig_encuesta = findViewById<Button>(R.id.btn_sig_encuesta)
@@ -79,6 +81,17 @@ class PrimerRegistroActivity : AppCompatActivity() {
             }
         }
 
+        btnsexo.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.radioButtonHombre -> {
+                    value8 = "Hombre"
+                }
+                R.id.radioButtonMujer -> {
+                    value8 = "Mujer"
+                }
+            }
+        }
+
         editText1.addTextChangedListener(textWatcher)
         editText2.addTextChangedListener(textWatcher)
         editText3.addTextChangedListener(textWatcher)
@@ -86,7 +99,7 @@ class PrimerRegistroActivity : AppCompatActivity() {
         editText5.addTextChangedListener(textWatcher)
         editText6.addTextChangedListener(textWatcher)
         editText7.addTextChangedListener(textWatcher)
-        editText8.addTextChangedListener(textWatcher)
+
 
         spinnerMunicipio.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
@@ -107,7 +120,6 @@ class PrimerRegistroActivity : AppCompatActivity() {
             val value5 = editText4.text.toString()
             val value6 = editText5.text.toString()
             val value7 = editText6.text.toString()
-            val value8 = editText8.text.toString()
             val value9 = editText1.text.toString()
             intent_sig_encuesta.putExtra("Municipio", value1)
             intent_sig_encuesta.putExtra("Localidad", value2)
@@ -156,10 +168,10 @@ class PrimerRegistroActivity : AppCompatActivity() {
         val perimetro = editText6.text.toString()
         val municipio = spinnerMunicipio.selectedItemPosition > 0 // Asume que la posición 0 es el prompt "Seleccione un Municipio"
         val localidad = editText7.text.toString()
-        val sexo = editText8.text.toString()
+
 
         // Verificar si todos los campos (EditTexts y el Spinner) tienen valores
-        val allFilled = nombreProf.isNotEmpty() && primerApellido.isNotEmpty() && segundoApellido.isNotEmpty() && nombres.isNotEmpty() && fechaNac.isNotEmpty() && perimetro.isNotEmpty() && municipio && localidad.isNotEmpty() && sexo.isNotEmpty()
+        val allFilled = nombreProf.isNotEmpty() && primerApellido.isNotEmpty() && segundoApellido.isNotEmpty() && nombres.isNotEmpty() && fechaNac.isNotEmpty() && perimetro.isNotEmpty() && municipio && localidad.isNotEmpty()
 
         // Habilitar o deshabilitar el botón según si todos los campos tienen valores
         btn_sig_encuesta.isEnabled = allFilled

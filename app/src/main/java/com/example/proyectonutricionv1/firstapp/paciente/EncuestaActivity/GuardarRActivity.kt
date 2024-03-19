@@ -114,7 +114,7 @@ fun generarFolio(municipio: String, primerApellido: String, primerNombre: String
     val codigoMunicipio = obtenerCodigoMunicipio(municipio)
     val letrasApellido = primerApellido.take(2).uppercase(Locale.getDefault())
     val letraNombre = primerNombre.first().uppercaseChar().toString()
-    val letraSexo = if(sexo.startsWith("F", ignoreCase = true)) "F" else "M"
+    val letraSexo = if(sexo.startsWith("M", ignoreCase = true)) "F" else "M"
     val letraAleatoria = ('A'..'Z').random().toString()
     val numeroAleatorio = (1..9).random().toString()
 
