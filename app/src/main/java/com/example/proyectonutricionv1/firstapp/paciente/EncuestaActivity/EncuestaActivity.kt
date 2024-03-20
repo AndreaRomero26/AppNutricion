@@ -1,16 +1,17 @@
 package com.example.proyectonutricionv1.firstapp.paciente.EncuestaActivity
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.Toast
 import com.example.proyectonutricionv1.R
+import android.view.View
 
 class EncuestaActivity : AppCompatActivity() {
-
-
+    private var mpList = mutableListOf<MediaPlayer?>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_encuesta)
@@ -26,6 +27,15 @@ class EncuestaActivity : AppCompatActivity() {
         val value8 = intent.getStringExtra("Sexo")
         val value9 = intent.getStringExtra("COC")
 
+        //AUDIOS
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
 
 
         // BOTONES DE RESPUESTA ENCUESTA
@@ -96,4 +106,45 @@ class EncuestaActivity : AppCompatActivity() {
         }
         return -1
     }
+
+    //FUNCIONES REPRODUCCIÓN DE AUDIO
+    fun reproducirMediaPlayer(view: View){
+        // Obtener el ID del botón presionado
+        val buttonId = view.id
+
+        // Determinar qué audio reproducir según el ID del botón
+        val audioIndex = when(buttonId) {
+            R.id.button_Q1 -> 0
+            R.id.button_Q2 -> 1
+            R.id.button_Q3 -> 2
+            R.id.button_Q4 -> 3
+            R.id.button_Q5 -> 4
+            R.id.button_Q6 -> 5
+            R.id.button_Q7 -> 6
+            R.id.button_Q8 -> 7
+            else -> -1
+        }
+
+            // Verificar si el índice del audio es válido
+        if (audioIndex != -1) {
+            val mp = mpList[audioIndex]
+
+            if (mp?.isPlaying == true) {
+                mp.pause()
+            } else {
+                mp?.seekTo(0)
+                mp?.start()
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Liberar los recursos de todos los MediaPlayers
+        mpList.forEach { mp ->
+            mp?.release()
+        }
+    }
+
+
 }
