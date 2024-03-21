@@ -1,10 +1,14 @@
 package com.example.proyectonutricionv1.firstapp.paciente.seguimiento
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.example.proyectonutricionv1.R
 import com.example.proyectonutricionv1.firstapp.DBHelper
+import com.example.proyectonutricionv1.firstapp.MainMenu
 
 class RegistrarP2Activity : AppCompatActivity() {
 
@@ -34,6 +38,23 @@ class RegistrarP2Activity : AppCompatActivity() {
         textViewBrazo.text = brazoAnterior
         textViewDx.text = dxAnterior.uppercase()
         textViewInseguridad.text = inseguridadAnterior
+
+        val btnGuardarRegistro = findViewById<Button>(R.id.btnGuardarRegistro)
+
+
+        btnGuardarRegistro.setOnClickListener {
+            // Mostrar mensaje de éxito con AlertDialog
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("¡Éxito!")
+            builder.setMessage("Expediente guardado con éxito.")
+            builder.setPositiveButton("OK") { dialog, which ->
+                // Regresar a la actividad principal (opcional)
+                val intentMainMenu = Intent(this, MainMenu::class.java)
+                intentMainMenu.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                startActivity(intentMainMenu)
+            }
+            builder.show()
+        }
 
     }
 }

@@ -1,12 +1,17 @@
 package com.example.proyectonutricionv1.firstapp.paciente.EncuestaActivity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.example.proyectonutricionv1.R
 import com.example.proyectonutricionv1.firstapp.DBHelper
+import com.example.proyectonutricionv1.firstapp.MainMenu
+import com.example.proyectonutricionv1.firstapp.paciente.seguimiento.MostrarPActivity
+import com.example.proyectonutricionv1.firstapp.paciente.seguimiento.RegistrarPActivity
 import java.util.*
 
 class GuardarRActivity : AppCompatActivity() {
@@ -55,6 +60,9 @@ class GuardarRActivity : AppCompatActivity() {
         val nombreCompleto = "$value4 $value5 $value6"
         val ubicacionCompleta = "$value2 $value3"
 
+        val intentMainMenu = Intent(this, MainMenu::class.java)
+
+
         textViewClasificacion.text = value12
         textViewLocalidad.text = ubicacionCompleta
         textViewNombre.text = nombreCompleto
@@ -85,6 +93,18 @@ class GuardarRActivity : AppCompatActivity() {
         }
         btnGenerarDB.setOnClickListener {
             dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value10, value11, value12, value13)
+            // Mostrar mensaje de éxito con AlertDialog
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("¡Éxito!")
+            builder.setMessage("Expediente guardado con éxito.")
+            builder.setPositiveButton("OK") { dialog, which ->
+                // Regresar a la actividad principal (opcional)
+                val intentMainMenu = Intent(this, MainMenu::class.java)
+                intentMainMenu.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                startActivity(intentMainMenu)
+            }
+            builder.show()
+
         }
 
     }
