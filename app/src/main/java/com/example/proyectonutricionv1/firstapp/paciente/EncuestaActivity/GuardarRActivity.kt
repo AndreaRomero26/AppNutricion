@@ -17,8 +17,8 @@ import java.util.*
 class GuardarRActivity : AppCompatActivity() {
 
     private lateinit var dbHelper: DBHelper
-    private lateinit var value14: String
-    private lateinit var value15: String
+    private lateinit var value18: String
+    private lateinit var value19: String
     private lateinit var btnInst30: Button
     private lateinit var btnInst60: Button
     private lateinit var btnInst90: Button
@@ -51,10 +51,14 @@ class GuardarRActivity : AppCompatActivity() {
         val value6 = intent.getStringExtra("Nombres")!!
         val value7 = intent.getStringExtra("FechaNacimiento")!!
         val value8 = intent.getStringExtra("Sexo")!!
-        val value10 = intent.getStringExtra("Perimetro")!!
-        val value11="Desnutricion grave"
-        val value12 = intent.getStringExtra("clasificacion")!!
-        val value13 = intent.getStringExtra("COC")!!
+        val value9 = intent.getStringExtra("Estatura")!!
+        val value10 = intent.getStringExtra("Peso")!!
+        val value12 = intent.getStringExtra("Perimetro")!!
+        val value13="Desnutricion grave"
+        val value14 = intent.getStringExtra("clasificacion")!!
+        val value15 = intent.getStringExtra("Tutor")!!
+        val value16 = intent.getStringExtra("COC")!!
+        val value17 = intent.getStringExtra("Padrino")!!
         val value1 = generarFolio(value2, value4, value6, value8)
 
         val nombreCompleto = "$value4 $value5 $value6"
@@ -63,36 +67,36 @@ class GuardarRActivity : AppCompatActivity() {
         val intentMainMenu = Intent(this, MainMenu::class.java)
 
 
-        textViewClasificacion.text = value12
+        textViewClasificacion.text = value15
         textViewLocalidad.text = ubicacionCompleta
         textViewNombre.text = nombreCompleto
-        textViewBrazo.text = value10
+        textViewBrazo.text = value13
         textViewFolio.text=value1
 
         btnInst30.setOnClickListener {
-            value14 = "30"
+            value18 = "30"
             changeButtonInstColor(btnInst30)
         }
 
         btnInst60.setOnClickListener {
-            value14 = "60"
+            value18 = "60"
             changeButtonInstColor(btnInst60)
         }
 
         btnInst90.setOnClickListener {
-            value14 = "90"
+            value18 = "90"
             changeButtonInstColor(btnInst90)
         }
         btnDosis1.setOnClickListener {
-            value15 = "1"
+            value19 = "1"
             changeButtonDosisColor(btnDosis1)
         }
         btnDosis2.setOnClickListener {
-            value15 = "2"
+            value19 = "2"
             changeButtonDosisColor(btnDosis2)
         }
         btnGenerarDB.setOnClickListener {
-            dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value10, value11, value12, value13)
+            dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value12, value13, value14, value15, value16, value17)
             // Mostrar mensaje de éxito con AlertDialog
             val builder = AlertDialog.Builder(this)
             builder.setTitle("¡Éxito!")

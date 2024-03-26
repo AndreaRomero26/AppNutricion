@@ -92,6 +92,22 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="ESTATURA"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PESO"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="ULTIMA FECHA DE MEDIDA"
                         android:textSize="20sp"
                         android:padding="8dp"
@@ -124,7 +140,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="NOMBRE PADRE O MADRE"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="NOMBRE COC"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PADRINO"
                         android:textSize="20sp"
                         android:padding="8dp"
                         android:textStyle="bold"

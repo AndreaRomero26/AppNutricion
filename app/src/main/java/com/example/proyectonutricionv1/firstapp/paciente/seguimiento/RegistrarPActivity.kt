@@ -36,7 +36,7 @@ class RegistrarPActivity : AppCompatActivity() {
 
         val textSizeSP = 20f
 
-        for ((value1, value2, value3,value4, value5, value6, value7, value8, value9, value10, value11, value12, value13) in dataList) {
+        for ((value1, value2, value3,value4, value5, value6, value7, value8, value9, value10, value11, value12, value13,value14, value15, value16, value17) in dataList) {
             val tableRow = TableRow(this)
             val layoutParams = TableLayout.LayoutParams(
                 TableLayout.LayoutParams.MATCH_PARENT,
@@ -105,6 +105,22 @@ class RegistrarPActivity : AppCompatActivity() {
             textView13.text = value13
             textView13.setPadding(10, 10, 10, 10)
             textView13.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSizeSP)
+            val textView14 = TextView(this)
+            textView14.text = value14
+            textView14.setPadding(10, 10, 10, 10)
+            textView14.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSizeSP)
+            val textView15 = TextView(this)
+            textView15.text = value15
+            textView15.setPadding(10, 10, 10, 10)
+            textView15.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSizeSP)
+            val textView16 = TextView(this)
+            textView16.text = value16
+            textView16.setPadding(10, 10, 10, 10)
+            textView16.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSizeSP)
+            val textView17 = TextView(this)
+            textView17.text = value17
+            textView17.setPadding(10, 10, 10, 10)
+            textView17.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSizeSP)
 
             tableRow.addView(textView1)
             tableRow.addView(textView2)
@@ -119,6 +135,11 @@ class RegistrarPActivity : AppCompatActivity() {
             tableRow.addView(textView11)
             tableRow.addView(textView12)
             tableRow.addView(textView13)
+            tableRow.addView(textView14)
+            tableRow.addView(textView15)
+            tableRow.addView(textView16)
+            tableRow.addView(textView17)
+
 
             tableLayout.addView(tableRow)
         }

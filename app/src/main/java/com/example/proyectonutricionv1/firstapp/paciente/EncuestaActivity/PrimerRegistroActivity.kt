@@ -32,7 +32,11 @@ class PrimerRegistroActivity : AppCompatActivity() {
     private lateinit var editText7: EditText
     private lateinit var btnsexo: RadioGroup
     private lateinit var btn_sig_encuesta: Button
-    private var value8: String="Hombre"
+    private var value10: String="Hombre"
+    private lateinit var editText8: EditText
+    private lateinit var editText9: EditText
+    private lateinit var editText10: EditText
+    private lateinit var editText11: EditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,6 +52,10 @@ class PrimerRegistroActivity : AppCompatActivity() {
         spinnerMunicipio = findViewById(R.id.spinnerMunicipio)
         editText7 = findViewById(R.id.editTextLocalidad)
         btnsexo = findViewById(R.id.radioGroupSexo)
+        editText8 = findViewById(R.id.editTextEstatura)
+        editText9 = findViewById(R.id.editTextPeso)
+        editText10 = findViewById(R.id.editTextPadre)
+        editText11 = findViewById(R.id.editTextPadrino)
 
         val textViewFecha = findViewById<TextView>(R.id.respuesta_fecha)
         btn_sig_encuesta = findViewById<Button>(R.id.btn_sig_encuesta)
@@ -84,10 +92,10 @@ class PrimerRegistroActivity : AppCompatActivity() {
         btnsexo.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.radioButtonHombre -> {
-                    value8 = "Hombre"
+                    value10 = "Hombre"
                 }
                 R.id.radioButtonMujer -> {
-                    value8 = "Mujer"
+                    value10 = "Mujer"
                 }
             }
         }
@@ -119,17 +127,25 @@ class PrimerRegistroActivity : AppCompatActivity() {
             val value4 = editText3.text.toString()
             val value5 = editText4.text.toString()
             val value6 = editText5.text.toString()
-            val value7 = editText6.text.toString()
-            val value9 = editText1.text.toString()
+            val value7 = editText8.text.toString()
+            val value8 = editText9.text.toString()
+            val value9 = editText6.text.toString()
+            val value11 = editText10.text.toString()
+            val value12 = editText1.text.toString()
+            val value13 = editText11.text.toString()
             intent_sig_encuesta.putExtra("Municipio", value1)
             intent_sig_encuesta.putExtra("Localidad", value2)
             intent_sig_encuesta.putExtra("PrimerApellido", value3)
             intent_sig_encuesta.putExtra("SegundoApellido", value4)
             intent_sig_encuesta.putExtra("Nombres", value5)
             intent_sig_encuesta.putExtra("FechaNacimiento", value6)
-            intent_sig_encuesta.putExtra("Perimetro", value7)
-            intent_sig_encuesta.putExtra("Sexo", value8)
-            intent_sig_encuesta.putExtra("COC", value9)
+            intent_sig_encuesta.putExtra("Estatura", value7)
+            intent_sig_encuesta.putExtra("Peso", value8)
+            intent_sig_encuesta.putExtra("Perimetro", value9)
+            intent_sig_encuesta.putExtra("Sexo", value10)
+            intent_sig_encuesta.putExtra("Tutor", value11)
+            intent_sig_encuesta.putExtra("COC", value12)
+            intent_sig_encuesta.putExtra("Padrino", value13)
             startActivity(intent_sig_encuesta)
         }
     // Manejar clic para abrir el DatePickerDialog

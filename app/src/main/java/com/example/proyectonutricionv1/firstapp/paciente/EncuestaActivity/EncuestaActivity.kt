@@ -23,9 +23,14 @@ class EncuestaActivity : AppCompatActivity() {
         val value4 = intent.getStringExtra("SegundoApellido")
         val value5 = intent.getStringExtra("Nombres")
         val value6 = intent.getStringExtra("FechaNacimiento")
-        val value7 = intent.getStringExtra("Perimetro")
-        val value8 = intent.getStringExtra("Sexo")
-        val value9 = intent.getStringExtra("COC")
+        val value7 = intent.getStringExtra("Estatura")
+        val value8 = intent.getStringExtra("Peso")
+        val value9 = intent.getStringExtra("Perimetro")
+        val value10 = intent.getStringExtra("Sexo")
+        val value11 = intent.getStringExtra("Tutor")
+        val value12 = intent.getStringExtra("COC")
+        val value13 = intent.getStringExtra("Padrino")
+
 
         //AUDIOS
         mpList.add(MediaPlayer.create(this, R.raw.no_manches))
@@ -90,9 +95,13 @@ class EncuestaActivity : AppCompatActivity() {
                 intentNext.putExtra("SegundoApellido", value4)
                 intentNext.putExtra("Nombres", value5)
                 intentNext.putExtra("FechaNacimiento", value6)
-                intentNext.putExtra("Perimetro", value7)
-                intentNext.putExtra("Sexo", value8)
-                intentNext.putExtra("COC", value9)
+                intentNext.putExtra("Estatura", value7)
+                intentNext.putExtra("Peso", value8)
+                intentNext.putExtra("Perimetro", value9)
+                intentNext.putExtra("Sexo", value10)
+                intentNext.putExtra("Tutor", value11)
+                intentNext.putExtra("COC", value12)
+                intentNext.putExtra("Padrino", value13)
                 startActivity(intentNext)
             }
         }

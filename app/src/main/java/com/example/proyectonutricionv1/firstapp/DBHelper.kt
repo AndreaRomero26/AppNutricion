@@ -5,15 +5,16 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.google.android.material.color.utilities.Cam16
 
-data class DataModel(val value1: String, val value2: String, val value3: String, val value4: String,val value5: String,val value6: String,val value7: String, val value8: String, val value9: String, val value10: String, val value11: String, val value12: String, val value13: String)
+data class DataModel(val value1: String, val value2: String, val value3: String, val value4: String,val value5: String,val value6: String,val value7: String, val value8: String, val value9: String, val value10: String, val value11: String, val value12: String, val value13: String, val value14: String,val value15: String, val value16: String, val value17: String)
 data class DataRegistro(val value1: String, val value2: String, val value3: String, val value4: String)
 
 
 class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
-        val CREATE_TABLE = ("CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_VALUE1 TEXT, $COLUMN_VALUE2 TEXT, $COLUMN_VALUE3 TEXT, $COLUMN_VALUE4 TEXT, $COLUMN_VALUE5 TEXT, $COLUMN_VALUE6 TEXT, $COLUMN_VALUE7 TEXT, $COLUMN_VALUE8 TEXT, $COLUMN_VALUE9 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE10 TEXT, $COLUMN_VALUE11 TEXT, $COLUMN_VALUE12 TEXT, $COLUMN_VALUE13 TEXT)")
+        val CREATE_TABLE = ("CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_VALUE1 TEXT, $COLUMN_VALUE2 TEXT, $COLUMN_VALUE3 TEXT, $COLUMN_VALUE4 TEXT, $COLUMN_VALUE5 TEXT, $COLUMN_VALUE6 TEXT, $COLUMN_VALUE7 TEXT, $COLUMN_VALUE8 TEXT, $COLUMN_VALUE9 TEXT, $COLUMN_VALUE10 TEXT, $COLUMN_VALUE11 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE12 TEXT, $COLUMN_VALUE13 TEXT, $COLUMN_VALUE14 TEXT, $COLUMN_VALUE15 TEXT, $COLUMN_VALUE16 TEXT, $COLUMN_VALUE17 TEXT)")
         db.execSQL(CREATE_TABLE)
         val CREATE_TABLE_REGISTROS = ("CREATE TABLE $TABLE_REGISTROS ($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_PACIENTE_ID INTEGER, $COLUMN_VALUE8 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALOR TEXT, FOREIGN KEY($COLUMN_PACIENTE_ID) REFERENCES $TABLE_NAME($COLUMN_ID))")
         db.execSQL(CREATE_TABLE_REGISTROS)
@@ -27,7 +28,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         onCreate(db)
     }
 
-    fun insertData(value1: String, value2: String, value3: String, value4: String, value5: String,value6: String,value7: String, value8: String, value10: String, value11: String, value12: String, value13: String): Long {
+    fun insertData(value1: String, value2: String, value3: String, value4: String, value5: String,value6: String,value7: String, value8: String, value9: String, value10: String, value12: String, value13: String, value14: String, value15: String, value16: String, value17: String): Long {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(COLUMN_VALUE1, value1)
@@ -38,10 +39,14 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         values.put(COLUMN_VALUE6, value6)
         values.put(COLUMN_VALUE7, value7)
         values.put(COLUMN_VALUE8, value8)
+        values.put(COLUMN_VALUE9, value9)
         values.put(COLUMN_VALUE10, value10)
-        values.put(COLUMN_VALUE11, value11)
         values.put(COLUMN_VALUE12, value12)
         values.put(COLUMN_VALUE13, value13)
+        values.put(COLUMN_VALUE14, value14)
+        values.put(COLUMN_VALUE15, value15)
+        values.put(COLUMN_VALUE16, value16)
+        values.put(COLUMN_VALUE17, value17)
         val id = db.insert(TABLE_NAME, null, values)
         db.close()
         return id
@@ -66,7 +71,11 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
                 val value11 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE11) })
                 val value12 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE12) })
                 val value13 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE13) })
-                dataList.add(DataModel(value1, value2, value3, value4,value5,value6,value7, value8, value9, value10, value11, value12, value13))
+                val value14 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE14) })
+                val value15 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE15) })
+                val value16 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE16) })
+                val value17 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE17) })
+                dataList.add(DataModel(value1, value2, value3, value4,value5,value6,value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17))
             } while (cursor.moveToNext())
         }
         cursor.close()
@@ -77,12 +86,12 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     fun getNuevoRegistro(folio: String): ArrayList<Triple<String, String, String>> {
         val dataList = ArrayList<Triple<String, String, String>>() // ArrayList de triples de cadenas (String, String, String)
         val db = this.readableDatabase
-        val cursor = db.rawQuery("SELECT $COLUMN_VALUE10, $COLUMN_VALUE11, $COLUMN_VALUE12 FROM $TABLE_NAME WHERE $COLUMN_VALUE1='$folio'", null)
+        val cursor = db.rawQuery("SELECT $COLUMN_VALUE12, $COLUMN_VALUE13, $COLUMN_VALUE14 FROM $TABLE_NAME WHERE $COLUMN_VALUE1='$folio'", null)
         if (cursor.moveToFirst()) {
             do {
-                val value1 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE10))
-                val value2 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE11))
-                val value3 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE12))
+                val value1 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE12))
+                val value2 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE13))
+                val value3 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE14))
                 dataList.add(Triple(value1, value2, value3)) // Agregar un triple de valores a dataList
             } while (cursor.moveToNext())
         }
@@ -105,11 +114,15 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         private const val COLUMN_VALUE6 = "Nombres"
         private const val COLUMN_VALUE7 = "Nacimiento"
         private const val COLUMN_VALUE8 = "Sexo"
-        private const val COLUMN_VALUE9 = "MedicionFecha"
-        private const val COLUMN_VALUE10 = "BrazoMedida"
-        private const val COLUMN_VALUE11 = "Muac"
-        private const val COLUMN_VALUE12 = "Inseguridad"
-        private const val COLUMN_VALUE13 = "Profesional"
+        private const val COLUMN_VALUE9 = "Estatura"
+        private const val COLUMN_VALUE10 = "Peso"
+        private const val COLUMN_VALUE11 = "MedicionFecha"
+        private const val COLUMN_VALUE12 = "BrazoMedida"
+        private const val COLUMN_VALUE13 = "Muac"
+        private const val COLUMN_VALUE14 = "Inseguridad"
+        private const val COLUMN_VALUE15 = "Tutor"
+        private const val COLUMN_VALUE16 = "Profesional"
+        private const val COLUMN_VALUE17 = "Padrino"
 
         // Tabla Registros
         private const val TABLE_REGISTROS = "Registros"
