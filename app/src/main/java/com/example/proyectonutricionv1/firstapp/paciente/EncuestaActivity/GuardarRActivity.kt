@@ -52,7 +52,28 @@ class GuardarRActivity : AppCompatActivity() {
         val value9 = intent.getStringExtra("Estatura")!!
         val value10 = intent.getStringExtra("Peso")!!
         val value12 = intent.getStringExtra("Perimetro")!!
-        val value13="Desnutricion grave"
+        val value12D = intent.getStringExtra("Perimetro")!!.toDoubleOrNull()
+        var value13=""
+        if (value12D != null) {
+            // El valor se convirtió correctamente a Double
+            // Puedes utilizar value12 como un número decimal
+           if (value12D<11.5){
+               value13="Desnutricion grave"
+           }
+           else if (value12D>11.5 && value12D<12.5){
+                value13="Desnutricion moderada"
+            }
+           else if (value12D>12.5 && value12D<13.5){
+               value13="Riesgo de desnutricion"
+           }
+           else if (value12D>13.5){
+               value13="Sin desnutricion"
+           }
+        } else {
+            // El valor no se pudo convertir a Double
+            value13="Error"
+        }
+
         val value14 = intent.getStringExtra("clasificacion")!!
         val value15 = intent.getStringExtra("Tutor")!!
         val value16 = intent.getStringExtra("COC")!!
@@ -68,7 +89,7 @@ class GuardarRActivity : AppCompatActivity() {
         textViewClasificacion.text = value14
         textViewLocalidad.text = ubicacionCompleta
         textViewNombre.text = nombreCompleto
-        textViewBrazo.text = value13
+        textViewBrazo.text = value12
         textViewFolio.text=value1
 
         btnInst30.setOnClickListener {
