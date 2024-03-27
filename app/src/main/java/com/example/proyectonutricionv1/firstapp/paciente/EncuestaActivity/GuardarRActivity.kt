@@ -10,15 +10,13 @@ import androidx.core.content.ContextCompat
 import com.example.proyectonutricionv1.R
 import com.example.proyectonutricionv1.firstapp.DBHelper
 import com.example.proyectonutricionv1.firstapp.MainMenu
-import com.example.proyectonutricionv1.firstapp.paciente.seguimiento.MostrarPActivity
-import com.example.proyectonutricionv1.firstapp.paciente.seguimiento.RegistrarPActivity
 import java.util.*
 
 class GuardarRActivity : AppCompatActivity() {
 
     private lateinit var dbHelper: DBHelper
-    private lateinit var value18: String
     private lateinit var value19: String
+    private lateinit var value20: String
     private lateinit var btnInst30: Button
     private lateinit var btnInst60: Button
     private lateinit var btnInst90: Button
@@ -67,36 +65,36 @@ class GuardarRActivity : AppCompatActivity() {
         val intentMainMenu = Intent(this, MainMenu::class.java)
 
 
-        textViewClasificacion.text = value15
+        textViewClasificacion.text = value14
         textViewLocalidad.text = ubicacionCompleta
         textViewNombre.text = nombreCompleto
         textViewBrazo.text = value13
         textViewFolio.text=value1
 
         btnInst30.setOnClickListener {
-            value18 = "30"
+            value19 = "30"
             changeButtonInstColor(btnInst30)
         }
 
         btnInst60.setOnClickListener {
-            value18 = "60"
+            value19 = "60"
             changeButtonInstColor(btnInst60)
         }
 
         btnInst90.setOnClickListener {
-            value18 = "90"
+            value19 = "90"
             changeButtonInstColor(btnInst90)
         }
         btnDosis1.setOnClickListener {
-            value19 = "1"
+            value20 = "1"
             changeButtonDosisColor(btnDosis1)
         }
         btnDosis2.setOnClickListener {
-            value19 = "2"
+            value20 = "2"
             changeButtonDosisColor(btnDosis2)
         }
         btnGenerarDB.setOnClickListener {
-            dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value12, value13, value14, value15, value16, value17)
+            dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value12, value13, value14, value15, value16, value17, value19, value20)
             // Mostrar mensaje de éxito con AlertDialog
             val builder = AlertDialog.Builder(this)
             builder.setTitle("¡Éxito!")
