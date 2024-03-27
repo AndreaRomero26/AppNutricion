@@ -16,9 +16,22 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     override fun onCreate(db: SQLiteDatabase) {
         val CREATE_TABLE = ("CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_VALUE1 TEXT, $COLUMN_VALUE2 TEXT, $COLUMN_VALUE3 TEXT, $COLUMN_VALUE4 TEXT, $COLUMN_VALUE5 TEXT, $COLUMN_VALUE6 TEXT, $COLUMN_VALUE7 TEXT, $COLUMN_VALUE8 TEXT, $COLUMN_VALUE9 TEXT, $COLUMN_VALUE10 TEXT, $COLUMN_VALUE11 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE12 TEXT, $COLUMN_VALUE13 TEXT, $COLUMN_VALUE14 TEXT, $COLUMN_VALUE15 TEXT, $COLUMN_VALUE16 TEXT, $COLUMN_VALUE17 TEXT, $COLUMN_VALUE18 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE19 TEXT, $COLUMN_VALUE20 TEXT)")
         db.execSQL(CREATE_TABLE)
-        val CREATE_TABLE_REGISTROS = ("CREATE TABLE $TABLE_REGISTROS ($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_PACIENTE_ID INTEGER, $COLUMN_VALUE8 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALOR TEXT, FOREIGN KEY($COLUMN_PACIENTE_ID) REFERENCES $TABLE_NAME($COLUMN_ID))")
+        val CREATE_TABLE_REGISTROS = ("CREATE TABLE $TABLE_REGISTROS ($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_VALUE1 INTEGER, $COLUMN_VALUE11 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE12 TEXT, $COLUMN_VALUE13 TEXT, FOREIGN KEY($COLUMN_VALUE1) REFERENCES $TABLE_NAME($COLUMN_VALUE1))")
         db.execSQL(CREATE_TABLE_REGISTROS)
 
+        val CREATE_TRIGGER_UPDATE_PACIENTE = """
+        CREATE TRIGGER update_paciente_after_insert_registro
+        AFTER INSERT ON $TABLE_REGISTROS
+        BEGIN
+            UPDATE $TABLE_NAME
+            SET $COLUMN_VALUE11 = NEW.$COLUMN_VALUE11, 
+                $COLUMN_VALUE12 = NEW.$COLUMN_VALUE12,
+                $COLUMN_VALUE13 = NEW.$COLUMN_VALUE13
+            WHERE $COLUMN_VALUE1 = NEW.$COLUMN_VALUE1;
+        END;
+    """.trimIndent()
+
+        db.execSQL(CREATE_TRIGGER_UPDATE_PACIENTE)
 
     }
 
@@ -50,6 +63,18 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         values.put(COLUMN_VALUE19, value19)
         values.put(COLUMN_VALUE20, value20)
         val id = db.insert(TABLE_NAME, null, values)
+        db.close()
+        return id
+    }
+
+    fun insertRegistro(folio: String, nuevoBrazo: String, muacNuevo: String): Long {
+        val db = this.writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_VALUE1, folio)
+            put(COLUMN_VALUE12, nuevoBrazo)
+            put(COLUMN_VALUE13, muacNuevo)
+        }
+        val id = db.insert(TABLE_REGISTROS, null, values)
         db.close()
         return id
     }
@@ -152,8 +177,9 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         // Tabla Registros
         private const val TABLE_REGISTROS = "Registros"
         // COLUMN_ID se reutiliza
+        // COLUMN_VALUE1 folio se reutiliza
         // COLUMN_FECHA se reutiliza
-        private const val COLUMN_VALOR = "Valor"
-        private const val COLUMN_PACIENTE_ID = "paciente_id" // Nueva constante para la FK
+        // COLUMN_VALUE12 folio se reutiliza
+        // COLUMN_VALUE13 folio se reutiliza
     }
 }

@@ -56,22 +56,22 @@ class RegistrarP2Activity : AppCompatActivity() {
         btnSobresRP2.text= "${dataDosis.first().second} Sobres"
         btnDosisRP2.text= "${dataDosis.first().third} Al dia"
 
-        var muacNuevo=""
+        var muacNuevo= ""
         btnCalcularNDx.setOnClickListener {
-            val nuevoBrazo=editTextBrazo.text.toString().toDoubleOrNull()
-            if (nuevoBrazo != null) {
+            val nuevoBrazoD=editTextBrazo.text.toString().toDoubleOrNull()
+            if (nuevoBrazoD != null) {
                 // El valor se convirtió correctamente a Double
                 // Puedes utilizar value12 como un número decimal
-                if (nuevoBrazo<=11.5){
+                if (nuevoBrazoD<=11.5){
                     muacNuevo="Desnutricion grave"
                 }
-                else if (nuevoBrazo>11.5 && nuevoBrazo<=12.5){
+                else if (nuevoBrazoD>11.5 && nuevoBrazoD<=12.5){
                     muacNuevo="Desnutricion moderada"
                 }
-                else if (nuevoBrazo>12.5 && nuevoBrazo<=13.5){
+                else if (nuevoBrazoD>12.5 && nuevoBrazoD<=13.5){
                     muacNuevo="Riesgo de desnutricion"
                 }
-                else if (nuevoBrazo>13.5){
+                else if (nuevoBrazoD>13.5){
                     muacNuevo="Sin desnutricion"
                 }
             } else {
@@ -84,6 +84,8 @@ class RegistrarP2Activity : AppCompatActivity() {
         }
 
         btnGuardarRegistro.setOnClickListener {
+            val nuevoBrazo=editTextBrazo.text.toString()
+            dbHelper.insertRegistro(folio, nuevoBrazo, muacNuevo)
             // Mostrar mensaje de éxito con AlertDialog
             val builder = AlertDialog.Builder(this)
             builder.setTitle("¡Éxito!")
