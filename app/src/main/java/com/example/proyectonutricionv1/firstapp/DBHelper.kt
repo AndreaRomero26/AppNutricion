@@ -104,6 +104,23 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return dataList
     }
+    @SuppressLint("Range")
+    fun getDosis(folio: String): ArrayList<Triple<String, String, String>> {
+        val dataList = ArrayList<Triple<String, String, String>>() // ArrayList de triples de cadenas (String, String, String)
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT $COLUMN_VALUE18, $COLUMN_VALUE19, $COLUMN_VALUE20 FROM $TABLE_NAME WHERE $COLUMN_VALUE1='$folio'", null)
+        if (cursor.moveToFirst()) {
+            do {
+                val value1 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE18))
+                val value2 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE19))
+                val value3 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE20))
+                dataList.add(Triple(value1, value2, value3)) // Agregar un triple de valores a dataList
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+        return dataList
+    }
     companion object {
         private const val DATABASE_VERSION = 1
         private const val DATABASE_NAME = "HIECH"
