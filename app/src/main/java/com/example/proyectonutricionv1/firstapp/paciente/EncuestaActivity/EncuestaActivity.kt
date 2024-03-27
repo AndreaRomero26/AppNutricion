@@ -71,15 +71,15 @@ class EncuestaActivity : AppCompatActivity() {
 
             clasificacion = when (ultimoSi) {
                 in (respuestas.size - 2) until respuestas.size -> {
-                    "INSEGURIDAD ALIMENTARIA GRAVE"
+                    "Inseguridad Alimentaria Grave"
                 }
                 in 2..5 -> {
-                    "INSEGURIDAD ALIMENTARIA MODERADA"
+                    "Inseguridad Alimentaria Moderada"
                 }
                 0, 1 -> {
-                    "INSEGURIDAD ALIMENTARIA LEVE"
+                    "Inseguridad Alimentaria Leve"
                 }
-                else -> "SEGURIDAD ALIMENTARIA"
+                else -> "Seguridad Alimentaria"
             }
 
             if (radioGroupQ1.checkedRadioButtonId == -1 || radioGroupQ2.checkedRadioButtonId == -1 || radioGroupQ3.checkedRadioButtonId == -1

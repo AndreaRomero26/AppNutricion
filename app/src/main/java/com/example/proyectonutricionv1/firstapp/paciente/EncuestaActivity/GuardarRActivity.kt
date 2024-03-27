@@ -57,13 +57,13 @@ class GuardarRActivity : AppCompatActivity() {
         if (value12D != null) {
             // El valor se convirtió correctamente a Double
             // Puedes utilizar value12 como un número decimal
-           if (value12D<11.5){
+           if (value12D<=11.5){
                value13="Desnutricion grave"
            }
-           else if (value12D>11.5 && value12D<12.5){
+           else if (value12D>11.5 && value12D<=12.5){
                 value13="Desnutricion moderada"
             }
-           else if (value12D>12.5 && value12D<13.5){
+           else if (value12D>12.5 && value12D<=13.5){
                value13="Riesgo de desnutricion"
            }
            else if (value12D>13.5){
