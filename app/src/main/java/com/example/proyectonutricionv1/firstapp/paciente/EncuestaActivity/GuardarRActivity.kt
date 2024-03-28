@@ -1,19 +1,22 @@
 package com.example.proyectonutricionv1.firstapp.paciente.EncuestaActivity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.example.proyectonutricionv1.R
 import com.example.proyectonutricionv1.firstapp.DBHelper
+import com.example.proyectonutricionv1.firstapp.MainMenu
 import java.util.*
 
 class GuardarRActivity : AppCompatActivity() {
 
     private lateinit var dbHelper: DBHelper
-    private lateinit var value14: String
-    private lateinit var value15: String
+    private lateinit var value19: String
+    private lateinit var value20: String
     private lateinit var btnInst30: Button
     private lateinit var btnInst60: Button
     private lateinit var btnInst90: Button
@@ -46,45 +49,85 @@ class GuardarRActivity : AppCompatActivity() {
         val value6 = intent.getStringExtra("Nombres")!!
         val value7 = intent.getStringExtra("FechaNacimiento")!!
         val value8 = intent.getStringExtra("Sexo")!!
-        val value10 = intent.getStringExtra("Perimetro")!!
-        val value11="Desnutricion grave"
-        val value12 = intent.getStringExtra("clasificacion")!!
-        val value13 = intent.getStringExtra("COC")!!
+        val value9 = intent.getStringExtra("Estatura")!!
+        val value10 = intent.getStringExtra("Peso")!!
+        val value12 = intent.getStringExtra("Perimetro")!!
+        val value12D = intent.getStringExtra("Perimetro")!!.toDoubleOrNull()
+        var value13=""
+        if (value12D != null) {
+            // El valor se convirtió correctamente a Double
+            // Puedes utilizar value12 como un número decimal
+           if (value12D<=11.5){
+               value13="Desnutricion grave"
+           }
+           else if (value12D>11.5 && value12D<=12.5){
+                value13="Desnutricion moderada"
+            }
+           else if (value12D>12.5 && value12D<=13.5){
+               value13="Riesgo de desnutricion"
+           }
+           else if (value12D>13.5){
+               value13="Sin desnutricion"
+           }
+        } else {
+            // El valor no se pudo convertir a Double
+            value13="Error"
+        }
+
+        val value14 = intent.getStringExtra("clasificacion")!!
+        val value15 = intent.getStringExtra("Tutor")!!
+        val value16 = intent.getStringExtra("COC")!!
+        val value17 = intent.getStringExtra("Padrino")!!
         val value1 = generarFolio(value2, value4, value6, value8)
 
         val nombreCompleto = "$value4 $value5 $value6"
         val ubicacionCompleta = "$value2 $value3"
 
-        textViewClasificacion.text = value12
+        val intentMainMenu = Intent(this, MainMenu::class.java)
+
+
+        textViewClasificacion.text = value14
         textViewLocalidad.text = ubicacionCompleta
         textViewNombre.text = nombreCompleto
-        textViewBrazo.text = value10
+        textViewBrazo.text = value12
         textViewFolio.text=value1
 
         btnInst30.setOnClickListener {
-            value14 = "30"
+            value19 = "30"
             changeButtonInstColor(btnInst30)
         }
 
         btnInst60.setOnClickListener {
-            value14 = "60"
+            value19 = "60"
             changeButtonInstColor(btnInst60)
         }
 
         btnInst90.setOnClickListener {
-            value14 = "90"
+            value19 = "90"
             changeButtonInstColor(btnInst90)
         }
         btnDosis1.setOnClickListener {
-            value15 = "1"
+            value20 = "1"
             changeButtonDosisColor(btnDosis1)
         }
         btnDosis2.setOnClickListener {
-            value15 = "2"
+            value20 = "2"
             changeButtonDosisColor(btnDosis2)
         }
         btnGenerarDB.setOnClickListener {
-            dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value10, value11, value12, value13)
+            dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value12, value13, value14, value15, value16, value17, value19, value20)
+            // Mostrar mensaje de éxito con AlertDialog
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("¡Éxito!")
+            builder.setMessage("Expediente guardado con éxito.")
+            builder.setPositiveButton("OK") { dialog, which ->
+                // Regresar a la actividad principal (opcional)
+                val intentMainMenu = Intent(this, MainMenu::class.java)
+                intentMainMenu.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                startActivity(intentMainMenu)
+            }
+            builder.show()
+
         }
 
     }
