@@ -1,10 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".firstapp.paciente.seguimiento.MostrarPActivity"
     android:background="@drawable/fondo_2logos">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccione el folio del paciente para registrar progreso. Luego pulse continuar."
+        android:textSize="15sp"
+        android:padding="8dp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/folioRegistrarP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FOLIO:"
+        android:textSize="30sp"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:layout_marginTop="26dp"/>
+    <TextView
+        android:id="@+id/rFolioRegistrarP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:padding="8dp"
+        android:layout_marginTop="26dp"
+        android:layout_toEndOf="@id/folioRegistrarP"/>
+    <TextView
+        android:id="@+id/nombreRegistrarP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="NOMBRE DEL PACIENTE:"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_below="@id/folioRegistrarP"/>
+    <TextView
+        android:id="@+id/rNombreRegistrarP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:padding="8dp"
+        android:layout_below="@id/rFolioRegistrarP"
+        android:layout_toEndOf="@id/nombreRegistrarP"/>
+    <Button
+        android:id="@+id/buttonRP2"
+        android:layout_width="194dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="788dp"
+        android:layout_marginTop="608dp"
+        android:text="Siguiente"
+        android:background="@drawable/rounded_background" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="210dp"
+        android:layout_marginBottom="155dp"
+        android:fillViewport="true">
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*">
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FOLIO"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MUNICIPIO"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LOCALIDAD"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PRIMER APELLIDO"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SEGUNDO APELLIDO"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NOMBRES"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FECHA NACIMIENTO"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SEXO"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ESTATURA"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PESO"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ULTIMA FECHA DE MEDIDA"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ULTIMO PERIMETRO BRAZO"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DX MUAC ACTUAL"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="INSEGURIDAD ALIMENTARIA ACTUAL"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NOMBRE PADRE O MADRE"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NOMBRE COC"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PADRINO"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ULTIMA FECHA PAQUETES"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CANTIDAD PAQUETES"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DOSIS DIARIA"
+                        android:textSize="20sp"
+                        android:padding="8dp"
+                        android:textStyle="bold"
+                        android:background="@color/azul2"/>
+                </TableRow>
+
+            </TableLayout>
+        </HorizontalScrollView>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>
