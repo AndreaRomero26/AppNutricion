@@ -129,7 +129,6 @@ class GuardarRActivity : AppCompatActivity() {
             builder.show()
 
         }
-
     }
     fun changeButtonInstColor(button: Button) {
         btnInst30.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
