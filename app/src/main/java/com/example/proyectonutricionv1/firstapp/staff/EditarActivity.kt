@@ -9,13 +9,15 @@ import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.Px
 import com.example.proyectonutricionv1.R
 import com.example.proyectonutricionv1.firstapp.DBHelper
 
 class EditarActivity : AppCompatActivity() {
 
     private lateinit var dbHelper: DBHelper
-    private lateinit var buttonEE: Button
+    private lateinit var buttonDeletePx: Button
+    private lateinit var buttonEditarPx: Button
     private lateinit var textViewFolioEE: TextView
     private lateinit var textViewNombreEE: TextView
 
@@ -27,7 +29,8 @@ class EditarActivity : AppCompatActivity() {
 
         textViewFolioEE = findViewById<TextView>(R.id.rFolioRegistrarP)
         textViewNombreEE = findViewById<TextView>(R.id.rNombreRegistrarP)
-        buttonEE= findViewById<Button>(R.id.buttonRP2)
+        buttonDeletePx= findViewById<Button>(R.id.buttonDeletePx)
+        buttonEditarPx= findViewById<Button>(R.id.buttonEditarPx)
 
         val intentEE = Intent(this, Editar2Activity::class.java)
         dbHelper = DBHelper(this)
@@ -159,8 +162,9 @@ class EditarActivity : AppCompatActivity() {
 
             tableLayout.addView(tableRow)
         }
-        buttonEE.isEnabled = false // Inicialmente desactivado
-        buttonEE.setOnClickListener {
+        buttonDeletePx.isEnabled = false // Inicialmente desactivado
+        buttonEditarPx.isEnabled = false // Inicialmente desactivado
+        buttonDeletePx.setOnClickListener {
             dbHelper.eliminarRegistro(idRegistroAEliminar)
             // Buscar y eliminar la fila correspondiente en TableLayout
             val filaAEliminar = tableLayout.findViewWithTag<TableRow>(idRegistroAEliminar)
@@ -170,6 +174,10 @@ class EditarActivity : AppCompatActivity() {
             textViewFolioEE.text = ""
             textViewNombreEE.text = ""
         }
+        buttonEditarPx.setOnClickListener {
+            intentEE.putExtra("folioPaciente", idRegistroAEliminar)
+            startActivity(intentEE)
+        }
 
     }
 
@@ -178,7 +186,8 @@ class EditarActivity : AppCompatActivity() {
         val nombreText = textViewNombreEE.text.toString()
 
         // Habilitar el botón si los TextViews tienen texto, deshabilitarlo si están vacíos
-        buttonEE.isEnabled = folioText.isNotEmpty() && nombreText.isNotEmpty()
+        buttonDeletePx.isEnabled = folioText.isNotEmpty() && nombreText.isNotEmpty()
+        buttonEditarPx.isEnabled = folioText.isNotEmpty() && nombreText.isNotEmpty()
     }
 
 }

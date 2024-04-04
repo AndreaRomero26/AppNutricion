@@ -48,13 +48,21 @@
         android:layout_toEndOf="@id/nombreRegistrarP"/>
 
     <Button
-        android:id="@+id/buttonRP2"
+        android:id="@+id/buttonDeletePx"
         android:layout_width="194dp"
         android:layout_height="80dp"
         android:layout_marginStart="80dp"
         android:layout_marginTop="608dp"
         android:background="@drawable/rounded_background"
-        android:text="Siguiente" />
+        android:text="Eliminar Paciente" />
+    <Button
+        android:id="@+id/buttonEditarPx"
+        android:layout_width="194dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="700dp"
+        android:layout_marginTop="608dp"
+        android:background="@drawable/rounded_background"
+        android:text="Editar Paciente" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
