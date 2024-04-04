@@ -146,6 +146,13 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return dataList
     }
+
+    fun eliminarRegistro(folio: String) {
+        val db = this.writableDatabase // Obtienes una instancia de la base de datos en modo escritura
+        db.delete("$TABLE_NAME", "Folio = ?", arrayOf(folio)) // Eliminas el registro cuyo Folio coincida con el argumento
+        db.close() // Cierras la conexión a la base de datos
+    }
+
     companion object {
         private const val DATABASE_VERSION = 1
         private const val DATABASE_NAME = "HIECH"

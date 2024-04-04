@@ -18,6 +18,9 @@ class EditarActivity : AppCompatActivity() {
     private lateinit var buttonEE: Button
     private lateinit var textViewFolioEE: TextView
     private lateinit var textViewNombreEE: TextView
+
+    private var idRegistroAEliminar: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar)
@@ -40,7 +43,7 @@ class EditarActivity : AppCompatActivity() {
                 TableLayout.LayoutParams.WRAP_CONTENT
             )
             tableRow.layoutParams = layoutParams
-
+            tableRow.tag = value1
             val textView1 = TextView(this)
             textView1.text = value1
             textView1.setPadding(10, 10, 10, 10)
@@ -48,6 +51,7 @@ class EditarActivity : AppCompatActivity() {
             textView1.setOnClickListener {
                 Toast.makeText(this, "Seleccionaste el paciente: $value1", Toast.LENGTH_SHORT).show()
                 textViewFolioEE.text= value1
+                idRegistroAEliminar = value1
                 val nombreEE= "$value4 $value5 $value6".uppercase()
                 textViewNombreEE.text=nombreEE
                 checkFieldsForEmptyValues()
@@ -157,7 +161,14 @@ class EditarActivity : AppCompatActivity() {
         }
         buttonEE.isEnabled = false // Inicialmente desactivado
         buttonEE.setOnClickListener {
-            startActivity(intentEE)
+            dbHelper.eliminarRegistro(idRegistroAEliminar)
+            // Buscar y eliminar la fila correspondiente en TableLayout
+            val filaAEliminar = tableLayout.findViewWithTag<TableRow>(idRegistroAEliminar)
+            tableLayout.removeView(filaAEliminar)
+            // Restablecer idRegistroAEliminar y actualizar UI si es necesario
+            idRegistroAEliminar = ""
+            textViewFolioEE.text = ""
+            textViewNombreEE.text = ""
         }
 
     }

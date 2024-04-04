@@ -46,14 +46,15 @@
         android:padding="8dp"
         android:layout_below="@id/rFolioRegistrarP"
         android:layout_toEndOf="@id/nombreRegistrarP"/>
+
     <Button
         android:id="@+id/buttonRP2"
         android:layout_width="194dp"
         android:layout_height="80dp"
-        android:layout_marginStart="788dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="608dp"
-        android:text="Siguiente"
-        android:background="@drawable/rounded_background" />
+        android:background="@drawable/rounded_background"
+        android:text="Siguiente" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
