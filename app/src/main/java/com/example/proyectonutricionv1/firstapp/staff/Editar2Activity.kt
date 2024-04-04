@@ -204,23 +204,15 @@ class Editar2Activity : AppCompatActivity() {
                     // Opcional: manejar casos donde el sexo no es ni Hombre ni Mujer
                 }
             }
-            Log.d("Editar2Activity", "Posición del municipio en el adaptador")
             val municipioPaciente = paciente.value2
-            Log.d("Editar2Activity", "Antes de ejecutar el bloque let")
             (spinnerMunicipio.adapter as? ArrayAdapter<String>)?.let { adapter ->
-                Log.d("Editar2Activity", "Dentro del bloque let")
                 val spinnerPosition = adapter.getPosition(municipioPaciente)
-                Log.d("Editar2Activity", "Después de obtener la posición")
-
                 if (spinnerPosition != -1) {
-                    Log.d("Editar2Activity", "Municipio encontrado: $municipioPaciente en posición: $spinnerPosition")
                     spinnerMunicipio.setSelection(spinnerPosition)
                 } else {
-                    Log.d("Editar2Activity", "Municipio no encontrado: $municipioPaciente")
                     Toast.makeText(this, "Municipio no encontrado: $municipioPaciente", Toast.LENGTH_LONG).show()
                 }
             }
-            Log.d("Editar2Activity", "Después del bloque let")
 
         } else {
             Toast.makeText(this, "Paciente no encontrado", Toast.LENGTH_SHORT).show()
