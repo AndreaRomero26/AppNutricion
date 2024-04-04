@@ -11,10 +11,13 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import com.example.proyectonutricionv1.R
+import com.example.proyectonutricionv1.firstapp.DBHelper
 import com.example.proyectonutricionv1.firstapp.paciente.EncuestaActivity.EncuestaActivity
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -38,6 +41,8 @@ class Editar2Activity : AppCompatActivity() {
     private lateinit var editText10: EditText
     private lateinit var editText11: EditText
 
+    private lateinit var dbHelper: DBHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar2)
@@ -56,6 +61,10 @@ class Editar2Activity : AppCompatActivity() {
         editText10 = findViewById(R.id.editTextPadre)
         editText11 = findViewById(R.id.editTextPadrino)
 
+        val folio = intent.getStringExtra("Folio")!!
+        dbHelper = DBHelper(this)
+        cargarDatosPaciente(folio)
+
         val textViewFecha = findViewById<TextView>(R.id.respuesta_fecha)
         btn_sig_encuesta = findViewById<Button>(R.id.btn_sig_encuesta)
         val intent_sig_encuesta = Intent(this, EncuestaActivity::class.java)
@@ -73,6 +82,7 @@ class Editar2Activity : AppCompatActivity() {
             adapter.setDropDownViewResource(R.layout.spinner_item) // Usa el mismo layout para el desplegable, o crea otro si quieres diferenciarlo
             spinnerMunicipio.adapter = adapter
         }
+
 
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -163,6 +173,49 @@ class Editar2Activity : AppCompatActivity() {
 
         // Habilitar o deshabilitar el botón según si todos los campos tienen valores
         btn_sig_encuesta.isEnabled = allFilled
+    }
+
+    private fun cargarDatosPaciente(folio: String) {
+        val paciente = dbHelper.getPacientePorFolio(folio)
+        // Supongamos que getPacientePorFolio devuelve un objeto o mapa con los datos del paciente
+        // Ahora, asigna los valores a los campos de texto, etc.
+        if (paciente != null) {
+            // Supongamos que tienes TextViews o EditTexts para mostrar los datos
+            editText1.setText(paciente.value16)
+            editText2.setText(paciente.value4)
+            editText3.setText(paciente.value5)
+            editText4.setText(paciente.value6)
+            editText5.setText(paciente.value7)
+            editText6.setText(paciente.value12)
+            editText7.setText(paciente.value3)
+            editText8.setText(paciente.value9)
+            editText9.setText(paciente.value10)
+            editText10.setText(paciente.value15)
+            editText11.setText(paciente.value17)
+
+            val radioButtonHombre = findViewById<RadioButton>(R.id.radioButtonHombre)
+            val radioButtonMujer = findViewById<RadioButton>(R.id.radioButtonMujer)
+
+            when (paciente.value8) {
+                "Hombre" -> radioButtonHombre.isChecked = true
+                "Mujer" -> radioButtonMujer.isChecked = true
+                else -> {
+                    // Opcional: manejar casos donde el sexo no es ni Hombre ni Mujer
+                }
+            }
+
+            val adapter = spinnerMunicipio.adapter as? ArrayAdapter<String>
+            if (adapter != null) {
+                val municipioPaciente = paciente.value2
+                val spinnerPosition = adapter.getPosition(municipioPaciente)
+                spinnerMunicipio.setSelection(spinnerPosition)
+            } else {
+                Toast.makeText(this, "Error al cargar el adaptador del municipio", Toast.LENGTH_SHORT).show()
+            }
+
+        } else {
+            Toast.makeText(this, "Paciente no encontrado", Toast.LENGTH_SHORT).show()
+        }
     }
 
 }

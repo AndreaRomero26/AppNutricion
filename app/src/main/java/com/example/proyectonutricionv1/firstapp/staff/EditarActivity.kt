@@ -175,7 +175,7 @@ class EditarActivity : AppCompatActivity() {
             textViewNombreEE.text = ""
         }
         buttonEditarPx.setOnClickListener {
-            intentEE.putExtra("folioPaciente", idRegistroAEliminar)
+            intentEE.putExtra("Folio", idRegistroAEliminar)
             startActivity(intentEE)
         }
 

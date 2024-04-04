@@ -9,6 +9,28 @@ import com.google.android.material.color.utilities.Cam16
 
 data class DataModel(val value1: String, val value2: String, val value3: String, val value4: String,val value5: String,val value6: String,val value7: String, val value8: String, val value9: String, val value10: String, val value11: String, val value12: String, val value13: String, val value14: String,val value15: String, val value16: String, val value17: String, val value18: String, val value19: String, val value20: String)
 data class DataRegistro(val value1: String, val value2: String, val value3: String, val value4: String)
+data class Paciente(
+    val value1: String,
+    val value2: String,
+    val value3: String,
+    val value4: String,
+    val value5: String,
+    val value6: String,
+    val value7: String,
+    val value8: String,
+    val value9: String,
+    val value10: String,
+    val value11: String,
+    val value12: String,
+    val value13: String,
+    val value14: String,
+    val value15: String,
+    val value16: String,
+    val value17: String,
+    val value18: String,
+    val value19: String,
+    val value20: String
+)
 
 
 class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -151,6 +173,42 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         val db = this.writableDatabase // Obtienes una instancia de la base de datos en modo escritura
         db.delete("$TABLE_NAME", "Folio = ?", arrayOf(folio)) // Eliminas el registro cuyo Folio coincida con el argumento
         db.close() // Cierras la conexión a la base de datos
+    }
+
+    @SuppressLint("Range")
+    fun getPacientePorFolio(folio: String): Paciente? {
+        val db = this.readableDatabase
+        var paciente: Paciente? = null
+
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_NAME WHERE $COLUMN_VALUE1 = ?", arrayOf(folio))
+        if (cursor.moveToFirst()) {
+            val value1 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE1))
+            val value2 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE2))
+            val value3 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE3))
+            val value4 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE4))
+            val value5 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE5))
+            val value6 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE6))
+            val value7 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE7))
+            val value8 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE8))
+            val value9 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE9))
+            val value10 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE10))
+            val value11 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE11))
+            val value12 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE12))
+            val value13 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE13))
+            val value14 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE14))
+            val value15 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE15))
+            val value16 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE16))
+            val value17 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE17))
+            val value18 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE18))
+            val value19 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE19))
+            val value20 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE20))
+
+            paciente = Paciente(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17, value18, value19, value20)
+        }
+
+        cursor.close()
+        db.close()
+        return paciente
     }
 
     companion object {
