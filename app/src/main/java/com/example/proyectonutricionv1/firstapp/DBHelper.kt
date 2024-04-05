@@ -175,6 +175,25 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close() // Cierras la conexión a la base de datos
     }
 
+    fun update(folio: String, value2: String, value3: String, value4: String, value5: String,value6: String,value7: String, value8: String, value9: String, value10: String, value15: String, value16: String, value17: String) {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(COLUMN_VALUE2, value2)
+        values.put(COLUMN_VALUE3, value3)
+        values.put(COLUMN_VALUE4, value4)
+        values.put(COLUMN_VALUE5, value5)
+        values.put(COLUMN_VALUE6, value6)
+        values.put(COLUMN_VALUE7, value7)
+        values.put(COLUMN_VALUE8, value8)
+        values.put(COLUMN_VALUE9, value9)
+        values.put(COLUMN_VALUE10, value10)
+        values.put(COLUMN_VALUE15, value15)
+        values.put(COLUMN_VALUE16, value16)
+        values.put(COLUMN_VALUE17, value17)
+        db.update("$TABLE_NAME", values, "folio = ?", arrayOf(folio))
+        db.close()
+    }
+
     @SuppressLint("Range")
     fun getPacientePorFolio(folio: String): Paciente? {
         val db = this.readableDatabase

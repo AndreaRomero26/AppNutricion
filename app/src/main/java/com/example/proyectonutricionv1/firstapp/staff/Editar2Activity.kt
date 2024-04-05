@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -17,8 +16,10 @@ import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.proyectonutricionv1.R
 import com.example.proyectonutricionv1.firstapp.DBHelper
+import com.example.proyectonutricionv1.firstapp.MainMenu
 import com.example.proyectonutricionv1.firstapp.paciente.EncuestaActivity.EncuestaActivity
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -35,7 +36,7 @@ class Editar2Activity : AppCompatActivity() {
     private lateinit var spinnerMunicipio: Spinner
     private lateinit var editText7: EditText
     private lateinit var btnsexo: RadioGroup
-    private lateinit var btn_sig_encuesta: Button
+    private lateinit var btnUpdate: Button
     private var value10: String="Hombre"
     private lateinit var editText8: EditText
     private lateinit var editText9: EditText
@@ -48,6 +49,7 @@ class Editar2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar2)
 
+        //Campos de los datos del paciente, declaracion textViews
         editText1 = findViewById(R.id.editTextNombreProf)
         editText2 = findViewById(R.id.editTextPrimerApellidoPx)
         editText3 = findViewById(R.id.editTextSegundoApellidoPx)
@@ -62,19 +64,23 @@ class Editar2Activity : AppCompatActivity() {
         editText10 = findViewById(R.id.editTextPadre)
         editText11 = findViewById(R.id.editTextPadrino)
 
+        //Recuperar el folio de la activity anterior
         val folio = intent.getStringExtra("Folio")!!
+        //Instancia de la base de datos
         dbHelper = DBHelper(this)
 
-
+        //Declaracion textView de le fecha
         val textViewFecha = findViewById<TextView>(R.id.respuesta_fecha)
-        btn_sig_encuesta = findViewById<Button>(R.id.btn_sig_encuesta)
-        val intent_sig_encuesta = Intent(this, EncuestaActivity::class.java)
+        btnUpdate = findViewById<Button>(R.id.btn_sig_encuesta)
 
+
+        //Fecha actual en el textView de fecha
         val currentDate = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         val formattedDate = dateFormat.format(currentDate)
         textViewFecha.setText(formattedDate)
 
+        //Adaptador para spinner de municipios
         ArrayAdapter.createFromResource(
             this,
             R.array.municipios_array,
@@ -84,7 +90,10 @@ class Editar2Activity : AppCompatActivity() {
             spinnerMunicipio.adapter = adapter
         }
 
+        //Cargas todos los datos del paciente en los campos
         cargarDatosPaciente(folio)
+
+        //Checar que los campos obligatorios esten llenos
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // No se utiliza en este caso
@@ -127,8 +136,8 @@ class Editar2Activity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
-        // Inicialmente, deshabilitar el botón
-        btn_sig_encuesta.isEnabled = false
+        // Inicialmente, deshabilitar el botón si los campos obligatorios no estan llenos
+        btnUpdate.isEnabled = false
 
         // Manejar clic para abrir el DatePickerDialog
         editText5.setOnClickListener {
@@ -140,8 +149,45 @@ class Editar2Activity : AppCompatActivity() {
             if (hasFocus) showDatePickerDialog()
         }
 
+        btnUpdate.setOnClickListener {
+            val value16 = editText1.text.toString()
+            val value4 = editText2.text.toString()
+            val value5 = editText3.text.toString()
+            val value6 = editText4.text.toString()
+            val value7 = editText5.text.toString()
+            val value3 = editText7.text.toString()
+            val value9 = editText8.text.toString()
+            val value10 = editText9.text.toString()
+            val value15 = editText10.text.toString()
+            val value17 = editText11.text.toString()
+
+            // Recoge el valor actual del Spinner para el municipio
+            val value2 = spinnerMunicipio.selectedItem.toString()
+
+            // Determina el sexo seleccionado
+            val value8 = when (btnsexo.checkedRadioButtonId) {
+                R.id.radioButtonHombre -> "Hombre"
+                R.id.radioButtonMujer -> "Mujer"
+                else -> "" // o un valor por defecto o manejo de error si es necesario
+            }
+
+            // Llama al método update del DBHelper
+            dbHelper.update(folio, value2, value3, value4, value5, value6, value7, value8, value9, value10, value15, value16, value17)
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("¡Éxito!")
+            builder.setMessage("Expediente guardado con éxito.")
+            builder.setPositiveButton("OK") { dialog, which ->
+                // Regresar a la actividad principal (opcional)
+                val intentMainMenu = Intent(this, MainMenu::class.java)
+                intentMainMenu.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                startActivity(intentMainMenu)
+            }
+            builder.show()
+        }
+
     }
 
+    //Metodo para abrir el calendario en fecha de nacimiento
     private fun showDatePickerDialog() {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
@@ -158,6 +204,7 @@ class Editar2Activity : AppCompatActivity() {
         editText5.clearFocus()  // Para evitar múltiples aperturas del diálogo
     }
 
+    //Metodo para checar que los campos esten llenos
     private fun checkEditTexts() {
         val nombreProf = editText1.text.toString()
         val primerApellido = editText2.text.toString()
@@ -173,7 +220,7 @@ class Editar2Activity : AppCompatActivity() {
         val allFilled = nombreProf.isNotEmpty() && primerApellido.isNotEmpty() && segundoApellido.isNotEmpty() && nombres.isNotEmpty() && fechaNac.isNotEmpty() && perimetro.isNotEmpty() && municipio && localidad.isNotEmpty()
 
         // Habilitar o deshabilitar el botón según si todos los campos tienen valores
-        btn_sig_encuesta.isEnabled = allFilled
+        btnUpdate.isEnabled = allFilled
     }
 
     private fun cargarDatosPaciente(folio: String) {
