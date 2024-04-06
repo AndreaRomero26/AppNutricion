@@ -10,6 +10,7 @@ import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.Px
+import androidx.appcompat.app.AlertDialog
 import com.example.proyectonutricionv1.R
 import com.example.proyectonutricionv1.firstapp.DBHelper
 
@@ -165,14 +166,32 @@ class EditarActivity : AppCompatActivity() {
         buttonDeletePx.isEnabled = false // Inicialmente desactivado
         buttonEditarPx.isEnabled = false // Inicialmente desactivado
         buttonDeletePx.setOnClickListener {
-            dbHelper.eliminarRegistro(idRegistroAEliminar)
-            // Buscar y eliminar la fila correspondiente en TableLayout
-            val filaAEliminar = tableLayout.findViewWithTag<TableRow>(idRegistroAEliminar)
-            tableLayout.removeView(filaAEliminar)
-            // Restablecer idRegistroAEliminar y actualizar UI si es necesario
-            idRegistroAEliminar = ""
-            textViewFolioEE.text = ""
-            textViewNombreEE.text = ""
+            // Crear el AlertDialog.Builder
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Confirmar eliminación")
+            builder.setMessage("¿Estás seguro de querer eliminar este registro?")
+
+            // Establecer la acción para el botón "Sí"
+            builder.setPositiveButton("Sí") { dialog, which ->
+                dbHelper.eliminarRegistro(idRegistroAEliminar)
+                // Buscar y eliminar la fila correspondiente en TableLayout
+                val filaAEliminar = tableLayout.findViewWithTag<TableRow>(idRegistroAEliminar)
+                tableLayout.removeView(filaAEliminar)
+                // Restablecer idRegistroAEliminar y actualizar UI
+                idRegistroAEliminar = ""
+                textViewFolioEE.text = ""
+                textViewNombreEE.text = ""
+            }
+
+            // Establecer la acción para el botón "No"
+            builder.setNegativeButton("No") { dialog, which ->
+                // Se cierra la ventana y no se hace nada más
+                dialog.dismiss()
+            }
+
+            // Mostrar el AlertDialog
+            val dialog = builder.create()
+            dialog.show()
         }
         buttonEditarPx.setOnClickListener {
             intentEE.putExtra("Folio", idRegistroAEliminar)
