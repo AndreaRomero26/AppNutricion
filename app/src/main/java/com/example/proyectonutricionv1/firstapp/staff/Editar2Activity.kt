@@ -32,7 +32,6 @@ class Editar2Activity : AppCompatActivity() {
     private lateinit var editText3: EditText
     private lateinit var editText4: EditText
     private lateinit var editText5: EditText
-    private lateinit var editText6: EditText
     private lateinit var editText7: EditText
     private lateinit var editText8: EditText
     private lateinit var editText9: EditText
@@ -54,7 +53,6 @@ class Editar2Activity : AppCompatActivity() {
         editText3 = findViewById(R.id.editTextSegundoApellidoPx)
         editText4 = findViewById(R.id.editTextNombresPx)
         editText5 = findViewById(R.id.editTextFechaNac)
-        editText6 = findViewById(R.id.editTextPerimetro)
         spinnerMunicipio = findViewById(R.id.spinnerMunicipio)
         editText7 = findViewById(R.id.editTextLocalidad)
         btnsexo = findViewById(R.id.radioGroupSexo)
@@ -112,7 +110,6 @@ class Editar2Activity : AppCompatActivity() {
         editText3.addTextChangedListener(textWatcher)
         editText4.addTextChangedListener(textWatcher)
         editText5.addTextChangedListener(textWatcher)
-        editText6.addTextChangedListener(textWatcher)
         editText7.addTextChangedListener(textWatcher)
 
         //Checar si el spinner fue seleccionado
@@ -201,13 +198,12 @@ class Editar2Activity : AppCompatActivity() {
         val segundoApellido = editText3.text.toString()
         val nombres = editText4.text.toString()
         val fechaNac = editText5.text.toString()
-        val perimetro = editText6.text.toString()
         val municipio = spinnerMunicipio.selectedItemPosition > 0 // Asume que la posición 0 es el prompt "Seleccione un Municipio"
         val localidad = editText7.text.toString()
 
 
         // Verificar si todos los campos (EditTexts y el Spinner) tienen valores
-        val allFilled = nombreProf.isNotEmpty() && primerApellido.isNotEmpty() && segundoApellido.isNotEmpty() && nombres.isNotEmpty() && fechaNac.isNotEmpty() && perimetro.isNotEmpty() && municipio && localidad.isNotEmpty()
+        val allFilled = nombreProf.isNotEmpty() && primerApellido.isNotEmpty() && segundoApellido.isNotEmpty() && nombres.isNotEmpty() && fechaNac.isNotEmpty() && municipio && localidad.isNotEmpty()
 
         // Habilitar o deshabilitar el botón según si todos los campos tienen valores
         btnUpdate.isEnabled = allFilled
@@ -224,7 +220,6 @@ class Editar2Activity : AppCompatActivity() {
             editText3.setText(paciente.value5)
             editText4.setText(paciente.value6)
             editText5.setText(paciente.value7)
-            editText6.setText(paciente.value12)
             editText7.setText(paciente.value3)
             editText8.setText(paciente.value9)
             editText9.setText(paciente.value10)

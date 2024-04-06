@@ -2,8 +2,10 @@ package com.example.proyectonutricionv1.firstapp.paciente.seguimiento
 
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.TextView
@@ -19,12 +21,15 @@ class RegistrarP2Activity : AppCompatActivity() {
     private lateinit var btnSobresRP2: Button
     private lateinit var btnDosisRP2: Button
     private lateinit var btnCalcularNDx: Button
+
+    private var mpList = mutableListOf<MediaPlayer?>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registrar_p2)
 
         dbHelper = DBHelper(this)
 
+        btnInstruccionesRP2=findViewById(R.id.btnInstruccionesRP2)
         btnSobresRP2 = findViewById<Button>(R.id.btnSobresRP2)
         btnDosisRP2 = findViewById<Button>(R.id.btnDosisRP2)
         btnCalcularNDx = findViewById<Button>(R.id.btnCalcularNDx)
@@ -99,5 +104,42 @@ class RegistrarP2Activity : AppCompatActivity() {
             builder.show()
         }
 
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+
     }
+    fun reproducirMediaPlayer(view: View){
+        // Obtener el ID del botón presionado
+        val buttonId = view.id
+
+        // Determinar qué audio reproducir según el ID del botón
+        val audioIndex = when(buttonId) {
+            R.id.btnInstruccionesRP2 -> 0
+            R.id.btnSobresRP2 -> 1
+            R.id.btnDosisRP2 -> 2
+            else -> -1
+        }
+
+        // Verificar si el índice del audio es válido
+        if (audioIndex != -1) {
+            val mp = mpList[audioIndex]
+
+            if (mp?.isPlaying == true) {
+                mp.pause()
+            } else {
+                mp?.seekTo(0)
+                mp?.start()
+            }
+        }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        // Liberar los recursos de todos los MediaPlayers
+        mpList.forEach { mp ->
+            mp?.release()
+        }
+    }
+
+
 }
