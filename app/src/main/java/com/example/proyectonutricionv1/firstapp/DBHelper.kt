@@ -19,7 +19,7 @@ data class dataModel(
     val value9: String,
     val value10: String,
     val value11: String,
-    val value12: String,
+    val value12: Double,
     val value13: String,
     val value14: String,
     val value15: String,
@@ -33,7 +33,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
 
     //Creacion de tablas, solo si no existen
     override fun onCreate(db: SQLiteDatabase) {
-        val CREATE_TABLE = ("CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_VALUE1 TEXT, $COLUMN_VALUE2 TEXT, $COLUMN_VALUE3 TEXT, $COLUMN_VALUE4 TEXT, $COLUMN_VALUE5 TEXT, $COLUMN_VALUE6 TEXT, $COLUMN_VALUE7 TEXT, $COLUMN_VALUE8 TEXT, $COLUMN_VALUE9 TEXT, $COLUMN_VALUE10 TEXT, $COLUMN_VALUE11 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE12 TEXT, $COLUMN_VALUE13 TEXT, $COLUMN_VALUE14 TEXT, $COLUMN_VALUE15 TEXT, $COLUMN_VALUE16 TEXT, $COLUMN_VALUE17 TEXT, $COLUMN_VALUE18 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE19 TEXT, $COLUMN_VALUE20 TEXT)")
+        val CREATE_TABLE = ("CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_VALUE1 TEXT, $COLUMN_VALUE2 TEXT, $COLUMN_VALUE3 TEXT, $COLUMN_VALUE4 TEXT, $COLUMN_VALUE5 TEXT, $COLUMN_VALUE6 TEXT, $COLUMN_VALUE7 TEXT, $COLUMN_VALUE8 TEXT, $COLUMN_VALUE9 TEXT, $COLUMN_VALUE10 TEXT, $COLUMN_VALUE11 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE12 REAL, $COLUMN_VALUE13 TEXT, $COLUMN_VALUE14 TEXT, $COLUMN_VALUE15 TEXT, $COLUMN_VALUE16 TEXT, $COLUMN_VALUE17 TEXT, $COLUMN_VALUE18 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE19 TEXT, $COLUMN_VALUE20 TEXT)")
         db.execSQL(CREATE_TABLE)
         val CREATE_TABLE_REGISTROS = ("CREATE TABLE $TABLE_REGISTROS ($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_VALUE1 INTEGER, $COLUMN_VALUE11 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE12 TEXT, $COLUMN_VALUE13 TEXT, FOREIGN KEY($COLUMN_VALUE1) REFERENCES $TABLE_NAME($COLUMN_VALUE1))")
         db.execSQL(CREATE_TABLE_REGISTROS)
@@ -63,7 +63,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     }
 
     //Metodo para insertar los datos de cada paciente en la tabla principal
-    fun insertData(value1: String, value2: String, value3: String, value4: String, value5: String,value6: String,value7: String, value8: String, value9: String, value10: String, value12: String, value13: String, value14: String, value15: String, value16: String, value17: String, value19: String, value20: String): Long {
+    fun insertData(value1: String, value2: String, value3: String, value4: String, value5: String,value6: String,value7: String, value8: String, value9: String, value10: String, value12: Double, value13: String, value14: String, value15: String, value16: String, value17: String, value19: String, value20: String): Long {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(COLUMN_VALUE1, value1)
@@ -90,7 +90,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     }
 
     //Metodo para insertar los valores en la tabla de registros, para el progreso de los pacientes
-    fun insertRegistro(folio: String, nuevoBrazo: String, muacNuevo: String): Long {
+    fun insertRegistro(folio: String, nuevoBrazo: Double, muacNuevo: String): Long {
         val db = this.writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_VALUE1, folio)
@@ -103,6 +103,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     }
 
     //Metodo para recuperar toda la información de la tabla principal y mostrarla en la GUI
+    @SuppressLint("Range")
     fun getAllData(): ArrayList<dataModel> {
         val dataList = ArrayList<dataModel>()
         val db = this.readableDatabase
@@ -120,7 +121,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
                 val value9 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE9) })
                 val value10 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE10) })
                 val value11 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE11) })
-                val value12 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE12) })
+                val value12 = cursor.getDouble(cursor.getColumnIndex(COLUMN_VALUE12))
                 val value13 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE13) })
                 val value14 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE14) })
                 val value15 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE15) })
@@ -140,13 +141,13 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     //Metodo para recuperar la medida de brazo anterior asi como inseguridad y muac.Para que se
     //muestren estos datos en la activity de registrar progreso
     @SuppressLint("Range")
-    fun getNuevoRegistro(folio: String): ArrayList<Triple<String, String, String>> {
-        val dataList = ArrayList<Triple<String, String, String>>() // ArrayList de triples de cadenas (String, String, String)
+    fun getNuevoRegistro(folio: String): ArrayList<Triple<Double, String, String>> {
+        val dataList = ArrayList<Triple<Double, String, String>>() // ArrayList de triples de cadenas (String, String, String)
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT $COLUMN_VALUE12, $COLUMN_VALUE13, $COLUMN_VALUE14 FROM $TABLE_NAME WHERE $COLUMN_VALUE1='$folio'", null)
         if (cursor.moveToFirst()) {
             do {
-                val value1 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE12))
+                val value1 = cursor.getDouble(cursor.getColumnIndex(COLUMN_VALUE12))
                 val value2 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE13))
                 val value3 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE14))
                 dataList.add(Triple(value1, value2, value3)) // Agregar un triple de valores a dataList
@@ -223,7 +224,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             val value9 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE9))
             val value10 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE10))
             val value11 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE11))
-            val value12 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE12))
+            val value12 = cursor.getDouble(cursor.getColumnIndex(COLUMN_VALUE12))
             val value13 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE13))
             val value14 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE14))
             val value15 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE15))
@@ -243,7 +244,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
 
     //Nombres de DB, tablas y columnas
     companion object {
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
         private const val DATABASE_NAME = "HIECH"
 
         // Tabla Pacientes

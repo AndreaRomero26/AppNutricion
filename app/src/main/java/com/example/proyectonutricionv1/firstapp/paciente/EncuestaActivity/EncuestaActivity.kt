@@ -25,7 +25,7 @@ class EncuestaActivity : AppCompatActivity() {
         val value6 = intent.getStringExtra("FechaNacimiento")
         val value7 = intent.getStringExtra("Estatura")
         val value8 = intent.getStringExtra("Peso")
-        val value9 = intent.getStringExtra("Perimetro")
+        val value9 = intent.getDoubleExtra("Perimetro", -1.0)
         val value10 = intent.getStringExtra("Sexo")
         val value11 = intent.getStringExtra("Tutor")
         val value12 = intent.getStringExtra("COC")

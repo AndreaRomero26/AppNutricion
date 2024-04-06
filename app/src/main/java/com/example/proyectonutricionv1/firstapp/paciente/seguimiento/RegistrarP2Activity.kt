@@ -49,11 +49,11 @@ class RegistrarP2Activity : AppCompatActivity() {
         textViewFolio.text = folio
 
         val dataRP = dbHelper.getNuevoRegistro(folio)
-        val brazoAnterior: String = dataRP.first().first  // Primer valor del primer par
+        val brazoAnterior: Double = dataRP.first().first  // Primer valor del primer par
         val dxAnterior: String = dataRP.first().second // Segundo valor del primer par
         val inseguridadAnterior: String = dataRP.first().third // Tercer valor del primer par
 
-        textViewBrazo.text = brazoAnterior
+        textViewBrazo.text = brazoAnterior.toString()
         textViewDx.text = dxAnterior.uppercase()
         textViewInseguridad.text = inseguridadAnterior.uppercase()
 
@@ -89,7 +89,7 @@ class RegistrarP2Activity : AppCompatActivity() {
         }
 
         btnGuardarRegistro.setOnClickListener {
-            val nuevoBrazo=editTextBrazo.text.toString()
+            val nuevoBrazo=editTextBrazo.text.toString().toDouble()
             dbHelper.insertRegistro(folio, nuevoBrazo, muacNuevo)
             // Mostrar mensaje de éxito con AlertDialog
             val builder = AlertDialog.Builder(this)

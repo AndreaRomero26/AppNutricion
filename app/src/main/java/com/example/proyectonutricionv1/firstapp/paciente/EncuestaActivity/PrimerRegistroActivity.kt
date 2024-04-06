@@ -14,6 +14,7 @@ import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import com.example.proyectonutricionv1.R
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -110,11 +111,16 @@ class PrimerRegistroActivity : AppCompatActivity() {
 
 
         spinnerMunicipio.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                checkEditTexts()
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                // La vista (view) puede ser null, así que verifica antes de usarla
+                if (view != null) {
+                    checkEditTexts()
+                }
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {}
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Manejar el caso de que no se haya seleccionado nada
+            }
         }
 
         // Inicialmente, deshabilitar el botón
@@ -129,7 +135,17 @@ class PrimerRegistroActivity : AppCompatActivity() {
             val value6 = editText5.text.toString()
             val value7 = editText8.text.toString()
             val value8 = editText9.text.toString()
-            val value9 = editText6.text.toString()
+            var value9: Double? = null
+
+            try {
+                value9 = editText6.text.toString().toDouble()
+            } catch (e: NumberFormatException) {
+                // Manejar el error si el texto no es un número
+                Toast.makeText(this, "Por favor, ingrese un número en perimetro de brazo.", Toast.LENGTH_SHORT).show()
+            }
+            if (value9 == null) {
+                return@setOnClickListener  // No continúa con el proceso si value9 es nulo
+            }
             val value11 = editText10.text.toString()
             val value12 = editText1.text.toString()
             val value13 = editText11.text.toString()
@@ -149,14 +165,14 @@ class PrimerRegistroActivity : AppCompatActivity() {
             startActivity(intent_sig_encuesta)
         }
     // Manejar clic para abrir el DatePickerDialog
-            editText5.setOnClickListener {
-                showDatePickerDialog()
-            }
+        editText5.setOnClickListener {
+            showDatePickerDialog()
+        }
 
     // Manejar el foco para abrir el DatePickerDialog cuando se navega con el botón "Siguiente"
-            editText5.setOnFocusChangeListener { _, hasFocus ->
-                if (hasFocus) showDatePickerDialog()
-            }
+        editText5.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) showDatePickerDialog()
+        }
     }
 
     private fun showDatePickerDialog() {
