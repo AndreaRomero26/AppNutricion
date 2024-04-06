@@ -20,36 +20,35 @@ import androidx.appcompat.app.AlertDialog
 import com.example.proyectonutricionv1.R
 import com.example.proyectonutricionv1.firstapp.DBHelper
 import com.example.proyectonutricionv1.firstapp.MainMenu
-import com.example.proyectonutricionv1.firstapp.paciente.EncuestaActivity.EncuestaActivity
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 class Editar2Activity : AppCompatActivity() {
 
+    //Declarar los editText, spinner, botones que seran inicializados mas tarde
     private lateinit var editText1: EditText
     private lateinit var editText2: EditText
     private lateinit var editText3: EditText
     private lateinit var editText4: EditText
     private lateinit var editText5: EditText
     private lateinit var editText6: EditText
-    private lateinit var spinnerMunicipio: Spinner
     private lateinit var editText7: EditText
-    private lateinit var btnsexo: RadioGroup
-    private lateinit var btnUpdate: Button
-    private var value10: String="Hombre"
     private lateinit var editText8: EditText
     private lateinit var editText9: EditText
     private lateinit var editText10: EditText
     private lateinit var editText11: EditText
-
+    private lateinit var spinnerMunicipio: Spinner
+    private lateinit var btnsexo: RadioGroup
+    private lateinit var btnUpdate: Button
+    //Declarar instancia de DBHelper que se iniciara mas tarde
     private lateinit var dbHelper: DBHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar2)
 
-        //Campos de los datos del paciente, declaracion textViews
+        //Campos de los datos del paciente, declaracion textViews, match con los elementos del xml
         editText1 = findViewById(R.id.editTextNombreProf)
         editText2 = findViewById(R.id.editTextPrimerApellidoPx)
         editText3 = findViewById(R.id.editTextSegundoApellidoPx)
@@ -93,7 +92,7 @@ class Editar2Activity : AppCompatActivity() {
         //Cargas todos los datos del paciente en los campos
         cargarDatosPaciente(folio)
 
-        //Checar que los campos obligatorios esten llenos
+        //Checar que esten llenos los edittext, escuchar los cambios
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // No se utiliza en este caso
@@ -104,21 +103,10 @@ class Editar2Activity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                checkEditTexts()
+                checkEditTexts() //Metodo que checa si todos los datos estan llenos
             }
         }
-
-        btnsexo.setOnCheckedChangeListener { group, checkedId ->
-            when (checkedId) {
-                R.id.radioButtonHombre -> {
-                    value10 = "Hombre"
-                }
-                R.id.radioButtonMujer -> {
-                    value10 = "Mujer"
-                }
-            }
-        }
-
+        //Asociar el textWatcher a cada textview
         editText1.addTextChangedListener(textWatcher)
         editText2.addTextChangedListener(textWatcher)
         editText3.addTextChangedListener(textWatcher)
@@ -127,7 +115,7 @@ class Editar2Activity : AppCompatActivity() {
         editText6.addTextChangedListener(textWatcher)
         editText7.addTextChangedListener(textWatcher)
 
-
+        //Checar si el spinner fue seleccionado
         spinnerMunicipio.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 checkEditTexts()
@@ -141,6 +129,7 @@ class Editar2Activity : AppCompatActivity() {
 
         // Manejar clic para abrir el DatePickerDialog
         editText5.setOnClickListener {
+            //Abrir el calendario para la fecha de nacimiento
             showDatePickerDialog()
         }
 
@@ -150,6 +139,7 @@ class Editar2Activity : AppCompatActivity() {
         }
 
         btnUpdate.setOnClickListener {
+            //Convertir a string los valores de los editText
             val value16 = editText1.text.toString()
             val value4 = editText2.text.toString()
             val value5 = editText3.text.toString()
@@ -177,7 +167,7 @@ class Editar2Activity : AppCompatActivity() {
             builder.setTitle("¡Éxito!")
             builder.setMessage("Expediente guardado con éxito.")
             builder.setPositiveButton("OK") { dialog, which ->
-                // Regresar a la actividad principal (opcional)
+                // Regresar a la actividad principal
                 val intentMainMenu = Intent(this, MainMenu::class.java)
                 intentMainMenu.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 startActivity(intentMainMenu)
@@ -223,9 +213,9 @@ class Editar2Activity : AppCompatActivity() {
         btnUpdate.isEnabled = allFilled
     }
 
+    //Metodo para cargar los datos previos del paciente de la tabla principal
     private fun cargarDatosPaciente(folio: String) {
         val paciente = dbHelper.getPacientePorFolio(folio)
-        // Supongamos que getPacientePorFolio devuelve un objeto o mapa con los datos del paciente
         // Ahora, asigna los valores a los campos de texto, etc.
         if (paciente != null) {
             // Supongamos que tienes TextViews o EditTexts para mostrar los datos
@@ -247,9 +237,6 @@ class Editar2Activity : AppCompatActivity() {
             when (paciente.value8) {
                 "Hombre" -> radioButtonHombre.isChecked = true
                 "Mujer" -> radioButtonMujer.isChecked = true
-                else -> {
-                    // Opcional: manejar casos donde el sexo no es ni Hombre ni Mujer
-                }
             }
             val municipioPaciente = paciente.value2
             (spinnerMunicipio.adapter as? ArrayAdapter<String>)?.let { adapter ->
