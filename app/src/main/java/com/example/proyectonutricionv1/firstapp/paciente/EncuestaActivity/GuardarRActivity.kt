@@ -1,8 +1,10 @@
 package com.example.proyectonutricionv1.firstapp.paciente.EncuestaActivity
 
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -17,12 +19,16 @@ class GuardarRActivity : AppCompatActivity() {
     private lateinit var dbHelper: DBHelper
     private lateinit var value19: String
     private lateinit var value20: String
+    private lateinit var btngInst: Button
     private lateinit var btnInst30: Button
     private lateinit var btnInst60: Button
     private lateinit var btnInst90: Button
     private lateinit var btnDosis1: Button
     private lateinit var btnDosis2: Button
     private var lastButton: Button? = null
+
+    private var mpList = mutableListOf<MediaPlayer?>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_guardar_ractivity)
@@ -30,6 +36,7 @@ class GuardarRActivity : AppCompatActivity() {
         dbHelper = DBHelper(this)
 
         val btnGenerarDB = findViewById<Button>(R.id.btn_generarDB)
+        btngInst = findViewById<Button>(R.id.btn_instrucciones)
         btnInst30 = findViewById<Button>(R.id.btn_inst30)
         btnInst60 = findViewById<Button>(R.id.btn_inst60)
         btnInst90 = findViewById<Button>(R.id.btn_inst90)
@@ -92,27 +99,39 @@ class GuardarRActivity : AppCompatActivity() {
         textViewBrazo.text = value12
         textViewFolio.text=value1
 
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+
         btnInst30.setOnClickListener {
             value19 = "30"
             changeButtonInstColor(btnInst30)
+            reproducirMediaPlayer(it)
         }
 
         btnInst60.setOnClickListener {
             value19 = "60"
             changeButtonInstColor(btnInst60)
+            reproducirMediaPlayer(it)
         }
 
         btnInst90.setOnClickListener {
             value19 = "90"
             changeButtonInstColor(btnInst90)
+            reproducirMediaPlayer(it)
         }
         btnDosis1.setOnClickListener {
             value20 = "1"
             changeButtonDosisColor(btnDosis1)
+            reproducirMediaPlayer(it)
         }
         btnDosis2.setOnClickListener {
             value20 = "2"
             changeButtonDosisColor(btnDosis2)
+            reproducirMediaPlayer(it)
         }
         btnGenerarDB.setOnClickListener {
             dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value12, value13, value14, value15, value16, value17, value19, value20)
@@ -152,6 +171,42 @@ class GuardarRActivity : AppCompatActivity() {
         // Actualizar el último botón presionado
         lastButton = button
     }
+
+    fun reproducirMediaPlayer(view: View){
+        // Obtener el ID del botón presionado
+        val buttonId = view.id
+
+        // Determinar qué audio reproducir según el ID del botón
+        val audioIndex = when(buttonId) {
+            R.id.btn_instrucciones -> 0
+            R.id.btn_inst30 -> 1
+            R.id.btn_inst60 -> 2
+            R.id.btn_inst90 -> 3
+            R.id.btn_inst_1vez -> 4
+            R.id.btn_inst_2vez -> 5
+            else -> -1
+        }
+
+        // Verificar si el índice del audio es válido
+        if (audioIndex != -1) {
+            val mp = mpList[audioIndex]
+
+            if (mp?.isPlaying == true) {
+                mp.pause()
+            } else {
+                mp?.seekTo(0)
+                mp?.start()
+            }
+        }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        // Liberar los recursos de todos los MediaPlayers
+        mpList.forEach { mp ->
+            mp?.release()
+        }
+    }
+
 }
 fun generarFolio(municipio: String, primerApellido: String, primerNombre: String, sexo: String): String {
     val codigoMunicipio = obtenerCodigoMunicipio(municipio)
