@@ -90,18 +90,27 @@ class RegistrarP2Activity : AppCompatActivity() {
 
         btnGuardarRegistro.setOnClickListener {
             val nuevoBrazo=editTextBrazo.text.toString().toDouble()
-            dbHelper.insertRegistro(folio, nuevoBrazo, muacNuevo)
-            // Mostrar mensaje de éxito con AlertDialog
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("¡Éxito!")
-            builder.setMessage("Expediente guardado con éxito.")
-            builder.setPositiveButton("OK") { dialog, which ->
-                // Regresar a la actividad principal (opcional)
-                val intentMainMenu = Intent(this, MainMenu::class.java)
-                intentMainMenu.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                startActivity(intentMainMenu)
+            val newRegistroSuccess = dbHelper.insertRegistro(folio, nuevoBrazo, muacNuevo)
+            if (newRegistroSuccess) {
+                // Mostrar mensaje de éxito solo si la inserción fue exitosa
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("¡Éxito!")
+                builder.setMessage("Progreso registado con éxito.")
+                builder.setPositiveButton("OK") { dialog, which ->
+                    // Regresar a la actividad principal (opcional)
+                    val intentMainMenu = Intent(this, MainMenu::class.java)
+                    intentMainMenu.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(intentMainMenu)
+                }
+                builder.show()
+            } else {
+                // Opcional: Manejar el caso de inserción fallida
+                val errorBuilder = AlertDialog.Builder(this)
+                errorBuilder.setTitle("Error")
+                errorBuilder.setMessage("No se pudo registrar el progreso del paciente. Intente nuevamente.")
+                errorBuilder.setPositiveButton("OK", null)
+                errorBuilder.show()
             }
-            builder.show()
         }
 
         mpList.add(MediaPlayer.create(this, R.raw.no_manches))

@@ -63,7 +63,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     }
 
     //Metodo para insertar los datos de cada paciente en la tabla principal
-    fun insertData(value1: String, value2: String, value3: String, value4: String, value5: String,value6: String,value7: String, value8: String, value9: String, value10: String, value12: Double, value13: String, value14: String, value15: String, value16: String, value17: String, value19: String, value20: String): Long {
+    fun insertData(value1: String, value2: String, value3: String, value4: String, value5: String,value6: String,value7: String, value8: String, value9: String, value10: String, value12: Double, value13: String, value14: String, value15: String, value16: String, value17: String, value19: String, value20: String): Boolean {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(COLUMN_VALUE1, value1)
@@ -86,11 +86,11 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         values.put(COLUMN_VALUE20, value20)
         val id = db.insert(TABLE_NAME, null, values)
         db.close()
-        return id
+        return id != -1L
     }
 
     //Metodo para insertar los valores en la tabla de registros, para el progreso de los pacientes
-    fun insertRegistro(folio: String, nuevoBrazo: Double, muacNuevo: String): Long {
+    fun insertRegistro(folio: String, nuevoBrazo: Double, muacNuevo: String): Boolean {
         val db = this.writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_VALUE1, folio)
@@ -99,7 +99,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         }
         val id = db.insert(TABLE_REGISTROS, null, values)
         db.close()
-        return id
+        return id !=-1L
     }
 
     //Metodo para recuperar toda la información de la tabla principal y mostrarla en la GUI
@@ -185,7 +185,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     }
 
     //Metodo para actualizar valores de la tabla principal
-    fun update(folio: String, value2: String, value3: String, value4: String, value5: String,value6: String,value7: String, value8: String, value9: String, value10: String, value15: String, value16: String, value17: String) {
+    fun update(folio: String, value2: String, value3: String, value4: String, value5: String,value6: String,value7: String, value8: String, value9: String, value10: String, value15: String, value16: String, value17: String): Boolean {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(COLUMN_VALUE2, value2)
@@ -200,8 +200,10 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         values.put(COLUMN_VALUE15, value15)
         values.put(COLUMN_VALUE16, value16)
         values.put(COLUMN_VALUE17, value17)
-        db.update("$TABLE_NAME", values, "folio = ?", arrayOf(folio))
+        val rowCount = db.update("$TABLE_NAME", values, "folio = ?", arrayOf(folio))
         db.close()
+        // Retorna true si rowCount es mayor que 0, indicando que se actualizaron filas
+        return rowCount > 0
     }
 
 
