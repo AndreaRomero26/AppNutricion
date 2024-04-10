@@ -6,7 +6,28 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo_2logos"
     tools:context=".firstapp.paciente.EncuestaActivity.PrimerRegistroActivity">
-
+    <TextView
+        android:id="@+id/InstruccionesPrimerR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Se realizarán algunas preguntas al niño, si no puede contestar el solo, contestar el padre o madre por el niño"
+        android:textSize="15sp"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <Button
+        android:id="@+id/buttonI"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:text="@string/button"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@id/InstruccionesPrimerR"
+        app:layout_constraintTop_toTopOf="parent"/>
     <Button
         android:id="@+id/btn_sig_encuesta"
         android:layout_width="194dp"
@@ -89,6 +110,15 @@
                 app:layout_constraintStart_toStartOf="@+id/editTextSegundoApellidoPx"
                 app:layout_constraintTop_toBottomOf="@+id/editTextNombreProf" />
 
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:text="@string/button"
+                app:layout_constraintStart_toEndOf="@id/editTextPrimerApellidoPx"
+                app:layout_constraintTop_toBottomOf="@id/editTextNombreProf" />
+
             <EditText
                 android:id="@+id/editTextSegundoApellidoPx"
                 android:layout_width="742dp"
@@ -102,6 +132,15 @@
                 android:textColorHint="#000000"
                 app:layout_constraintStart_toStartOf="@+id/editTextNombresPx"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPrimerApellidoPx"/>
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:text="@string/button"
+                app:layout_constraintStart_toEndOf="@id/editTextSegundoApellidoPx"
+                app:layout_constraintTop_toBottomOf="@id/editTextPrimerApellidoPx" />
 
             <EditText
                 android:id="@+id/editTextNombresPx"
@@ -118,6 +157,15 @@
                 app:layout_constraintStart_toStartOf="@+id/editTextFechaNac"
                 app:layout_constraintTop_toBottomOf="@+id/editTextSegundoApellidoPx" />
 
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:text="@string/button"
+                app:layout_constraintStart_toEndOf="@id/editTextNombresPx"
+                app:layout_constraintTop_toBottomOf="@id/editTextSegundoApellidoPx" />
+
             <EditText
                 android:id="@+id/editTextFechaNac"
                 android:layout_width="742dp"
@@ -133,6 +181,15 @@
                 android:cursorVisible="false"
                 app:layout_constraintStart_toStartOf="@+id/editTextPerimetro"
                 app:layout_constraintTop_toBottomOf="@+id/editTextNombresPx" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:text="@string/button"
+                app:layout_constraintStart_toEndOf="@id/editTextFechaNac"
+                app:layout_constraintTop_toBottomOf="@id/editTextNombresPx" />
 
             <EditText
                 android:id="@+id/editTextPerimetro"
@@ -246,6 +303,14 @@
                 android:textColorHint="#000000"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerMunicipio" />
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:text="@string/button"
+                app:layout_constraintStart_toEndOf="@id/editTextPadre"
+                app:layout_constraintTop_toBottomOf="@id/spinnerMunicipio" />
             <EditText
                 android:id="@+id/editTextPadrino"
                 android:layout_width="742dp"
