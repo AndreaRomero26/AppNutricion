@@ -10,7 +10,7 @@
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seleccione el folio del paciente para registrar progreso. Luego pulse continuar."
+        android:text="Se muestran gráficamente todos los valores de perímetro del brazo del paciente"
         android:textSize="15sp"
         android:padding="8dp"
         android:textStyle="bold"

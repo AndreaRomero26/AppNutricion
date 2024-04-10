@@ -9,7 +9,7 @@ import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import kotlin.random.Random
+import com.github.mikephil.charting.components.XAxis
 
 class MostrarP2Activity : AppCompatActivity() {
 
@@ -35,18 +35,28 @@ class MostrarP2Activity : AppCompatActivity() {
         dbHelper = DBHelper(this)
 
         val datos = dbHelper.getValoresPorFolio(Folio)
+        val datos2=dbHelper.getDataToNuevoRegistro(Folio)
+        val brazoAnterior: Float = datos2.first().first.toFloat()
 
-// Crear las entradas para el gráfico a partir de los datos de la base de datos
-        val entries = ArrayList<Entry>()
-        for ((index, value) in datos.withIndex()) {
-            entries.add(Entry(index.toFloat(), value))
+        // Crea la lista de entradas para el gráfico, comenzando con el valor único
+        val entries = ArrayList<Entry>().apply {
+            // Añade el valor único primero
+            add(Entry(0f, brazoAnterior))
+
+            // Añade los valores del folio, continuando la secuencia
+            datos.forEachIndexed { index, value ->
+                add(Entry((index + 1).toFloat(), value))
+            }
         }
 
-// Crear un dataset y asignarlo al gráfico
+// Crea un DataSet con las entradas y asigna al gráfico
         val dataSet = LineDataSet(entries, "Valores del Folio $Folio")
         val lineData = LineData(dataSet)
         lineChart.data = lineData
-        lineChart.invalidate() // Refrescar el gráfico
-
+        lineChart.invalidate() // Refresca el gráfico
+        // Desactiva el eje Y derecho
+        lineChart.axisRight.isEnabled = false
+        // Asegura que las etiquetas del eje X estén en la parte inferior (esto debería ser lo predeterminado)
+        lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
     }
 }
