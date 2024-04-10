@@ -141,7 +141,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     //Metodo para recuperar la medida de brazo anterior asi como inseguridad y muac.Para que se
     //muestren estos datos en la activity de registrar progreso
     @SuppressLint("Range")
-    fun getNuevoRegistro(folio: String): ArrayList<Triple<Double, String, String>> {
+    fun getDataToNuevoRegistro(folio: String): ArrayList<Triple<Double, String, String>> {
         val dataList = ArrayList<Triple<Double, String, String>>() // ArrayList de triples de cadenas (String, String, String)
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT $COLUMN_VALUE12, $COLUMN_VALUE13, $COLUMN_VALUE14 FROM $TABLE_NAME WHERE $COLUMN_VALUE1='$folio'", null)
@@ -242,6 +242,36 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         cursor.close()
         db.close()
         return paciente
+    }
+
+    fun getValoresPorFolio(folio: String): List<Float> {
+        val valoresList = mutableListOf<Float>()
+        val db = this.readableDatabase
+
+        val projection = arrayOf("$COLUMN_VALUE12")
+        val selection = "Folio = ?"
+        val selectionArgs = arrayOf(folio)
+
+        val cursor = db.query(
+            "$TABLE_REGISTROS",
+            projection,         // Las columnas que quieres devolver
+            selection,          // Las columnas para la cláusula WHERE
+            selectionArgs,      // Los valores para la cláusula WHERE
+            null,      // No agrupar las filas
+            null,       // No filtrar por grupos de filas
+            null        // El orden del sorteo
+        )
+
+        with(cursor) {
+            while (moveToNext()) {
+                val valor = getFloat(getColumnIndexOrThrow("$COLUMN_VALUE12"))
+                valoresList.add(valor)
+            }
+        }
+        cursor.close()
+        db.close()
+
+        return valoresList
     }
 
     //Nombres de DB, tablas y columnas

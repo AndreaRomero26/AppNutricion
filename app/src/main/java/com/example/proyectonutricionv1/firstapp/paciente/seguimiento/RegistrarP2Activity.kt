@@ -48,7 +48,7 @@ class RegistrarP2Activity : AppCompatActivity() {
         textViewNombre.text = nombre.uppercase()
         textViewFolio.text = folio
 
-        val dataRP = dbHelper.getNuevoRegistro(folio)
+        val dataRP = dbHelper.getDataToNuevoRegistro(folio)
         val brazoAnterior: Double = dataRP.first().first  // Primer valor del primer par
         val dxAnterior: String = dataRP.first().second // Segundo valor del primer par
         val inseguridadAnterior: String = dataRP.first().third // Tercer valor del primer par
