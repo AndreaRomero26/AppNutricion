@@ -1,22 +1,35 @@
 package com.example.proyectonutricionv1.firstapp.staff
 
+import android.content.ContentUris
+import android.content.ContentValues
+import android.content.Context
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.TypedValue
+import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
 import com.example.proyectonutricionv1.R
 import com.example.proyectonutricionv1.firstapp.DBHelper
+import com.example.proyectonutricionv1.firstapp.dataModel
+import java.io.File
+import java.io.IOException
 
 class ExpedientesActivity : AppCompatActivity() {
 
     private lateinit var dbHelper: DBHelper
+    private lateinit var btnExcel: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_expedientes)
+
+        btnExcel = findViewById<Button>(R.id.buttonExcel)
 
         dbHelper = DBHelper(this)
         val dataList = dbHelper.getAllData()
@@ -138,5 +151,92 @@ class ExpedientesActivity : AppCompatActivity() {
             tableLayout.addView(tableRow)
         }
 
+        btnExcel.setOnClickListener {
+            val dataList = dbHelper.getAllData()
+
+            // Convertir los datos a formato CSV
+            val csvData = convertirTablaACSV(dataList)
+
+            // Guardar el CSV en el archivo
+            guardarCSVEnDescargas(csvData, this)
+        }
+
     }
+    fun convertirTablaACSV(dataList: List<dataModel>): String {
+        val stringBuilder = StringBuilder()
+
+        // Agregar cabecera si es necesario
+        stringBuilder.append("Folio,Municipio,Localidad,Primer Apellido,Segundo Apellido,Nombres,Fecha de Nacimiento,Sexo,Estatura,Peso,Ultima Fecha de Medida, Ultimo Perimetro de Brazo,Dx MUAC actual,Inseguridad Alimentaria Actual,Nombre de Padre o Madre,Nombre COC,Padrino,Ultima Fecha Paquetes,Cantidad de Paquetes,Dosis Diaria\n")
+
+        // Agregar datos
+        dataList.forEach { item ->
+            // Suponiendo que item es una tupla o un objeto con valores
+            stringBuilder.append("${item.value1},${item.value2},${item.value3},${item.value4},${item.value5},${item.value6},${item.value7},${item.value8},${item.value9},${item.value10},${item.value11},${item.value12},${item.value13},${item.value14},${item.value15},${item.value16},${item.value17},${item.value18},${item.value19},${item.value20}\n")
+        }
+
+        return stringBuilder.toString()
+    }
+
+    fun guardarCSVEnDescargas(csvData: String, context: Context) {
+        val fileName = "datosNinoSano.csv"
+
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                // Buscar si el archivo ya existe en el MediaStore
+                val selection = "${MediaStore.MediaColumns.DISPLAY_NAME}=?"
+                val selectionArgs = arrayOf(fileName)
+                val queryUri = MediaStore.Files.getContentUri("external")
+
+                context.contentResolver.query(
+                    queryUri,
+                    arrayOf(MediaStore.MediaColumns._ID),
+                    selection,
+                    selectionArgs,
+                    null
+                )?.use { cursor ->
+                    if (cursor.moveToFirst()) {
+                        // Si el archivo ya existe, obtén su Uri y sobrescríbelo
+                        val id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.MediaColumns._ID))
+                        val documentUri = ContentUris.withAppendedId(queryUri, id)
+
+                        context.contentResolver.openOutputStream(documentUri, "wt").use { outputStream ->
+                            outputStream ?: throw IOException("No se pudo abrir el archivo CSV para escribir")
+                            outputStream.write(csvData.toByteArray())
+                        }
+                    } else {
+                        // Si el archivo no existe, crea uno nuevo
+                        val values = ContentValues().apply {
+                            put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
+                            put(MediaStore.MediaColumns.MIME_TYPE, "text/csv")
+                            put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS)
+                        }
+
+                        val uri = context.contentResolver.insert(
+                            MediaStore.Downloads.EXTERNAL_CONTENT_URI,
+                            values
+                        ) ?: throw IOException("No se pudo crear el archivo CSV en Descargas")
+
+                        context.contentResolver.openOutputStream(uri).use { outputStream ->
+                            outputStream ?: throw IOException("No se pudo abrir el archivo CSV para escribir")
+                            outputStream.write(csvData.toByteArray())
+                        }
+                    }
+                }
+
+                Toast.makeText(context, "Archivo CSV guardado en Descargas", Toast.LENGTH_LONG).show()
+            } else {
+                // Para versiones anteriores a Android 10
+                val directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                val file = File(directory, fileName)
+
+                file.writeText(csvData)
+
+                Toast.makeText(context, "Archivo CSV guardado en ${file.absolutePath}", Toast.LENGTH_LONG).show()
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+            Toast.makeText(context, "Error al guardar el archivo CSV", Toast.LENGTH_LONG).show()
+        }
+    }
+
 }
