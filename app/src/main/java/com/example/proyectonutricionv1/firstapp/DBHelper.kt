@@ -244,34 +244,35 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         return paciente
     }
 
-    fun getValoresPorFolio(folio: String): List<Float> {
-        val valoresList = mutableListOf<Float>()
+    fun getDataGrafica(folio: String): List<Pair<Float, String>> {
+        val resultadosList = mutableListOf<Pair<Float, String>>()
         val db = this.readableDatabase
 
-        val projection = arrayOf("$COLUMN_VALUE12")
+        val projection = arrayOf("$COLUMN_VALUE12", "$COLUMN_VALUE11") // Asume que COLUMN_VALUE11 es la fecha
         val selection = "Folio = ?"
         val selectionArgs = arrayOf(folio)
 
         val cursor = db.query(
-            "$TABLE_REGISTROS",
-            projection,         // Las columnas que quieres devolver
-            selection,          // Las columnas para la cláusula WHERE
-            selectionArgs,      // Los valores para la cláusula WHERE
-            null,      // No agrupar las filas
-            null,       // No filtrar por grupos de filas
-            null        // El orden del sorteo
+            TABLE_REGISTROS, // Sin comillas si TABLE_REGISTROS es una constante que ya tiene el nombre de la tabla
+            projection,      // Las columnas que quieres devolver
+            selection,       // Las columnas para la cláusula WHERE
+            selectionArgs,   // Los valores para la cláusula WHERE
+            null,            // No agrupar las filas
+            null,            // No filtrar por grupos de filas
+            null             // El orden del sorteo
         )
 
         with(cursor) {
             while (moveToNext()) {
-                val valor = getFloat(getColumnIndexOrThrow("$COLUMN_VALUE12"))
-                valoresList.add(valor)
+                val valor = getFloat(getColumnIndexOrThrow(COLUMN_VALUE12)) // Sin comillas si es una constante
+                val fecha = getString(getColumnIndexOrThrow(COLUMN_VALUE11)) // Sin comillas si es una constante
+                resultadosList.add(Pair(valor, fecha))
             }
         }
         cursor.close()
         db.close()
 
-        return valoresList
+        return resultadosList
     }
 
     //Nombres de DB, tablas y columnas

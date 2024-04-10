@@ -6,10 +6,12 @@ import android.widget.TextView
 import com.example.proyectonutricionv1.R
 import com.example.proyectonutricionv1.firstapp.DBHelper
 import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.formatter.ValueFormatter
 
 class MostrarP2Activity : AppCompatActivity() {
 
@@ -34,25 +36,30 @@ class MostrarP2Activity : AppCompatActivity() {
 
         dbHelper = DBHelper(this)
 
-        val datos = dbHelper.getValoresPorFolio(Folio)
-        // Crea la lista de entradas para el gráfico solo con los valores de 'datos'
-        val entries = ArrayList<Entry>().apply {
-            // Añade los valores del folio
-            datos.forEachIndexed { index, value ->
-                add(Entry(index.toFloat(), value))
-            }
+        val datos = dbHelper.getDataGrafica(Folio)
+        val entries = ArrayList<Entry>()
+        val fechas = ArrayList<String>()
+
+        datos.forEachIndexed { index, (valor, fecha) ->
+            entries.add(Entry(index.toFloat(), valor))
+            fechas.add(fecha)
         }
 
-        // Crea un DataSet con las entradas y asigna al gráfico
-        val dataSet = LineDataSet(entries, "Valores del Folio $Folio")
+        lineChart.xAxis.valueFormatter = DateAxisValueFormatter(fechas)
+        val dataSet = LineDataSet(entries, "Valores del Folio")
         val lineData = LineData(dataSet)
         lineChart.data = lineData
-        lineChart.invalidate() // Refresca el gráfico
 
-        // Desactiva el eje Y derecho
         lineChart.axisRight.isEnabled = false
-
-        // Asegura que las etiquetas del eje X estén en la parte inferior (esto debería ser lo predeterminado)
         lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
+
+        lineChart.invalidate()
+
+    }
+}
+class DateAxisValueFormatter(private val dates: List<String>) : ValueFormatter() {
+    override fun getAxisLabel(value: Float, axis: AxisBase?): String {
+        val index = value.toInt()
+        return if (index >= 0 && index < dates.size) dates[index] else ""
     }
 }
