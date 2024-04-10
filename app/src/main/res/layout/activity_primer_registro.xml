@@ -38,6 +38,7 @@
         android:text="@string/button"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
+        android:onClick="reproducirMediaPlayer"
         app:layout_constraintEnd_toStartOf="@id/InstruccionesPrimerR"
         app:layout_constraintTop_toTopOf="parent"/>
     <Button
@@ -130,6 +131,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="50dp"
                 android:text="@string/button"
+                android:onClick="reproducirMediaPlayer"
                 app:layout_constraintStart_toEndOf="@id/editTextPrimerApellidoPx"
                 app:layout_constraintTop_toBottomOf="@id/editTextNombreProf" />
 
@@ -154,6 +156,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="50dp"
                 android:text="@string/button"
+                android:onClick="reproducirMediaPlayer"
                 app:layout_constraintStart_toEndOf="@id/editTextSegundoApellidoPx"
                 app:layout_constraintTop_toBottomOf="@id/editTextPrimerApellidoPx" />
 
@@ -179,6 +182,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="50dp"
                 android:text="@string/button"
+                android:onClick="reproducirMediaPlayer"
                 app:layout_constraintStart_toEndOf="@id/editTextNombresPx"
                 app:layout_constraintTop_toBottomOf="@id/editTextSegundoApellidoPx" />
 
@@ -205,6 +209,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="50dp"
                 android:text="@string/button"
+                android:onClick="reproducirMediaPlayer"
                 app:layout_constraintStart_toEndOf="@id/editTextFechaNac"
                 app:layout_constraintTop_toBottomOf="@id/editTextNombresPx" />
 
@@ -363,6 +368,7 @@
                 android:layout_height="50dp"
                 android:layout_marginStart="50dp"
                 android:text="@string/button"
+                android:onClick="reproducirMediaPlayer"
                 app:layout_constraintStart_toEndOf="@id/editTextPadre"
                 app:layout_constraintTop_toBottomOf="@id/spinnerMunicipio" />
             <EditText

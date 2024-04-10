@@ -2,6 +2,7 @@ package com.example.proyectonutricionv1.firstapp.paciente.EncuestaActivity
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -23,6 +24,7 @@ import java.util.Locale
 
 class PrimerRegistroActivity : AppCompatActivity() {
 
+    //Declarar sin inicializar editText de los datos del paciente
     private lateinit var editText1: EditText
     private lateinit var editText2: EditText
     private lateinit var editText3: EditText
@@ -32,18 +34,22 @@ class PrimerRegistroActivity : AppCompatActivity() {
     private lateinit var spinnerMunicipio: Spinner
     private lateinit var editText7: EditText
     private lateinit var btnsexo: RadioGroup
-    private lateinit var btn_sig_encuesta: Button
-    private var value10: String="Hombre"
     private lateinit var editText8: EditText
     private lateinit var editText9: EditText
     private lateinit var editText10: EditText
     private lateinit var editText11: EditText
-
+    //Declarar sin inicializar boton siguiente
+    private lateinit var btn_sig_encuesta: Button
+    //Varible para el sexo, se modifica mas adelante
+    private var value10: String="Hombre"
+    //Declarar arreglo para audios
+    private var mpList = mutableListOf<MediaPlayer?>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_primer_registro)
 
+        //Identificar cada elemento del xml con la variable del kotlin
         editText1 = findViewById(R.id.editTextNombreProf)
         editText2 = findViewById(R.id.editTextPrimerApellidoPx)
         editText3 = findViewById(R.id.editTextSegundoApellidoPx)
@@ -60,13 +66,16 @@ class PrimerRegistroActivity : AppCompatActivity() {
 
         val textViewFecha = findViewById<TextView>(R.id.respuesta_fecha)
         btn_sig_encuesta = findViewById<Button>(R.id.btn_sig_encuesta)
+        //Declaracion del intent para pasar a la siguiente ventana
         val intent_sig_encuesta = Intent(this, EncuestaActivity::class.java)
 
+        //Fecha actual en la ventana de primer registro
         val currentDate = Calendar.getInstance().time
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         val formattedDate = dateFormat.format(currentDate)
-        textViewFecha.setText(formattedDate)
+        textViewFecha.text = formattedDate
 
+        //Adaptador para poder usar el spinner de municipio
         ArrayAdapter.createFromResource(
             this,
             R.array.municipios_array,
@@ -76,6 +85,7 @@ class PrimerRegistroActivity : AppCompatActivity() {
             spinnerMunicipio.adapter = adapter
         }
 
+        //TextWatcher para detectar que se llenen los campos
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // No se utiliza en este caso
@@ -90,6 +100,7 @@ class PrimerRegistroActivity : AppCompatActivity() {
             }
         }
 
+        //Modificar variable value10 para el sexo segun el boton
         btnsexo.setOnCheckedChangeListener { group, checkedId ->
             when (checkedId) {
                 R.id.radioButtonHombre -> {
@@ -101,6 +112,7 @@ class PrimerRegistroActivity : AppCompatActivity() {
             }
         }
 
+        //A cada editText obligatorio poner un textWatcher para checar que se llenen los campos
         editText1.addTextChangedListener(textWatcher)
         editText2.addTextChangedListener(textWatcher)
         editText3.addTextChangedListener(textWatcher)
@@ -110,7 +122,7 @@ class PrimerRegistroActivity : AppCompatActivity() {
         editText7.addTextChangedListener(textWatcher)
         editText10.addTextChangedListener(textWatcher)
 
-
+        //Checar que se haya seleccionado un municipio en el spinner
         spinnerMunicipio.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 // La vista (view) puede ser null, así que verifica antes de usarla
@@ -124,9 +136,18 @@ class PrimerRegistroActivity : AppCompatActivity() {
             }
         }
 
-        // Inicialmente, deshabilitar el botón
+        // Inicialmente, deshabilitar el botón si no estan los campos obligatorios llenos
         btn_sig_encuesta.isEnabled = false
 
+        //AUDIOS
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+
+        //Pulsar el boton siguiente
         btn_sig_encuesta.setOnClickListener {
             val value1 = spinnerMunicipio.selectedItem.toString()
             val value2 = editText7.text.toString()
@@ -165,17 +186,18 @@ class PrimerRegistroActivity : AppCompatActivity() {
             intent_sig_encuesta.putExtra("Padrino", value13)
             startActivity(intent_sig_encuesta)
         }
-    // Manejar clic para abrir el DatePickerDialog
+        // Manejar clic para abrir el DatePickerDialog
         editText5.setOnClickListener {
             showDatePickerDialog()
         }
 
-    // Manejar el foco para abrir el DatePickerDialog cuando se navega con el botón "Siguiente"
+        // Manejar el foco para abrir el DatePickerDialog cuando se navega con el botón "Siguiente"
         editText5.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) showDatePickerDialog()
         }
     }
 
+    //Metodo para abrir el calendario en fecha de nacimiento
     private fun showDatePickerDialog() {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
@@ -192,6 +214,7 @@ class PrimerRegistroActivity : AppCompatActivity() {
         editText5.clearFocus()  // Para evitar múltiples aperturas del diálogo
     }
 
+    //Metodo para checar que esten llenos los campos obligatorios, en cada textWatcher y listener
     private fun checkEditTexts() {
         val nombreProf = editText1.text.toString()
         val primerApellido = editText2.text.toString()
@@ -209,6 +232,43 @@ class PrimerRegistroActivity : AppCompatActivity() {
 
         // Habilitar o deshabilitar el botón según si todos los campos tienen valores
         btn_sig_encuesta.isEnabled = allFilled
+    }
+
+    //FUNCIONES REPRODUCCIÓN DE AUDIO
+    fun reproducirMediaPlayer(view: View){
+        // Obtener el ID del botón presionado
+        val buttonId = view.id
+
+        // Determinar qué audio reproducir según el ID del botón
+        val audioIndex = when(buttonId) {
+            R.id.buttonI -> 0
+            R.id.button1 -> 1
+            R.id.button2 -> 2
+            R.id.button3 -> 3
+            R.id.button4 -> 4
+            R.id.button5 -> 5
+            else -> -1
+        }
+
+        // Verificar si el índice del audio es válido
+        if (audioIndex != -1) {
+            val mp = mpList[audioIndex]
+
+            if (mp?.isPlaying == true) {
+                mp.pause()
+            } else {
+                mp?.seekTo(0)
+                mp?.start()
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Liberar los recursos de todos los MediaPlayers
+        mpList.forEach { mp ->
+            mp?.release()
+        }
     }
 
 }
