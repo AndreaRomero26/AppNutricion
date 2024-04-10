@@ -127,23 +127,35 @@ class GuardarRActivity : AppCompatActivity() {
             reproducirMediaPlayer(it)
         }
         btnGenerarDB.setOnClickListener {
-            // Intenta insertar datos y comprueba si la operación fue exitosa
-            val insertSuccess = dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value12, value13, value14, value15, value16, value17, value19, value20)
+            // Primero intenta insertar datos en la tabla principal y comprueba si la operación fue exitosa
+            val insertPrincipalSuccess = dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value12, value13, value14, value15, value16, value17, value19, value20)
 
-            if (insertSuccess) {
-                // Mostrar mensaje de éxito solo si la inserción fue exitosa
-                val builder = AlertDialog.Builder(this)
-                builder.setTitle("¡Éxito!")
-                builder.setMessage("Expediente guardado con éxito.")
-                builder.setPositiveButton("OK") { dialog, which ->
-                    // Regresar a la actividad principal (opcional)
-                    val intentMainMenu = Intent(this, MainMenu::class.java)
-                    intentMainMenu.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                    startActivity(intentMainMenu)
+            if (insertPrincipalSuccess) {
+                // Si el primer insert fue exitoso, procede con el insert en la tabla de registros
+                val insertRegistroSuccess = dbHelper.insertRegistro(value1, value12, value13) /* otros valores que necesites pasar para el registro */
+
+                if (insertRegistroSuccess) {
+                    // Mostrar mensaje de éxito solo si ambos inserts fueron exitosos
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("¡Éxito!")
+                    builder.setMessage("Expediente y registro guardados con éxito.")
+                    builder.setPositiveButton("OK") { dialog, which ->
+                        // Regresar a la actividad principal (opcional)
+                        val intentMainMenu = Intent(this, MainMenu::class.java)
+                        intentMainMenu.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        startActivity(intentMainMenu)
+                    }
+                    builder.show()
+                } else {
+                    // Manejar el caso donde la inserción en la tabla de registros falló
+                    val errorBuilder = AlertDialog.Builder(this)
+                    errorBuilder.setTitle("Error")
+                    errorBuilder.setMessage("No se pudo guardar el registro. Intente nuevamente.")
+                    errorBuilder.setPositiveButton("OK", null)
+                    errorBuilder.show()
                 }
-                builder.show()
             } else {
-                // Opcional: Manejar el caso de inserción fallida
+                // Manejar el caso de inserción fallida en la tabla principal
                 val errorBuilder = AlertDialog.Builder(this)
                 errorBuilder.setTitle("Error")
                 errorBuilder.setMessage("No se pudo guardar el expediente. Intente nuevamente.")
