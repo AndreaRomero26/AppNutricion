@@ -19,6 +19,8 @@ import com.example.proyectonutricionv1.firstapp.DBHelper
 import com.example.proyectonutricionv1.firstapp.dataModel
 import java.io.File
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class ExpedientesActivity : AppCompatActivity() {
 
@@ -165,13 +167,20 @@ class ExpedientesActivity : AppCompatActivity() {
     fun convertirTablaACSV(dataList: List<dataModel>): String {
         val stringBuilder = StringBuilder()
 
-        // Agregar cabecera si es necesario
+        // Agregar cabecera
         stringBuilder.append("Folio,Municipio,Localidad,Primer Apellido,Segundo Apellido,Nombres,Fecha de Nacimiento,Sexo,Estatura,Peso,Ultima Fecha de Medida, Ultimo Perimetro de Brazo,Dx MUAC actual,Inseguridad Alimentaria Actual,Nombre de Padre o Madre,Nombre COC,Padrino,Ultima Fecha Paquetes,Cantidad de Paquetes,Dosis Diaria\n")
 
         // Agregar datos
         dataList.forEach { item ->
-            // Suponiendo que item es una tupla o un objeto con valores
-            stringBuilder.append("${item.value1},${item.value2},${item.value3},${item.value4},${item.value5},${item.value6},${item.value7},${item.value8},${item.value9},${item.value10},${item.value11},${item.value12},${item.value13},${item.value14},${item.value15},${item.value16},${item.value17},${item.value18},${item.value19},${item.value20}\n")
+            stringBuilder.append("${item.value1},${item.value2},${item.value3},${item.value4},${item.value5},${item.value6},${item.value7},${item.value8},${item.value9},${item.value10},")
+
+            // Formatear y añadir la fecha de la columna 11
+            val fechaFormateada11 = formatDate(item.value11)
+            stringBuilder.append("$fechaFormateada11,${item.value12},${item.value13},${item.value14},${item.value15},${item.value16},${item.value17},")
+
+            // Formatear y añadir la fecha de la columna 18
+            val fechaFormateada18 = formatDate(item.value18)
+            stringBuilder.append("$fechaFormateada18,${item.value19},${item.value20}\n")
         }
 
         return stringBuilder.toString()
@@ -236,6 +245,17 @@ class ExpedientesActivity : AppCompatActivity() {
         } catch (e: IOException) {
             e.printStackTrace()
             Toast.makeText(context, "Error al guardar el archivo CSV", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    fun formatDate(dateString: String): String {
+        return try {
+            val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+            val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val parsedDate = parser.parse(dateString)
+            formatter.format(parsedDate)
+        } catch (e: Exception) {
+            dateString // Retorna la fecha original si hay algún error en el parseo
         }
     }
 
