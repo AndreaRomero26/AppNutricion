@@ -35,27 +35,23 @@ class MostrarP2Activity : AppCompatActivity() {
         dbHelper = DBHelper(this)
 
         val datos = dbHelper.getValoresPorFolio(Folio)
-        val datos2=dbHelper.getDataToNuevoRegistro(Folio)
-        val brazoAnterior: Float = datos2.first().first.toFloat()
-
-        // Crea la lista de entradas para el gráfico, comenzando con el valor único
+        // Crea la lista de entradas para el gráfico solo con los valores de 'datos'
         val entries = ArrayList<Entry>().apply {
-            // Añade el valor único primero
-            add(Entry(0f, brazoAnterior))
-
-            // Añade los valores del folio, continuando la secuencia
+            // Añade los valores del folio
             datos.forEachIndexed { index, value ->
-                add(Entry((index + 1).toFloat(), value))
+                add(Entry(index.toFloat(), value))
             }
         }
 
-// Crea un DataSet con las entradas y asigna al gráfico
+        // Crea un DataSet con las entradas y asigna al gráfico
         val dataSet = LineDataSet(entries, "Valores del Folio $Folio")
         val lineData = LineData(dataSet)
         lineChart.data = lineData
         lineChart.invalidate() // Refresca el gráfico
+
         // Desactiva el eje Y derecho
         lineChart.axisRight.isEnabled = false
+
         // Asegura que las etiquetas del eje X estén en la parte inferior (esto debería ser lo predeterminado)
         lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
     }
