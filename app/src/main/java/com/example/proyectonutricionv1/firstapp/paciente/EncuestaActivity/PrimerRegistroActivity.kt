@@ -108,6 +108,7 @@ class PrimerRegistroActivity : AppCompatActivity() {
         editText5.addTextChangedListener(textWatcher)
         editText6.addTextChangedListener(textWatcher)
         editText7.addTextChangedListener(textWatcher)
+        editText10.addTextChangedListener(textWatcher)
 
 
         spinnerMunicipio.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -200,10 +201,11 @@ class PrimerRegistroActivity : AppCompatActivity() {
         val perimetro = editText6.text.toString()
         val municipio = spinnerMunicipio.selectedItemPosition > 0 // Asume que la posición 0 es el prompt "Seleccione un Municipio"
         val localidad = editText7.text.toString()
+        val padre = editText10.text.toString()
 
 
         // Verificar si todos los campos (EditTexts y el Spinner) tienen valores
-        val allFilled = nombreProf.isNotEmpty() && primerApellido.isNotEmpty() && segundoApellido.isNotEmpty() && nombres.isNotEmpty() && fechaNac.isNotEmpty() && perimetro.isNotEmpty() && municipio && localidad.isNotEmpty()
+        val allFilled = nombreProf.isNotEmpty() && primerApellido.isNotEmpty() && segundoApellido.isNotEmpty() && nombres.isNotEmpty() && fechaNac.isNotEmpty() && perimetro.isNotEmpty() && municipio && localidad.isNotEmpty()&& padre.isNotEmpty()
 
         // Habilitar o deshabilitar el botón según si todos los campos tienen valores
         btn_sig_encuesta.isEnabled = allFilled

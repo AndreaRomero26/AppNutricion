@@ -18,6 +18,18 @@
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/InstruccionesPrimerR2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="* Los campos en negritas son obligatorios, si no están completos no se activará el botón de siguiente"
+        android:textSize="15sp"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
     <Button
         android:id="@+id/buttonI"
         android:layout_width="50dp"
@@ -93,6 +105,7 @@
                 android:hint="Nombre del profesional:"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 android:inputType="textCapWords"
                 app:layout_constraintStart_toStartOf="@+id/editTextPrimerApellidoPx"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -107,6 +120,7 @@
                 android:inputType="textCapWords"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/editTextSegundoApellidoPx"
                 app:layout_constraintTop_toBottomOf="@+id/editTextNombreProf" />
 
@@ -130,6 +144,7 @@
                 android:selectAllOnFocus="true"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/editTextNombresPx"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPrimerApellidoPx"/>
 
@@ -153,6 +168,7 @@
                 android:selectAllOnFocus="true"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 android:nextFocusForward="@id/editTextFechaNac"
                 app:layout_constraintStart_toStartOf="@+id/editTextFechaNac"
                 app:layout_constraintTop_toBottomOf="@+id/editTextSegundoApellidoPx" />
@@ -179,6 +195,7 @@
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:cursorVisible="false"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/editTextPerimetro"
                 app:layout_constraintTop_toBottomOf="@+id/editTextNombresPx" />
 
@@ -202,8 +219,20 @@
                 android:selectAllOnFocus="true"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/spinnerMunicipio"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroupSexo" />
+            <TextView
+                android:id="@+id/P1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cm"
+                android:textSize="15sp"
+                android:padding="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintStart_toEndOf="@+id/editTextPerimetro"
+                app:layout_constraintTop_toBottomOf="@id/radioGroupSexo"/>
 
             <EditText
                 android:id="@+id/editTextEstatura"
@@ -218,6 +247,17 @@
                 android:textColorHint="#000000"
                 app:layout_constraintStart_toStartOf="@+id/spinnerMunicipio"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPerimetro" />
+            <TextView
+                android:id="@+id/E1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cm"
+                android:textSize="15sp"
+                android:padding="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintStart_toEndOf="@+id/editTextEstatura"
+                app:layout_constraintTop_toBottomOf="@id/P1"/>
             <EditText
                 android:id="@+id/editTextPeso"
                 android:layout_width="742dp"
@@ -231,12 +271,23 @@
                 android:textColorHint="#000000"
                 app:layout_constraintStart_toStartOf="@+id/spinnerMunicipio"
                 app:layout_constraintTop_toBottomOf="@+id/editTextEstatura" />
-
+            <TextView
+                android:id="@+id/Kg1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kg"
+                android:textSize="15sp"
+                android:padding="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintStart_toEndOf="@+id/editTextPeso"
+                app:layout_constraintTop_toBottomOf="@id/E1"/>
             <Spinner
                 android:id="@+id/spinnerMunicipio"
                 android:layout_width="350dp"
                 android:layout_height="42dp"
                 android:layout_marginTop="10dp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@id/editTextPeso"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPeso" />
             <EditText
@@ -250,6 +301,7 @@
                 android:selectAllOnFocus="true"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/spinnerMunicipio"
                 app:layout_constraintTop_toTopOf="@+id/spinnerMunicipio" />
 
@@ -261,6 +313,7 @@
                 android:textSize="19dp"
                 android:text="Sexo del paciente:"
                 android:textColor="#000000"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/editTextPerimetro"
                 app:layout_constraintTop_toBottomOf="@+id/editTextFechaNac" />
 
@@ -301,6 +354,7 @@
                 android:selectAllOnFocus="true"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerMunicipio" />
             <Button
