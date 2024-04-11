@@ -212,8 +212,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     fun updateDosis(folio: String, numPaquetes: String, dosis: String): Boolean {
         val db = this.writableDatabase
         val values = ContentValues()
-        values.put(COLUMN_VALUE2, numPaquetes)
-        values.put(COLUMN_VALUE3, dosis)
+        values.put(COLUMN_VALUE19, numPaquetes)
+        values.put(COLUMN_VALUE20, dosis)
 
         // Obtiene la fecha y hora actual en formato de base de datos de SQLite
         val dateFormat = "yyyy-MM-dd HH:mm:ss"
