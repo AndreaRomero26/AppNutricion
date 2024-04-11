@@ -140,12 +140,12 @@ class PrimerRegistroActivity : AppCompatActivity() {
         btn_sig_encuesta.isEnabled = false
 
         //AUDIOS
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.instrucciones_1))
+        mpList.add(MediaPlayer.create(this, R.raw.apellido_paterno))
+        mpList.add(MediaPlayer.create(this, R.raw.apellido_materno))
+        mpList.add(MediaPlayer.create(this, R.raw.nombre))
+        mpList.add(MediaPlayer.create(this, R.raw.fecha_nacimiento))
+        mpList.add(MediaPlayer.create(this, R.raw.tutor))
 
         //Pulsar el boton siguiente
         btn_sig_encuesta.setOnClickListener {

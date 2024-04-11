@@ -33,14 +33,15 @@ class EncuestaActivity : AppCompatActivity() {
 
 
         //AUDIOS
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta1))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta2))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta3))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta4))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta5))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta6))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta7))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta8))
+        mpList.add(MediaPlayer.create(this, R.raw.instrucciones_encuesta))
 
 
         // BOTONES DE RESPUESTA ENCUESTA
@@ -131,6 +132,7 @@ class EncuestaActivity : AppCompatActivity() {
             R.id.button_Q6 -> 5
             R.id.button_Q7 -> 6
             R.id.button_Q8 -> 7
+            R.id.buttonI -> 8
             else -> -1
         }
 

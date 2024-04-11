@@ -5,6 +5,9 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 //data class es la clase que regresa getAllData y getPacientePorFolio con los campos de la DB
 data class dataModel(
@@ -206,6 +209,22 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         return rowCount > 0
     }
 
+    fun updateDosis(folio: String, numPaquetes: String, dosis: String): Boolean {
+        val db = this.writableDatabase
+        val values = ContentValues()
+        values.put(COLUMN_VALUE2, numPaquetes)
+        values.put(COLUMN_VALUE3, dosis)
+
+        // Obtiene la fecha y hora actual en formato de base de datos de SQLite
+        val dateFormat = "yyyy-MM-dd HH:mm:ss"
+        val currentTime = SimpleDateFormat(dateFormat, Locale.getDefault()).format(Date())
+        values.put(COLUMN_VALUE18, currentTime) // Asume que COLUMN_VALUE18 es el nombre de tu columna de fecha
+
+        val rowCount = db.update("$TABLE_NAME", values, "folio = ?", arrayOf(folio))
+        db.close()
+        // Retorna true si rowCount es mayor que 0, indicando que se actualizaron filas
+        return rowCount > 0
+    }
 
     //Metodo para recuperar los datos de un paciente de acuerdo a su folio
     @SuppressLint("Range")

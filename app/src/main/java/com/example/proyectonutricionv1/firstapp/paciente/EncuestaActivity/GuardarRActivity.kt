@@ -92,12 +92,12 @@ class GuardarRActivity : AppCompatActivity() {
         textViewBrazo.text = value12.toString()
         textViewFolio.text=value1
 
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.instrucciones_formula))
+        mpList.add(MediaPlayer.create(this, R.raw.treinta_paquetes))
+        mpList.add(MediaPlayer.create(this, R.raw.sesenta_paquetes))
+        mpList.add(MediaPlayer.create(this, R.raw.noventa_paquetes))
+        mpList.add(MediaPlayer.create(this, R.raw.unopordia))
+        mpList.add(MediaPlayer.create(this, R.raw.dospordia))
 
         btnInst30.setOnClickListener {
             value19 = "30"
