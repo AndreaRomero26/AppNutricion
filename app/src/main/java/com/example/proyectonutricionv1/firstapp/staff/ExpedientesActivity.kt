@@ -191,11 +191,12 @@ class ExpedientesActivity : AppCompatActivity() {
 
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                // Buscar si el archivo ya existe en el MediaStore
+                // Define la URI del MediaStore y los argumentos para buscar el archivo
                 val selection = "${MediaStore.MediaColumns.DISPLAY_NAME}=?"
                 val selectionArgs = arrayOf(fileName)
                 val queryUri = MediaStore.Files.getContentUri("external")
 
+                // Realiza la búsqueda del archivo existente
                 context.contentResolver.query(
                     queryUri,
                     arrayOf(MediaStore.MediaColumns._ID),
@@ -204,31 +205,29 @@ class ExpedientesActivity : AppCompatActivity() {
                     null
                 )?.use { cursor ->
                     if (cursor.moveToFirst()) {
-                        // Si el archivo ya existe, obtén su Uri y sobrescríbelo
+                        // Si el archivo ya existe, obtén su Uri
                         val id = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.MediaColumns._ID))
                         val documentUri = ContentUris.withAppendedId(queryUri, id)
 
-                        context.contentResolver.openOutputStream(documentUri, "wt").use { outputStream ->
-                            outputStream ?: throw IOException("No se pudo abrir el archivo CSV para escribir")
-                            outputStream.write(csvData.toByteArray())
-                        }
-                    } else {
-                        // Si el archivo no existe, crea uno nuevo
-                        val values = ContentValues().apply {
-                            put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
-                            put(MediaStore.MediaColumns.MIME_TYPE, "text/csv")
-                            put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS)
-                        }
+                        // Elimina el archivo existente
+                        context.contentResolver.delete(documentUri, null, null)
+                    }
 
-                        val uri = context.contentResolver.insert(
-                            MediaStore.Downloads.EXTERNAL_CONTENT_URI,
-                            values
-                        ) ?: throw IOException("No se pudo crear el archivo CSV en Descargas")
+                    // Crea un nuevo archivo
+                    val values = ContentValues().apply {
+                        put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
+                        put(MediaStore.MediaColumns.MIME_TYPE, "text/csv")
+                        put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS)
+                    }
 
-                        context.contentResolver.openOutputStream(uri).use { outputStream ->
-                            outputStream ?: throw IOException("No se pudo abrir el archivo CSV para escribir")
-                            outputStream.write(csvData.toByteArray())
-                        }
+                    val uri = context.contentResolver.insert(
+                        MediaStore.Downloads.EXTERNAL_CONTENT_URI,
+                        values
+                    ) ?: throw IOException("No se pudo crear el archivo CSV en Descargas")
+
+                    context.contentResolver.openOutputStream(uri).use { outputStream ->
+                        outputStream ?: throw IOException("No se pudo abrir el archivo CSV para escribir")
+                        outputStream.write(csvData.toByteArray())
                     }
                 }
 
@@ -237,6 +236,12 @@ class ExpedientesActivity : AppCompatActivity() {
                 // Para versiones anteriores a Android 10
                 val directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
                 val file = File(directory, fileName)
+                if (file.exists()) {
+                    val deleteSuccess = file.delete()
+                    if (!deleteSuccess) {
+                        throw IOException("No se pudo eliminar el archivo existente")
+                    }
+                }
 
                 file.writeText(csvData)
 
