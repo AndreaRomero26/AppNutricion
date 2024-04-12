@@ -45,7 +45,14 @@ class MostrarP2Activity : AppCompatActivity() {
             fechas.add(fecha)
         }
 
-        lineChart.xAxis.valueFormatter = DateAxisValueFormatter(fechas)
+        lineChart.xAxis.valueFormatter = DateAxisValueFormatter(fechas, entries)
+        lineChart.xAxis.granularity = 1f  // Asegura que la granularidad sea 1 para evitar repetición no deseada
+        lineChart.xAxis.setDrawLabels(true)
+        // Ajustar márgenes del gráfico
+        lineChart.setExtraOffsets(30f, 0f, 45f, 0f) // añade un margen extra a la derecha
+
+
+
         val dataSet = LineDataSet(entries, "Valores del Folio")
         val lineData = LineData(dataSet)
         lineChart.data = lineData
@@ -57,9 +64,14 @@ class MostrarP2Activity : AppCompatActivity() {
 
     }
 }
-class DateAxisValueFormatter(private val dates: List<String>) : ValueFormatter() {
+class DateAxisValueFormatter(private val dates: List<String>, private val entries: List<Entry>) : ValueFormatter() {
     override fun getAxisLabel(value: Float, axis: AxisBase?): String {
         val index = value.toInt()
-        return if (index >= 0 && index < dates.size) dates[index] else ""
+        // Solo devolver la fecha si hay una entrada correspondiente a este índice
+        return if (index >= 0 && index < dates.size && entries.any { it.x == index.toFloat() }) {
+            dates[index]
+        } else {
+            ""
+        }
     }
 }
