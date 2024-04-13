@@ -159,17 +159,27 @@ class Editar2Activity : AppCompatActivity() {
             }
 
             // Llama al método update del DBHelper
-            dbHelper.update(folio, value2, value3, value4, value5, value6, value7, value8, value9, value10, value15, value16, value17)
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("¡Éxito!")
-            builder.setMessage("Expediente guardado con éxito.")
-            builder.setPositiveButton("OK") { dialog, which ->
-                // Regresar a la actividad principal
-                val intentMainMenu = Intent(this, MainMenu::class.java)
-                intentMainMenu.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                startActivity(intentMainMenu)
+            val updateSuccess = dbHelper.update(folio, value2, value3, value4, value5, value6, value7, value8, value9, value10, value15, value16, value17)
+            if (updateSuccess) {
+                // Si la actualización fue exitosa, muestra un diálogo de éxito
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("¡Éxito!")
+                builder.setMessage("Expediente actualizado con éxito.")
+                builder.setPositiveButton("OK") { dialog, which ->
+                    // Regresar a la actividad principal
+                    val intentMainMenu = Intent(this, MainMenu::class.java)
+                    intentMainMenu.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(intentMainMenu)
+                }
+                builder.show()
+            } else {
+                // Si la actualización falló, muestra un diálogo de error
+                val errorBuilder = AlertDialog.Builder(this)
+                errorBuilder.setTitle("Error")
+                errorBuilder.setMessage("No se pudo actualizar el expediente. Intente nuevamente.")
+                errorBuilder.setPositiveButton("OK", null)
+                errorBuilder.show()
             }
-            builder.show()
         }
 
     }

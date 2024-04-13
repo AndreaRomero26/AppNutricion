@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import com.example.proyectonutricionv1.R
@@ -58,27 +59,21 @@ class GuardarRActivity : AppCompatActivity() {
         val value8 = intent.getStringExtra("Sexo")!!
         val value9 = intent.getStringExtra("Estatura")!!
         val value10 = intent.getStringExtra("Peso")!!
-        val value12 = intent.getStringExtra("Perimetro")!!
-        val value12D = intent.getStringExtra("Perimetro")!!.toDoubleOrNull()
+        val value12 = intent.getDoubleExtra("Perimetro", -1.0) // -1.0 como valor por defecto para indicar que no se encontró
+        if (value12 == -1.0) {
+            Toast.makeText(this, "Perímetro no proporcionado o inválido", Toast.LENGTH_SHORT).show()
+            return
+        }
         var value13=""
-        if (value12D != null) {
-            // El valor se convirtió correctamente a Double
-            // Puedes utilizar value12 como un número decimal
-           if (value12D<=11.5){
-               value13="Desnutricion grave"
-           }
-           else if (value12D>11.5 && value12D<=12.5){
-                value13="Desnutricion moderada"
-            }
-           else if (value12D>12.5 && value12D<=13.5){
-               value13="Riesgo de desnutricion"
-           }
-           else if (value12D>13.5){
-               value13="Sin desnutricion"
-           }
-        } else {
-            // El valor no se pudo convertir a Double
-            value13="Error"
+
+        if (value12<=11.5){
+            value13="Desnutricion grave"
+        } else if (value12>11.5 && value12<=12.5){
+            value13="Desnutricion moderada"
+        } else if (value12>12.5 && value12<=13.5){
+            value13="Riesgo de desnutricion"
+        } else if (value12>13.5){
+            value13="Sin desnutricion"
         }
 
         val value14 = intent.getStringExtra("clasificacion")!!
@@ -90,21 +85,19 @@ class GuardarRActivity : AppCompatActivity() {
         val nombreCompleto = "$value4 $value5 $value6"
         val ubicacionCompleta = "$value2 $value3"
 
-        val intentMainMenu = Intent(this, MainMenu::class.java)
-
 
         textViewClasificacion.text = value14
         textViewLocalidad.text = ubicacionCompleta
         textViewNombre.text = nombreCompleto
-        textViewBrazo.text = value12
+        textViewBrazo.text = value12.toString()
         textViewFolio.text=value1
 
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.instrucciones_formula))
+        mpList.add(MediaPlayer.create(this, R.raw.treinta_paquetes))
+        mpList.add(MediaPlayer.create(this, R.raw.sesenta_paquetes))
+        mpList.add(MediaPlayer.create(this, R.raw.noventa_paquetes))
+        mpList.add(MediaPlayer.create(this, R.raw.unopordia))
+        mpList.add(MediaPlayer.create(this, R.raw.dospordia))
 
         btnInst30.setOnClickListener {
             value19 = "30"
@@ -134,23 +127,45 @@ class GuardarRActivity : AppCompatActivity() {
             reproducirMediaPlayer(it)
         }
         btnGenerarDB.setOnClickListener {
-            dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value12, value13, value14, value15, value16, value17, value19, value20)
-            // Mostrar mensaje de éxito con AlertDialog
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("¡Éxito!")
-            builder.setMessage("Expediente guardado con éxito.")
-            builder.setPositiveButton("OK") { dialog, which ->
-                // Regresar a la actividad principal (opcional)
-                val intentMainMenu = Intent(this, MainMenu::class.java)
-                intentMainMenu.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-                startActivity(intentMainMenu)
-            }
-            builder.show()
+            // Primero intenta insertar datos en la tabla principal y comprueba si la operación fue exitosa
+            val insertPrincipalSuccess = dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value12, value13, value14, value15, value16, value17, value19, value20)
 
+            if (insertPrincipalSuccess) {
+                // Si el primer insert fue exitoso, procede con el insert en la tabla de registros
+                val insertRegistroSuccess = dbHelper.insertRegistro(value1, value12, value13) /* otros valores que necesites pasar para el registro */
+
+                if (insertRegistroSuccess) {
+                    // Mostrar mensaje de éxito solo si ambos inserts fueron exitosos
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("¡Éxito!")
+                    builder.setMessage("Expediente y registro guardados con éxito.")
+                    builder.setPositiveButton("OK") { dialog, which ->
+                        // Regresar a la actividad principal (opcional)
+                        val intentMainMenu = Intent(this, MainMenu::class.java)
+                        intentMainMenu.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        startActivity(intentMainMenu)
+                    }
+                    builder.show()
+                } else {
+                    // Manejar el caso donde la inserción en la tabla de registros falló
+                    val errorBuilder = AlertDialog.Builder(this)
+                    errorBuilder.setTitle("Error")
+                    errorBuilder.setMessage("No se pudo guardar el registro. Intente nuevamente.")
+                    errorBuilder.setPositiveButton("OK", null)
+                    errorBuilder.show()
+                }
+            } else {
+                // Manejar el caso de inserción fallida en la tabla principal
+                val errorBuilder = AlertDialog.Builder(this)
+                errorBuilder.setTitle("Error")
+                errorBuilder.setMessage("No se pudo guardar el expediente. Intente nuevamente.")
+                errorBuilder.setPositiveButton("OK", null)
+                errorBuilder.show()
+            }
         }
 
     }
-    fun changeButtonInstColor(button: Button) {
+    private fun changeButtonInstColor(button: Button) {
         btnInst30.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
         btnInst60.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
         btnInst90.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
@@ -161,7 +176,7 @@ class GuardarRActivity : AppCompatActivity() {
         // Actualizar el último botón presionado
         lastButton = button
     }
-    fun changeButtonDosisColor(button: Button) {
+    private fun changeButtonDosisColor(button: Button) {
         btnDosis1.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
         btnDosis2.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
 

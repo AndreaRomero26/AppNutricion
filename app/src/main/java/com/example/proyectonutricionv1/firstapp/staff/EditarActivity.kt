@@ -103,7 +103,7 @@ class EditarActivity : AppCompatActivity() {
             textView11.setPadding(10, 10, 10, 10)
             textView11.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSizeSP)
             val textView12 = TextView(this)
-            textView12.text = value12
+            textView12.text = value12.toString()
             textView12.setPadding(10, 10, 10, 10)
             textView12.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSizeSP)
             val textView13 = TextView(this)

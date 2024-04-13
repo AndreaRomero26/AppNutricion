@@ -6,7 +6,41 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo_2logos"
     tools:context=".firstapp.paciente.EncuestaActivity.PrimerRegistroActivity">
-
+    <TextView
+        android:id="@+id/InstruccionesPrimerR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Se realizarán algunas preguntas al niño, si no puede contestar el solo, contestar el padre o madre por el niño"
+        android:textSize="15sp"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/InstruccionesPrimerR2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="* Los campos en negritas son obligatorios, si no están completos no se activará el botón de siguiente"
+        android:textSize="15sp"
+        android:padding="8dp"
+        android:textStyle="bold"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <Button
+        android:id="@+id/buttonI"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:text="@string/button"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:onClick="reproducirMediaPlayer"
+        app:layout_constraintEnd_toStartOf="@id/InstruccionesPrimerR"
+        app:layout_constraintTop_toTopOf="parent"/>
     <Button
         android:id="@+id/btn_sig_encuesta"
         android:layout_width="194dp"
@@ -72,6 +106,7 @@
                 android:hint="Nombre del profesional:"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 android:inputType="textCapWords"
                 app:layout_constraintStart_toStartOf="@+id/editTextPrimerApellidoPx"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -86,8 +121,19 @@
                 android:inputType="textCapWords"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/editTextSegundoApellidoPx"
                 app:layout_constraintTop_toBottomOf="@+id/editTextNombreProf" />
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:text="@string/button"
+                android:onClick="reproducirMediaPlayer"
+                app:layout_constraintStart_toEndOf="@id/editTextPrimerApellidoPx"
+                app:layout_constraintTop_toBottomOf="@id/editTextNombreProf" />
 
             <EditText
                 android:id="@+id/editTextSegundoApellidoPx"
@@ -100,8 +146,19 @@
                 android:selectAllOnFocus="true"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/editTextNombresPx"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPrimerApellidoPx"/>
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:text="@string/button"
+                android:onClick="reproducirMediaPlayer"
+                app:layout_constraintStart_toEndOf="@id/editTextSegundoApellidoPx"
+                app:layout_constraintTop_toBottomOf="@id/editTextPrimerApellidoPx" />
 
             <EditText
                 android:id="@+id/editTextNombresPx"
@@ -114,9 +171,20 @@
                 android:selectAllOnFocus="true"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 android:nextFocusForward="@id/editTextFechaNac"
                 app:layout_constraintStart_toStartOf="@+id/editTextFechaNac"
                 app:layout_constraintTop_toBottomOf="@+id/editTextSegundoApellidoPx" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:text="@string/button"
+                android:onClick="reproducirMediaPlayer"
+                app:layout_constraintStart_toEndOf="@id/editTextNombresPx"
+                app:layout_constraintTop_toBottomOf="@id/editTextSegundoApellidoPx" />
 
             <EditText
                 android:id="@+id/editTextFechaNac"
@@ -131,8 +199,19 @@
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:cursorVisible="false"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/editTextPerimetro"
                 app:layout_constraintTop_toBottomOf="@+id/editTextNombresPx" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:text="@string/button"
+                android:onClick="reproducirMediaPlayer"
+                app:layout_constraintStart_toEndOf="@id/editTextFechaNac"
+                app:layout_constraintTop_toBottomOf="@id/editTextNombresPx" />
 
             <EditText
                 android:id="@+id/editTextPerimetro"
@@ -145,8 +224,20 @@
                 android:selectAllOnFocus="true"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/spinnerMunicipio"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroupSexo" />
+            <TextView
+                android:id="@+id/P1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cm"
+                android:textSize="15sp"
+                android:padding="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintStart_toEndOf="@+id/editTextPerimetro"
+                app:layout_constraintTop_toBottomOf="@id/radioGroupSexo"/>
 
             <EditText
                 android:id="@+id/editTextEstatura"
@@ -161,6 +252,17 @@
                 android:textColorHint="#000000"
                 app:layout_constraintStart_toStartOf="@+id/spinnerMunicipio"
                 app:layout_constraintTop_toBottomOf="@+id/editTextPerimetro" />
+            <TextView
+                android:id="@+id/E1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cm"
+                android:textSize="15sp"
+                android:padding="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                app:layout_constraintStart_toEndOf="@+id/editTextEstatura"
+                app:layout_constraintTop_toBottomOf="@id/P1"/>
             <EditText
                 android:id="@+id/editTextPeso"
                 android:layout_width="742dp"
@@ -174,7 +276,17 @@
                 android:textColorHint="#000000"
                 app:layout_constraintStart_toStartOf="@+id/spinnerMunicipio"
                 app:layout_constraintTop_toBottomOf="@+id/editTextEstatura" />
-
+            <TextView
+                android:id="@+id/Kg1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kg"
+                android:textSize="15sp"
+                android:padding="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="21dp"
+                app:layout_constraintStart_toEndOf="@+id/editTextPeso"
+                app:layout_constraintTop_toBottomOf="@id/E1"/>
             <Spinner
                 android:id="@+id/spinnerMunicipio"
                 android:layout_width="350dp"
@@ -193,6 +305,7 @@
                 android:selectAllOnFocus="true"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/spinnerMunicipio"
                 app:layout_constraintTop_toTopOf="@+id/spinnerMunicipio" />
 
@@ -204,6 +317,7 @@
                 android:textSize="19dp"
                 android:text="Sexo del paciente:"
                 android:textColor="#000000"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/editTextPerimetro"
                 app:layout_constraintTop_toBottomOf="@+id/editTextFechaNac" />
 
@@ -244,8 +358,18 @@
                 android:selectAllOnFocus="true"
                 android:textColor="#000000"
                 android:textColorHint="#000000"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerMunicipio" />
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:text="@string/button"
+                android:onClick="reproducirMediaPlayer"
+                app:layout_constraintStart_toEndOf="@id/editTextPadre"
+                app:layout_constraintTop_toBottomOf="@id/spinnerMunicipio" />
             <EditText
                 android:id="@+id/editTextPadrino"
                 android:layout_width="742dp"
