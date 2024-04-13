@@ -25,7 +25,7 @@ class EncuestaActivity : AppCompatActivity() {
         val value6 = intent.getStringExtra("FechaNacimiento")
         val value7 = intent.getStringExtra("Estatura")
         val value8 = intent.getStringExtra("Peso")
-        val value9 = intent.getStringExtra("Perimetro")
+        val value9 = intent.getDoubleExtra("Perimetro", -1.0)
         val value10 = intent.getStringExtra("Sexo")
         val value11 = intent.getStringExtra("Tutor")
         val value12 = intent.getStringExtra("COC")
@@ -33,18 +33,18 @@ class EncuestaActivity : AppCompatActivity() {
 
 
         //AUDIOS
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
-        mpList.add(MediaPlayer.create(this, R.raw.no_manches))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta1))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta2))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta3))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta4))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta5))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta6))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta7))
+        mpList.add(MediaPlayer.create(this, R.raw.pregunta8))
+        mpList.add(MediaPlayer.create(this, R.raw.instrucciones_encuesta))
 
 
-        // BOTONES DE RESPUESTA ENCUESTA - CLASIFICACION
+        // BOTONES DE RESPUESTA ENCUESTA
         val button_next = findViewById<Button>(R.id.button_next)
         val intentNext = Intent(this, GuardarRActivity::class.java)
 
@@ -59,7 +59,7 @@ class EncuestaActivity : AppCompatActivity() {
 
         button_next.setOnClickListener {
             val respuestas = mutableListOf<Int>()
-            respuestas.add(if (radioGroupQ1.checkedRadioButtonId == R.id.Q1_si) 1 else if (radioGroupQ1.checkedRadioButtonId == R.id.Q1_no) 0 else 0)
+            respuestas.add(if (radioGroupQ1.checkedRadioButtonId == R.id.Q1_si) 1 else if (radioGroupQ1.checkedRadioButtonId == R.id.Q1_no) 0 else 3)
             respuestas.add(if (radioGroupQ2.checkedRadioButtonId == R.id.Q2_si) 1 else if (radioGroupQ2.checkedRadioButtonId == R.id.Q2_no) 0 else 3)
             respuestas.add(if (radioGroupQ3.checkedRadioButtonId == R.id.Q3_si) 1 else if (radioGroupQ3.checkedRadioButtonId == R.id.Q3_no) 0 else 3)
             respuestas.add(if (radioGroupQ4.checkedRadioButtonId == R.id.Q4_si) 1 else if (radioGroupQ4.checkedRadioButtonId == R.id.Q4_no) 0 else 3)
@@ -85,12 +85,9 @@ class EncuestaActivity : AppCompatActivity() {
 
             if (radioGroupQ1.checkedRadioButtonId == -1 || radioGroupQ2.checkedRadioButtonId == -1 || radioGroupQ3.checkedRadioButtonId == -1
                 || radioGroupQ4.checkedRadioButtonId == -1 || radioGroupQ5.checkedRadioButtonId == -1 || radioGroupQ6.checkedRadioButtonId == -1
-                || radioGroupQ7.checkedRadioButtonId == -1 || radioGroupQ8.checkedRadioButtonId == -1)
-            {
+                || radioGroupQ7.checkedRadioButtonId == -1 || radioGroupQ8.checkedRadioButtonId == -1) {
                 Toast.makeText(this,"Por favor, seleccione una respuesta para todas las preguntas.",Toast.LENGTH_SHORT).show()
             }
-
-
             else {
                 intentNext.putExtra("clasificacion", clasificacion)
                 intentNext.putExtra("Municipio", value1)
@@ -127,15 +124,15 @@ class EncuestaActivity : AppCompatActivity() {
 
         // Determinar qué audio reproducir según el ID del botón
         val audioIndex = when(buttonId) {
-            R.id.buttonI -> 0
-            R.id.button_Q1 -> 1
-            R.id.button_Q2 -> 2
-            R.id.button_Q3 -> 3
-            R.id.button_Q4 -> 4
-            R.id.button_Q5 -> 5
-            R.id.button_Q6 -> 6
-            R.id.button_Q7 -> 7
-            R.id.button_Q8 -> 8
+            R.id.button_Q1 -> 0
+            R.id.button_Q2 -> 1
+            R.id.button_Q3 -> 2
+            R.id.button_Q4 -> 3
+            R.id.button_Q5 -> 4
+            R.id.button_Q6 -> 5
+            R.id.button_Q7 -> 6
+            R.id.button_Q8 -> 7
+            R.id.buttonI -> 8
             else -> -1
         }
 

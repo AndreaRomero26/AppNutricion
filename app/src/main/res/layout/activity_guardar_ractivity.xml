@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/logo_scroll"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_2logos"
     tools:context=".firstapp.paciente.EncuestaActivity.GuardarRActivity">
 
 
@@ -12,54 +12,53 @@
         android:id="@+id/btn_inst_1vez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="316dp"
+        android:layout_marginTop="196dp"
         android:backgroundTint="#5F248B"
         android:text="1 vez al dia"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
-        app:layout_constraintStart_toStartOf="@+id/btn_inst30"
-        app:layout_constraintTop_toBottomOf="@+id/btn_inst30" />
+        app:layout_constraintStart_toEndOf="@+id/InstruccionesP"
+        app:layout_constraintTop_toBottomOf="@+id/NivelP" />
 
     <Button
         android:id="@+id/btn_inst_2vez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="472dp"
+        android:layout_marginTop="196dp"
         android:backgroundTint="#5F248B"
         android:text="2 veces al dia"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_inst_1vez"
-        app:layout_constraintEnd_toEndOf="@+id/btn_inst90"
-        app:layout_constraintStart_toEndOf="@+id/btn_inst_1vez"
-        app:layout_constraintTop_toTopOf="@+id/btn_inst_1vez"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/InstruccionesP"
+        app:layout_constraintTop_toBottomOf="@+id/NivelP" />
 
     <TextView
         android:id="@+id/NivelP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="28dp"
         android:text="Nivel de inseguridad alimentaria:"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/DiametroP"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/DiametroP" />
 
     <TextView
         android:id="@+id/FolioP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="300dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="58dp"
         android:text="Folio:"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/Respuesta_localidad"
-        app:layout_constraintStart_toEndOf="@+id/Respuesta_localidad"
-        app:layout_constraintTop_toTopOf="@+id/Respuesta_localidad" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Respuesta_localidad"
@@ -78,8 +77,8 @@
         android:id="@+id/LocalidadP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="124dp"
         android:text="Localidad:"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -103,36 +102,39 @@
         android:id="@+id/NombreP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="228dp"
         android:text="Nombre:"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/LocalidadP"
-        app:layout_constraintTop_toBottomOf="@+id/LocalidadP" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/DiametroP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="28dp"
         android:text="Perimetro del brazo:"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/NombreP"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NombreP" />
 
     <TextView
         android:id="@+id/InstruccionesP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="28dp"
         android:text="Instrucciones:"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/NivelP"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NivelP" />
 
     <TextView
@@ -178,45 +180,47 @@
         android:id="@+id/btn_inst90"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="544dp"
+        android:layout_marginTop="128dp"
         android:backgroundTint="#5F248B"
         android:text="90 sobres"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
-        app:layout_constraintStart_toEndOf="@+id/btn_inst60"
-        app:layout_constraintTop_toTopOf="@+id/btn_inst60" />
+        app:layout_constraintStart_toEndOf="@+id/InstruccionesP"
+        app:layout_constraintTop_toBottomOf="@+id/NivelP" />
 
     <Button
         android:id="@+id/btn_inst60"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="388dp"
+        android:layout_marginTop="128dp"
         android:backgroundTint="#5F248B"
         android:text="60 sobres"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
-        app:layout_constraintStart_toEndOf="@+id/btn_inst30"
-        app:layout_constraintTop_toTopOf="@+id/btn_inst30" />
+        app:layout_constraintStart_toEndOf="@+id/InstruccionesP"
+        app:layout_constraintTop_toBottomOf="@+id/NivelP" />
 
     <Button
         android:id="@+id/btn_inst30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
+        android:layout_marginStart="232dp"
+        android:layout_marginTop="128dp"
         android:backgroundTint="#5F248B"
         android:text="30 sobres"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_instrucciones"
-        app:layout_constraintStart_toEndOf="@+id/btn_instrucciones"
-        app:layout_constraintTop_toTopOf="@+id/btn_instrucciones" />
+        app:layout_constraintStart_toEndOf="@+id/InstruccionesP"
+        app:layout_constraintTop_toBottomOf="@+id/NivelP" />
 
     <TextView
         android:id="@+id/inst_instruccion"
-        android:layout_width="852dp"
-        android:layout_height="75dp"
+        android:layout_width="965dp"
+        android:layout_height="72dp"
         android:layout_marginStart="20dp"
-        android:text="Selecciona el botón 'INSTRUCCIONES' para reproducir las instrucciones generales. Luego elige la cantidad de sobres a dejar y la dosis diaria."
+        android:text="Selecciona el boton INSTRUCCIONES para reproducir las instrucciones generales, despues selecciona la cantidad de sobres a dejar  y la dosis diaria"
         android:textColor="#6E6B6B"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/InstruccionesP"
@@ -226,26 +230,29 @@
         android:id="@+id/btn_instrucciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="52dp"
         android:backgroundTint="#5F248B"
         android:text="INSTRUCCIONES"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
-        app:layout_constraintStart_toStartOf="@+id/InstruccionesP"
+        android:onClick="reproducirMediaPlayer"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/InstruccionesP" />
 
     <Button
         android:id="@+id/btn_generarDB"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="50dp"
-        android:backgroundTint="@color/colorOriginal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="204dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#5F248B"
         android:text="GUARDAR"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/btn_instrucciones"
-        app:layout_constraintTop_toBottomOf="@+id/btn_instrucciones" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/InstruccionesP" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

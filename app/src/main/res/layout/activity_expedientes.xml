@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_2logos">
+
+    <Button
+        android:id="@+id/buttonExcel"
+        android:layout_width="194dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="700dp"
+        android:layout_marginTop="608dp"
+        android:background="@drawable/rounded_background"
+        android:text="Generar archivo CSV" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -20,22 +20,25 @@
             android:id="@+id/buttonI"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="90dp"
-            android:onClick="reproducirMediaPlayer"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="72dp"
+            android:layout_marginEnd="39dp"
             android:text="@string/button"
-            app:layout_constraintStart_toStartOf="@+id/button_Q1"
+            app:layout_constraintEnd_toStartOf="@+id/I1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/button_Q1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="90dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="230dp"
             android:onClick="reproducirMediaPlayer"
             android:text="@string/button"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonI" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/Q1"
@@ -83,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q1_ns"
@@ -91,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/ns"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q1_nr"
@@ -99,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/nr"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
         </RadioGroup>
 
         <Button
@@ -150,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/si"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q2_no"
@@ -158,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q2_ns"
@@ -166,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/ns"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q2_nr"
@@ -174,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/nr"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
         </RadioGroup>
 
         <Button
@@ -198,7 +201,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/button_Q3"
             app:layout_constraintStart_toEndOf="@+id/button_Q3"
-            app:layout_constraintTop_toTopOf="@+id/button_Q3" />
+            app:layout_constraintTop_toTopOf="@+id/button_Q3"
+            />
 
         <TextView
             android:id="@+id/Q3_esp"
@@ -225,7 +229,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/si"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q3_no"
@@ -233,7 +237,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q3_ns"
@@ -241,7 +245,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/ns"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q3_nr"
@@ -249,7 +253,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/nr"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
         </RadioGroup>
 
         <Button
@@ -273,7 +277,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/button_Q4"
             app:layout_constraintStart_toEndOf="@+id/button_Q4"
-            app:layout_constraintTop_toTopOf="@+id/button_Q4" />
+            app:layout_constraintTop_toTopOf="@+id/button_Q4"
+            />
 
         <TextView
             android:id="@+id/Q4_esp"
@@ -300,7 +305,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/si"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q4_no"
@@ -308,7 +313,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q4_ns"
@@ -316,7 +321,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/ns"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q4_nr"
@@ -324,7 +329,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/nr"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
         </RadioGroup>
 
         <Button
@@ -348,7 +353,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/button_Q5"
             app:layout_constraintStart_toEndOf="@+id/button_Q5"
-            app:layout_constraintTop_toTopOf="@+id/button_Q5" />
+            app:layout_constraintTop_toTopOf="@+id/button_Q5"
+            />
 
         <TextView
             android:id="@+id/Q5_esp"
@@ -375,7 +381,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/si"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q5_no"
@@ -383,7 +389,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q5_ns"
@@ -391,7 +397,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/ns"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q5_nr"
@@ -399,7 +405,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/nr"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
         </RadioGroup>
 
         <Button
@@ -407,10 +413,10 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="150dp"
-            android:onClick="reproducirMediaPlayer"
             android:text="@string/button"
+            android:onClick="reproducirMediaPlayer"
             app:layout_constraintStart_toStartOf="@+id/button_Q5"
-            app:layout_constraintTop_toBottomOf="@+id/button_Q5" />
+            app:layout_constraintTop_toBottomOf="@+id/button_Q5"/>
 
         <TextView
             android:id="@+id/Q6"
@@ -423,7 +429,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/button_Q6"
             app:layout_constraintStart_toEndOf="@+id/button_Q6"
-            app:layout_constraintTop_toTopOf="@+id/button_Q6" />
+            app:layout_constraintTop_toTopOf="@+id/button_Q6"
+            />
 
         <TextView
             android:id="@+id/Q6_esp"
@@ -450,7 +457,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/si"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q6_no"
@@ -458,7 +465,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q6_ns"
@@ -466,7 +473,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/ns"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q6_nr"
@@ -474,7 +481,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/nr"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
         </RadioGroup>
 
         <Button
@@ -482,10 +489,10 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="150dp"
-            android:onClick="reproducirMediaPlayer"
             android:text="@string/button"
+            android:onClick="reproducirMediaPlayer"
             app:layout_constraintStart_toStartOf="@+id/button_Q6"
-            app:layout_constraintTop_toBottomOf="@+id/button_Q6" />
+            app:layout_constraintTop_toBottomOf="@+id/button_Q6"/>
 
         <TextView
             android:id="@+id/Q7"
@@ -498,7 +505,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/button_Q7"
             app:layout_constraintStart_toEndOf="@+id/button_Q7"
-            app:layout_constraintTop_toTopOf="@+id/button_Q7" />
+            app:layout_constraintTop_toTopOf="@+id/button_Q7"
+            />
 
         <TextView
             android:id="@+id/Q7_esp"
@@ -525,7 +533,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/si"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q7_no"
@@ -533,7 +541,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q7_ns"
@@ -541,7 +549,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/ns"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q7_nr"
@@ -549,7 +557,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/nr"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
         </RadioGroup>
 
         <Button
@@ -557,10 +565,10 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="150dp"
-            android:onClick="reproducirMediaPlayer"
             android:text="@string/button"
+            android:onClick="reproducirMediaPlayer"
             app:layout_constraintStart_toStartOf="@+id/button_Q7"
-            app:layout_constraintTop_toBottomOf="@+id/button_Q7" />
+            app:layout_constraintTop_toBottomOf="@+id/button_Q7"/>
 
         <TextView
             android:id="@+id/Q8"
@@ -573,7 +581,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/button_Q8"
             app:layout_constraintStart_toEndOf="@+id/button_Q8"
-            app:layout_constraintTop_toTopOf="@+id/button_Q8" />
+            app:layout_constraintTop_toTopOf="@+id/button_Q8"
+            />
 
         <TextView
             android:id="@+id/Q8_esp"
@@ -600,7 +609,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/si"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q8_no"
@@ -608,7 +617,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/no"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q8_ns"
@@ -616,7 +625,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/ns"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
 
             <RadioButton
                 android:id="@+id/Q8_nr"
@@ -624,23 +633,27 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/nr"
-                android:textColor="#000000" />
+                android:textColor="#000000"/>
         </RadioGroup>
 
         <Button
             android:id="@+id/button_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
             android:layout_marginTop="150dp"
-            android:layout_marginBottom="80dp"
-            android:backgroundTint="@color/purple_500"
+            android:layout_marginEnd="1056dp"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="#D9D9D9"
             android:foregroundGravity="center_horizontal"
             android:gravity="center"
             android:text="@string/button_next"
-            android:textColor="@color/white"
+            android:textColor="#000000"
             app:cornerRadius="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/button_Q8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/button_Q8"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -648,25 +661,32 @@
             android:id="@+id/I1_esp"
             android:layout_width="800dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginBottom="64dp"
             android:text="Ahora me gustaría hacerle algunas preguntas relacionadas a la alimentación. Durante los últimos 12 MESES, ha habido algún momento en que:"
             android:textColor="#000000"
             android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/I1"
-            app:layout_constraintTop_toBottomOf="@+id/I1" />
+            app:layout_constraintBottom_toTopOf="@+id/Q1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.395"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.836" />
 
         <TextView
             android:id="@+id/I1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginBottom="16dp"
             android:text="I. Raramuri"
             android:textColor="#000000"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/buttonI"
-            app:layout_constraintStart_toEndOf="@+id/buttonI"
-            app:layout_constraintTop_toTopOf="@+id/buttonI" />
+            app:layout_constraintBottom_toTopOf="@+id/I1_esp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.154"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
