@@ -129,7 +129,7 @@ class RegistrarP2Activity : AppCompatActivity() {
 
 
         btnNuevaDosis.setOnClickListener {
-            val opcionesTipo1 = arrayOf("30", "60", "90")
+            val opcionesTipo1 = arrayOf("30")
             val opcionesTipo2 = arrayOf("1", "2")
 
             // Crear y mostrar el AlertDialog para la primera selección

@@ -4,61 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_2logos"
+    android:background="@drawable/logo_scroll"
     tools:context=".firstapp.paciente.EncuestaActivity.GuardarRActivity">
 
 
     <Button
         android:id="@+id/btn_inst_1vez"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="316dp"
-        android:layout_marginTop="196dp"
+        android:layout_marginStart="20dp"
         android:backgroundTint="#5F248B"
         android:text="1 vez al dia"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
-        app:layout_constraintStart_toEndOf="@+id/InstruccionesP"
-        app:layout_constraintTop_toBottomOf="@+id/NivelP" />
+        app:layout_constraintBottom_toBottomOf="@+id/dosis"
+        app:layout_constraintStart_toEndOf="@+id/dosis"
+        app:layout_constraintTop_toTopOf="@+id/dosis" />
 
     <Button
         android:id="@+id/btn_inst_2vez"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="472dp"
-        android:layout_marginTop="196dp"
         android:backgroundTint="#5F248B"
         android:text="2 veces al dia"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
-        app:layout_constraintStart_toEndOf="@+id/InstruccionesP"
-        app:layout_constraintTop_toBottomOf="@+id/NivelP" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_inst_1vez"
+        app:layout_constraintStart_toStartOf="@+id/btn_inst_1vez"
+        app:layout_constraintTop_toBottomOf="@+id/btn_inst_1vez"
+        app:layout_constraintVertical_bias="0.05
+" />
 
     <TextView
         android:id="@+id/NivelP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="28dp"
         android:text="Nivel de inseguridad alimentaria:"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DiametroP" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/DiametroP"
+        app:layout_constraintTop_toBottomOf="@+id/DiametroP"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/FolioP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginStart="50dp"
         android:text="Folio:"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/Respuesta_localidad"
@@ -77,14 +80,14 @@
         android:id="@+id/LocalidadP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="124dp"
         android:text="Localidad:"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/FolioP"
+        app:layout_constraintTop_toBottomOf="@+id/FolioP"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/Respuesta_folio"
@@ -102,40 +105,27 @@
         android:id="@+id/NombreP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="228dp"
         android:text="Nombre:"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/LocalidadP"
+        app:layout_constraintTop_toBottomOf="@+id/LocalidadP"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/DiametroP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="28dp"
         android:text="Perimetro del brazo:"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NombreP" />
-
-    <TextView
-        android:id="@+id/InstruccionesP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="28dp"
-        android:text="Instrucciones:"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NivelP" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/NombreP"
+        app:layout_constraintTop_toBottomOf="@+id/NombreP"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/Respuesta_nombre"
@@ -177,82 +167,118 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/btn_inst90"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_SNBL"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="544dp"
-        android:layout_marginTop="128dp"
         android:backgroundTint="#5F248B"
-        android:text="90 sobres"
+        android:text="SNBL"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
-        app:layout_constraintStart_toEndOf="@+id/InstruccionesP"
-        app:layout_constraintTop_toBottomOf="@+id/NivelP" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ATLC"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_ATLC"
+        app:layout_constraintTop_toBottomOf="@+id/btn_ATLC"
+        app:layout_constraintVertical_bias="0.05" />
 
     <Button
-        android:id="@+id/btn_inst60"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_ATLC"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="388dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginEnd="20dp"
         android:backgroundTint="#5F248B"
-        android:text="60 sobres"
+        android:text="ATLC"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
-        app:layout_constraintStart_toEndOf="@+id/InstruccionesP"
-        app:layout_constraintTop_toBottomOf="@+id/NivelP" />
+        app:layout_constraintBottom_toBottomOf="@+id/tipo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@+id/tipo"
+        app:layout_constraintTop_toTopOf="@+id/tipo" />
 
     <Button
         android:id="@+id/btn_inst30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="232dp"
-        android:layout_marginTop="128dp"
         android:backgroundTint="#5F248B"
         android:text="30 sobres"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
-        app:layout_constraintStart_toEndOf="@+id/InstruccionesP"
-        app:layout_constraintTop_toBottomOf="@+id/NivelP" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/btn_instrucciones"
+        app:layout_constraintTop_toBottomOf="@+id/btn_instrucciones"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/inst_instruccion"
         android:layout_width="965dp"
         android:layout_height="72dp"
-        android:layout_marginStart="20dp"
-        android:text="Selecciona el boton INSTRUCCIONES para reproducir las instrucciones generales, despues selecciona la cantidad de sobres a dejar  y la dosis diaria"
+        android:layout_marginEnd="80dp"
+        android:text="Selecciona el boton INSTRUCCIONES para reproducir las instrucciones generales, después selecciona la cantidad de sobres a dejar  y la dosis diaria"
         android:textColor="#6E6B6B"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/InstruccionesP"
-        app:layout_constraintTop_toTopOf="@+id/InstruccionesP" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/NivelP"
+        app:layout_constraintTop_toBottomOf="@+id/NivelP"
+        app:layout_constraintVertical_bias="0.05" />
 
     <Button
         android:id="@+id/btn_instrucciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="52dp"
         android:backgroundTint="#5F248B"
+        android:onClick="reproducirMediaPlayer"
         android:text="INSTRUCCIONES"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
-        android:onClick="reproducirMediaPlayer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InstruccionesP" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/inst_instruccion"
+        app:layout_constraintTop_toBottomOf="@+id/NivelP"
+        app:layout_constraintVertical_bias="0.3" />
 
     <Button
         android:id="@+id/btn_generarDB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="204dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
         android:backgroundTint="#5F248B"
         android:text="GUARDAR"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InstruccionesP" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_inst30"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.92" />
+
+    <TextView
+        android:id="@+id/dosis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dosis:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_instrucciones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@+id/btn_instrucciones"
+        app:layout_constraintTop_toTopOf="@+id/btn_instrucciones" />
+
+    <TextView
+        android:id="@+id/tipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sobre entregado:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_inst_1vez"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toEndOf="@+id/btn_inst_1vez"
+        app:layout_constraintTop_toTopOf="@+id/btn_inst_1vez" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

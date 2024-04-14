@@ -4,280 +4,323 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".firstapp.paciente.seguimiento.MostrarPActivity"
-    android:background="@drawable/fondo_2logos">
+    android:background="@drawable/logo_scroll"
+    tools:context=".firstapp.paciente.seguimiento.MostrarPActivity">
+
     <TextView
         android:id="@+id/nombreRP2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginStart="30dp"
         android:text="Nombre:"
         android:textColor="#000000"
-        android:textSize="25dp"
+        android:textSize="22dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/fechaUltimaDosis"
+        app:layout_constraintVertical_bias="0.03" />
+
     <TextView
         android:id="@+id/rNombreRP2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginStart="10dp"
         android:textColor="#000000"
         android:textSize="25dp"
-        app:layout_constraintStart_toEndOf="@id/nombreRP2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/nombreRP2"
+        app:layout_constraintStart_toEndOf="@+id/nombreRP2"
+        app:layout_constraintTop_toTopOf="@+id/nombreRP2" />
+
     <TextView
         android:id="@+id/folioRP2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
-        android:layout_marginEnd="260dp"
         android:text="Folio:"
         android:textColor="#000000"
-        android:textSize="25dp"
+        android:textSize="22dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/nombreRP2"
+        app:layout_constraintTop_toBottomOf="@+id/nombreRP2"
+        app:layout_constraintVertical_bias="0.03" />
+
     <TextView
         android:id="@+id/rFolioRP2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginStart="10dp"
         android:textColor="#000000"
-        android:textSize="25dp"
-        app:layout_constraintStart_toEndOf="@id/folioRP2"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="@+id/folioRP2"
+        app:layout_constraintStart_toEndOf="@+id/folioRP2"
+        app:layout_constraintTop_toTopOf="@+id/folioRP2" />
 
     <TextView
         android:id="@+id/dosisRP2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="26dp"
         android:text="Dosis Actual:"
         android:textColor="#000000"
         android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nombreRP2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224" />
+
     <TextView
         android:id="@+id/fechaUltimaDosis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
         android:text="Última fecha que se otorgaron paquetes:"
         android:textColor="#000000"
         android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nombreRP2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.02" />
+
     <TextView
         android:id="@+id/rFechaUltimaDosis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="450dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
         android:textColor="#000000"
         android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nombreRP2" />
+        app:layout_constraintBottom_toBottomOf="@+id/fechaUltimaDosis"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/fechaUltimaDosis"
+        app:layout_constraintTop_toTopOf="@+id/fechaUltimaDosis" />
 
-    <Button
-        android:id="@+id/btnInstruccionesRP2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="244dp"
-        android:layout_marginTop="320dp"
-        android:backgroundTint="#5F248B"
-        android:text="INSTRUCCIONES"
-        android:textColor="#FFFFFF"
-        app:cornerRadius="50dp"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
     <Button
         android:id="@+id/btnSobresRP2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="320dp"
         android:backgroundTint="#5F248B"
         android:text="30 Sobres"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
 
-        app:layout_constraintStart_toEndOf="@id/btnInstruccionesRP2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/btnDosisRP2"
+        app:layout_constraintEnd_toEndOf="@+id/btnInstruccionesRP2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnInstruccionesRP2"
+        app:layout_constraintTop_toBottomOf="@+id/btnInstruccionesRP2" />
+
     <Button
-        android:id="@+id/btnDosisRP2"
+        android:id="@+id/btnInstruccionesRP2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="320dp"
+        android:backgroundTint="#5F248B"
+        android:text="INSTRUCCIONES"
+
+        android:textColor="#FFFFFF"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dosisRP2"
+        app:layout_constraintTop_toBottomOf="@+id/dosisRP2"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <Button
+        android:id="@+id/btnDosisRP2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#5F248B"
         android:text="1 vez al dia"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
 
-        app:layout_constraintStart_toEndOf="@id/btnSobresRP2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnSobresRP2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnSobresRP2"
+        app:layout_constraintTop_toBottomOf="@+id/btnInstruccionesRP2"
+        app:layout_constraintVertical_bias="0.1" />
 
     <Button
         android:id="@+id/btnCalcularNDx"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="564dp"
         android:backgroundTint="#5F248B"
-        android:text="Nuevo Diagnostico"
         android:textColor="#FFFFFF"
+        android:text="Establecer nuevo diagnóstico"
         app:cornerRadius="50dp"
-        app:layout_constraintStart_toEndOf="@id/rBrazoNuevo"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rBrazoNuevo"
+        app:layout_constraintStart_toStartOf="@+id/brazoNuevo"
+        app:layout_constraintTop_toBottomOf="@+id/brazoNuevo"
+        app:layout_constraintVertical_bias="0.035" />
 
     <TextView
         android:id="@+id/brazoAnterior"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="1. Perimetro de brazo anterior:"
+        android:text="1. Perímetro de brazo anterior:"
         android:textColor="#000000"
-        android:textSize="25dp"
+        android:textSize="22dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnInstruccionesRP2" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/folioRP2"
+        app:layout_constraintTop_toBottomOf="@+id/folioRP2"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/seguridadAlimAnterior"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
         android:text="2. Seguridad alimentaria anterior:"
         android:textColor="#000000"
-        android:textSize="25dp"
+        android:textSize="22dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/brazoAnterior" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/brazoAnterior"
+        app:layout_constraintTop_toBottomOf="@+id/brazoAnterior"
+        app:layout_constraintVertical_bias="0.04" />
+
     <TextView
         android:id="@+id/dxAnterior"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:text="3. Diagnostico MUAC anterior:"
+        android:text="3. Diagnóstico MUAC anterior:"
         android:textColor="#000000"
-        android:textSize="25dp"
+        android:textSize="22dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seguridadAlimAnterior" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/seguridadAlimAnterior"
+        app:layout_constraintTop_toBottomOf="@+id/seguridadAlimAnterior"
+        app:layout_constraintVertical_bias="0.04" />
+
     <TextView
         android:id="@+id/brazoNuevo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:text="4. Perimetro de brazo nuevo:"
+        android:text="4. Perímetro de brazo nuevo:"
         android:textColor="#000000"
-        android:textSize="25dp"
+        android:textSize="22dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dxAnterior"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/dxAnterior"
+        app:layout_constraintTop_toBottomOf="@+id/dxAnterior"
+        app:layout_constraintVertical_bias="0.2" />
+
     <TextView
         android:id="@+id/dxNuevo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:text="5. Diagnostico MUAC nuevo:"
+        android:layout_marginStart="4dp"
+        android:text="5. Diagnóstico MUAC nuevo:"
         android:textColor="#000000"
-        android:textSize="25dp"
+        android:textSize="22dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/brazoNuevo"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/brazoNuevo"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalcularNDx"
+        app:layout_constraintVertical_bias="0.3" />
+
     <TextView
         android:id="@+id/rBrazoAnterior"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="10dp"
         android:textColor="#000000"
-        android:textSize="25dp"
-        app:layout_constraintStart_toEndOf="@id/brazoAnterior"
-        app:layout_constraintTop_toBottomOf="@id/btnInstruccionesRP2" />
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="@+id/brazoAnterior"
+        app:layout_constraintStart_toEndOf="@+id/brazoAnterior"
+        app:layout_constraintTop_toTopOf="@+id/brazoAnterior" />
 
     <TextView
         android:id="@+id/rSeguridadAlimAnterior"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
         android:textColor="#000000"
-        android:textSize="25dp"
-        app:layout_constraintStart_toEndOf="@id/seguridadAlimAnterior"
-        app:layout_constraintTop_toBottomOf="@id/rBrazoAnterior" />
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="@+id/seguridadAlimAnterior"
+        app:layout_constraintStart_toEndOf="@+id/seguridadAlimAnterior"
+        app:layout_constraintTop_toTopOf="@+id/seguridadAlimAnterior" />
+
     <TextView
         android:id="@+id/rDxAnterior"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
         android:textColor="#000000"
-        android:textSize="25dp"
-        app:layout_constraintStart_toEndOf="@id/dxAnterior"
-        app:layout_constraintTop_toBottomOf="@id/rSeguridadAlimAnterior" />
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dxAnterior"
+        app:layout_constraintStart_toEndOf="@+id/dxAnterior"
+        app:layout_constraintTop_toTopOf="@+id/dxAnterior" />
+
     <TextView
         android:id="@+id/rDxNuevo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
         android:textColor="#000000"
         android:textSize="25dp"
-        app:layout_constraintStart_toEndOf="@id/dxNuevo"
-        app:layout_constraintTop_toBottomOf="@id/brazoNuevo" />
+        app:layout_constraintBottom_toBottomOf="@+id/dxNuevo"
+        app:layout_constraintStart_toEndOf="@+id/dxNuevo"
+        app:layout_constraintTop_toTopOf="@+id/dxNuevo" />
+
     <EditText
         android:id="@+id/rBrazoNuevo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="10dp"
+        android:hint="Nuevo perímetro (cm)"
         android:textColor="#000000"
-        android:textSize="25dp"
-        app:layout_constraintStart_toEndOf="@id/brazoNuevo"
-        app:layout_constraintTop_toBottomOf="@id/rDxAnterior"/>
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="@+id/brazoNuevo"
+        app:layout_constraintStart_toEndOf="@+id/brazoNuevo"
+        app:layout_constraintTop_toTopOf="@+id/brazoNuevo" />
+
     <Button
         android:id="@+id/btnGuardarRegistro"
-        android:layout_width="194dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="788dp"
-        android:layout_marginTop="608dp"
+        android:layout_width="250dp"
+        android:layout_height="120dp"
         android:text="Guardar Registro"
         app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.975"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.944" />
+
+    <Button
+        android:id="@+id/btnNoMasDosis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="No más formula"
+        android:backgroundTint="#5F248B"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNuevaDosis"
+        app:layout_constraintStart_toEndOf="@+id/btnNuevaDosis"
+        app:layout_constraintTop_toTopOf="@+id/btnNuevaDosis" />
 
     <Button
         android:id="@+id/btnNuevaDosis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1020dp"
-        android:layout_marginTop="400dp"
+        android:backgroundTint="#5F248B"
         android:text="Dejar más formula"
+        android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <Button
-        android:id="@+id/btnNoMasDosis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1020dp"
-        android:layout_marginTop="450dp"
-        android:text="No más formula"
-        app:cornerRadius="50dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dxNuevo"
+        app:layout_constraintTop_toBottomOf="@+id/dxNuevo"
+        app:layout_constraintVertical_bias="0.035" />
 </androidx.constraintlayout.widget.ConstraintLayout>

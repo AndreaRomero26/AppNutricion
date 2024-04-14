@@ -22,10 +22,10 @@ class GuardarRActivity : AppCompatActivity() {
     private lateinit var value20: String
     private lateinit var btngInst: Button
     private lateinit var btnInst30: Button
-    private lateinit var btnInst60: Button
-    private lateinit var btnInst90: Button
     private lateinit var btnDosis1: Button
     private lateinit var btnDosis2: Button
+    private lateinit var btnATLC: Button
+    private lateinit var btnSNBL: Button
     private var lastButton: Button? = null
 
     private var mpList = mutableListOf<MediaPlayer?>()
@@ -39,10 +39,11 @@ class GuardarRActivity : AppCompatActivity() {
         val btnGenerarDB = findViewById<Button>(R.id.btn_generarDB)
         btngInst = findViewById<Button>(R.id.btn_instrucciones)
         btnInst30 = findViewById<Button>(R.id.btn_inst30)
-        btnInst60 = findViewById<Button>(R.id.btn_inst60)
-        btnInst90 = findViewById<Button>(R.id.btn_inst90)
         btnDosis1 = findViewById<Button>(R.id.btn_inst_1vez)
         btnDosis2 = findViewById<Button>(R.id.btn_inst_2vez)
+        btnATLC = findViewById<Button>(R.id.btn_ATLC)
+        btnSNBL = findViewById<Button>(R.id.btn_SNBL)
+
 
         val textViewClasificacion = findViewById<TextView>(R.id.Respuesta_inseguridad)
         val textViewLocalidad = findViewById<TextView>(R.id.Respuesta_localidad)
@@ -94,28 +95,14 @@ class GuardarRActivity : AppCompatActivity() {
 
         mpList.add(MediaPlayer.create(this, R.raw.instrucciones_formula))
         mpList.add(MediaPlayer.create(this, R.raw.treinta_paquetes))
-        mpList.add(MediaPlayer.create(this, R.raw.sesenta_paquetes))
-        mpList.add(MediaPlayer.create(this, R.raw.noventa_paquetes))
         mpList.add(MediaPlayer.create(this, R.raw.unopordia))
         mpList.add(MediaPlayer.create(this, R.raw.dospordia))
 
         btnInst30.setOnClickListener {
             value19 = "30"
-            changeButtonInstColor(btnInst30)
             reproducirMediaPlayer(it)
         }
 
-        btnInst60.setOnClickListener {
-            value19 = "60"
-            changeButtonInstColor(btnInst60)
-            reproducirMediaPlayer(it)
-        }
-
-        btnInst90.setOnClickListener {
-            value19 = "90"
-            changeButtonInstColor(btnInst90)
-            reproducirMediaPlayer(it)
-        }
         btnDosis1.setOnClickListener {
             value20 = "1"
             changeButtonDosisColor(btnDosis1)
@@ -126,6 +113,16 @@ class GuardarRActivity : AppCompatActivity() {
             changeButtonDosisColor(btnDosis2)
             reproducirMediaPlayer(it)
         }
+
+        btnATLC.setOnClickListener {
+            changeButtonInstColor(btnATLC)
+        }
+
+        btnSNBL.setOnClickListener {
+            changeButtonInstColor(btnSNBL)
+        }
+
+
         btnGenerarDB.setOnClickListener {
             // Primero intenta insertar datos en la tabla principal y comprueba si la operación fue exitosa
             val insertPrincipalSuccess = dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value12, value13, value14, value15, value16, value17, value19, value20)
@@ -165,9 +162,8 @@ class GuardarRActivity : AppCompatActivity() {
         }
     }
     private fun changeButtonInstColor(button: Button) {
-        btnInst30.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
-        btnInst60.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
-        btnInst90.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
+        btnATLC.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
+        btnSNBL.setBackgroundColor(ContextCompat.getColor(this, R.color.colorOriginal))
 
         // Cambiar el color de fondo del botón presionado a rosa
         button.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPressed))
@@ -194,10 +190,8 @@ class GuardarRActivity : AppCompatActivity() {
         val audioIndex = when(buttonId) {
             R.id.btn_instrucciones -> 0
             R.id.btn_inst30 -> 1
-            R.id.btn_inst60 -> 2
-            R.id.btn_inst90 -> 3
-            R.id.btn_inst_1vez -> 4
-            R.id.btn_inst_2vez -> 5
+            R.id.btn_inst_1vez -> 2
+            R.id.btn_inst_2vez -> 3
             else -> -1
         }
 
