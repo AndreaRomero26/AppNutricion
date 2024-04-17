@@ -11,4 +11,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="azul1">#5dbfd3</color>
     <color name="azul2">#1d8eb8</color>
+    <color name="colorRowHighlight">#FFEB3B</color>
 </resources>
