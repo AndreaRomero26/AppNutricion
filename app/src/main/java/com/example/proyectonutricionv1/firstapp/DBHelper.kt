@@ -296,7 +296,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
 
     //Nombres de DB, tablas y columnas
     companion object {
-        private const val DATABASE_VERSION = 2
+        private const val DATABASE_VERSION = 1
         private const val DATABASE_NAME = "HIECH"
 
         // Tabla Pacientes
@@ -320,7 +320,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         private const val COLUMN_VALUE16 = "Profesional"
         private const val COLUMN_VALUE17 = "Padrino"
         private const val COLUMN_VALUE18 = "InstruFecha"
-        private const val COLUMN_VALUE19 = "Cantidad"
+        private const val COLUMN_VALUE19 = "Sobre"
         private const val COLUMN_VALUE20 = "Dosis"
 
         // Tabla Registros

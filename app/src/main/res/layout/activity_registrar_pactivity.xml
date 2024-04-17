@@ -261,7 +261,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/azul2"
                         android:padding="8dp"
-                        android:text="ULTIMA FECHA PAQUETES"
+                        android:text="ULTIMA FECHA SOBRES"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -270,7 +270,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/azul2"
                         android:padding="8dp"
-                        android:text="CANTIDAD PAQUETES"
+                        android:text="TIPO DE SOBRE"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 

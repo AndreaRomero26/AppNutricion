@@ -129,7 +129,7 @@ class RegistrarP2Activity : AppCompatActivity() {
 
 
         btnNuevaDosis.setOnClickListener {
-            val opcionesTipo1 = arrayOf("30")
+            val opcionesTipo1 = arrayOf("ATLC", "SNBL")
             val opcionesTipo2 = arrayOf("1", "2")
 
             // Crear y mostrar el AlertDialog para la primera selección
@@ -138,7 +138,7 @@ class RegistrarP2Activity : AppCompatActivity() {
                 .setItems(opcionesTipo1) { dialog, which ->
                     // `which` es el índice de la opción seleccionada
                     numPaquetes = opcionesTipo1[which]
-                    btnSobresRP2.text="${numPaquetes} Sobres"
+                    btnSobresRP2.text="${numPaquetes}"
                     // Puedes guardar la selección en una variable o usarla directamente
 
                     // Ahora mostrar el segundo AlertDialog para la segunda selección
@@ -164,6 +164,10 @@ class RegistrarP2Activity : AppCompatActivity() {
 
         btnNoMasDosis.setOnClickListener {
             toggleMediaPlayer(mpNoMasDosis)
+            numPaquetes="ALTA"
+            dosis="ALTA"
+            btnSobresRP2.text="${numPaquetes}"
+            btnDosisRP2.text="${dosis}"
         }
 
         btnSobresRP2.setOnClickListener {
