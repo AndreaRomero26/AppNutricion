@@ -11,22 +11,20 @@
         android:id="@+id/btnPaciente"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginStart="100dp"
         android:backgroundTint="#D9D9D9"
         android:fontFamily="@font/lexend"
         android:gravity="bottom|center"
         android:text="Paciente"
         android:textColor="#000000"
-        android:textSize="34sp"
+        android:textSize="32dp"
         app:cornerRadius="40dp"
         app:icon="@drawable/paciente"
         app:iconGravity="textTop"
         app:layout_constraintBottom_toBottomOf="@+id/btnStaff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btnStaff"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnStaff"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="0.8"/>
 
     <Button
         android:id="@+id/btnStaff"
@@ -37,15 +35,15 @@
         android:gravity="bottom|center"
         android:text="Staff"
         android:textColor="#000000"
-        android:textSize="34sp"
+        android:textSize="32dp"
         app:cornerRadius="40dp"
         app:icon="@drawable/doctor1"
         app:iconGravity="textTop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.294"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.558" />
+        app:layout_constraintVertical_bias="0.60" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
