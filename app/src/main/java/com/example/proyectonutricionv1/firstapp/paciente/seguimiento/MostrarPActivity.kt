@@ -47,7 +47,7 @@ class MostrarPActivity : AppCompatActivity() {
             listOf(data.value1, data.value2, data.value3, data.value4, data.value5, data.value6,
                 data.value7, data.value8, data.value9, data.value10, data.value11,
                 data.value12.toString(), data.value13, data.value14, data.value15,
-                data.value16, data.value17, data.value18, data.value19, data.value20).forEach { value ->
+                data.value16, data.value17, data.value18, data.value19, data.value20, data.value21).forEach { value ->
                 val textView = TextView(this).apply {
                     text = value
                     setPadding(10, 10, 10, 10)

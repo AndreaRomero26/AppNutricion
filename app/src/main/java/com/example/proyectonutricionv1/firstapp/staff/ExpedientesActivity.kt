@@ -40,7 +40,7 @@ class ExpedientesActivity : AppCompatActivity() {
 
         val textSizeSP = 20f
 
-        for ((value1, value2, value3,value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17, value18, value19, value20) in dataList) {
+        for ((value1, value2, value3,value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17, value18, value19, value20, value21) in dataList) {
             val tableRow = TableRow(this)
             val layoutParams = TableLayout.LayoutParams(
                 TableLayout.LayoutParams.MATCH_PARENT,
@@ -128,6 +128,10 @@ class ExpedientesActivity : AppCompatActivity() {
             textView20.text = value20
             textView20.setPadding(10, 10, 10, 10)
             textView20.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSizeSP)
+            val textView21 = TextView(this)
+            textView21.text = value21
+            textView21.setPadding(10, 10, 10, 10)
+            textView21.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSizeSP)
 
             tableRow.addView(textView1)
             tableRow.addView(textView2)
@@ -149,6 +153,7 @@ class ExpedientesActivity : AppCompatActivity() {
             tableRow.addView(textView18)
             tableRow.addView(textView19)
             tableRow.addView(textView20)
+            tableRow.addView(textView21)
 
             tableLayout.addView(tableRow)
         }
@@ -168,7 +173,7 @@ class ExpedientesActivity : AppCompatActivity() {
         val stringBuilder = StringBuilder()
 
         // Agregar cabecera
-        stringBuilder.append("Folio,Municipio,Localidad,Primer Apellido,Segundo Apellido,Nombres,Fecha de Nacimiento,Sexo,Estatura,Peso,Ultima Fecha de Medida, Ultimo Perimetro de Brazo,Dx MUAC actual,Inseguridad Alimentaria Actual,Nombre de Padre o Madre,Nombre COC,Padrino,Ultima Fecha Paquetes,Cantidad de Paquetes,Dosis Diaria\n")
+        stringBuilder.append("Folio,Municipio,Localidad,Primer Apellido,Segundo Apellido,Nombres,Fecha de Nacimiento,Sexo,Estatura,Peso,Ultima Fecha de Medida, Ultimo Perimetro de Brazo,Dx MUAC actual,Inseguridad Alimentaria Actual,Nombre de Padre o Madre,Nombre COC,Padrino,Ultima Fecha Paquetes,Cantidad de Paquetes,Dosis Diaria, Comentarios\n")
 
         // Agregar datos
         dataList.forEach { item ->
@@ -180,7 +185,7 @@ class ExpedientesActivity : AppCompatActivity() {
 
             // Formatear y añadir la fecha de la columna 18
             val fechaFormateada18 = formatDate(item.value18)
-            stringBuilder.append("$fechaFormateada18,${item.value19},${item.value20}\n")
+            stringBuilder.append("$fechaFormateada18,${item.value19},${item.value20},${item.value21}\n")
         }
 
         return stringBuilder.toString()

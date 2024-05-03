@@ -299,6 +299,15 @@
                         android:text="DOSIS DIARIA"
                         android:textSize="20sp"
                         android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/azul2"
+                        android:padding="8dp"
+                        android:text="COMENTARIO"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </TableRow>
 
             </TableLayout>

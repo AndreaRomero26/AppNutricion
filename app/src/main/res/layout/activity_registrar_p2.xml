@@ -323,4 +323,15 @@
         app:layout_constraintStart_toStartOf="@+id/dxNuevo"
         app:layout_constraintTop_toBottomOf="@+id/dxNuevo"
         app:layout_constraintVertical_bias="0.035" />
+    <EditText
+        android:id="@+id/comentario"
+        android:layout_width="650dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="20dp"
+        android:ems="30"
+        android:hint="Agregar comentario: "
+        android:textColor="#000000"
+        android:textSize="22dp"
+        app:layout_constraintStart_toEndOf="@id/rBrazoNuevo"
+        app:layout_constraintBottom_toTopOf="@id/btnCalcularNDx" />
 </androidx.constraintlayout.widget.ConstraintLayout>

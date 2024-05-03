@@ -126,6 +126,30 @@
         app:layout_constraintStart_toStartOf="@+id/NombreP"
         app:layout_constraintTop_toBottomOf="@+id/NombreP"
         app:layout_constraintVertical_bias="0.05" />
+    <TextView
+        android:id="@+id/DxP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diagnóstico:"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Respuesta_diametro"
+        android:layout_marginStart="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/NombreP"
+        app:layout_constraintVertical_bias="0.05" />
+    <TextView
+        android:id="@+id/Respuesta_DxP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#6E6B6B"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/DxP"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/NombreP"
+        app:layout_constraintVertical_bias="0.05" />
 
     <TextView
         android:id="@+id/Respuesta_nombre"
@@ -280,5 +304,16 @@
         app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toEndOf="@+id/btn_inst_1vez"
         app:layout_constraintTop_toTopOf="@+id/btn_inst_1vez" />
+
+    <EditText
+        android:id="@+id/comentario"
+        android:layout_width="742dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="20dp"
+        android:ems="30"
+        android:hint="Agregar comentario: "
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="@id/DiametroP"
+        app:layout_constraintTop_toBottomOf="@id/btn_inst30" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

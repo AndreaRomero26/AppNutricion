@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -26,6 +27,7 @@ class GuardarRActivity : AppCompatActivity() {
     private lateinit var btnDosis2: Button
     private lateinit var btnATLC: Button
     private lateinit var btnSNBL: Button
+    private lateinit var editTextComentario: EditText
     private var lastButton: Button? = null
 
     private var mpList = mutableListOf<MediaPlayer?>()
@@ -35,6 +37,8 @@ class GuardarRActivity : AppCompatActivity() {
         setContentView(R.layout.activity_guardar_ractivity)
 
         dbHelper = DBHelper(this)
+
+        editTextComentario = findViewById(R.id.comentario)
 
         val btnGenerarDB = findViewById<Button>(R.id.btn_generarDB)
         btngInst = findViewById<Button>(R.id.btn_instrucciones)
@@ -50,6 +54,7 @@ class GuardarRActivity : AppCompatActivity() {
         val textViewNombre = findViewById<TextView>(R.id.Respuesta_nombre)
         val textViewBrazo = findViewById<TextView>(R.id.Respuesta_diametro)
         val textViewFolio = findViewById<TextView>(R.id.Respuesta_folio)
+        val textViewDx = findViewById<TextView>(R.id.Respuesta_DxP)
 
         val value2 = intent.getStringExtra("Municipio")!!
         val value3 = intent.getStringExtra("Localidad")!!
@@ -92,6 +97,7 @@ class GuardarRActivity : AppCompatActivity() {
         textViewNombre.text = nombreCompleto
         textViewBrazo.text = value12.toString()
         textViewFolio.text=value1
+        textViewDx.text=value13
 
         mpList.add(MediaPlayer.create(this, R.raw.instrucciones_formula))
         mpList.add(MediaPlayer.create(this, R.raw.treinta_paquetes))
@@ -124,13 +130,15 @@ class GuardarRActivity : AppCompatActivity() {
         }
 
 
+
         btnGenerarDB.setOnClickListener {
+            val value21=editTextComentario.text.toString()
             // Primero intenta insertar datos en la tabla principal y comprueba si la operación fue exitosa
-            val insertPrincipalSuccess = dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value12, value13, value14, value15, value16, value17, value19, value20)
+            val insertPrincipalSuccess = dbHelper.insertData(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value12, value13, value14, value15, value16, value17, value19, value20, value21)
 
             if (insertPrincipalSuccess) {
                 // Si el primer insert fue exitoso, procede con el insert en la tabla de registros
-                val insertRegistroSuccess = dbHelper.insertRegistro(value1, value12, value13) /* otros valores que necesites pasar para el registro */
+                val insertRegistroSuccess = dbHelper.insertRegistro(value1, value12, value13, value21) /* otros valores que necesites pasar para el registro */
 
                 if (insertRegistroSuccess) {
                     // Mostrar mensaje de éxito solo si ambos inserts fueron exitosos

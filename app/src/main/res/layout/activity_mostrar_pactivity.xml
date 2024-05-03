@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:text="Seleccione el folio del paciente para registrar progreso. Luego pulse continuar."
+        android:text="Seleccione el folio del paciente para registrar progreso. Luego pulse siguiente."
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -281,6 +281,15 @@
                         android:background="@color/azul2"
                         android:padding="8dp"
                         android:text="DOSIS DIARIA"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/azul2"
+                        android:padding="8dp"
+                        android:text="COMENTARIO"
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </TableRow>

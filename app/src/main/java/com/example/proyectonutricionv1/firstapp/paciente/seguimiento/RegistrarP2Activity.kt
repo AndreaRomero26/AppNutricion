@@ -23,6 +23,7 @@ class RegistrarP2Activity : AppCompatActivity() {
     private lateinit var btnSobresRP2: Button
     private lateinit var btnDosisRP2: Button
     private lateinit var btnCalcularNDx: Button
+    private lateinit var editTextComentario: EditText
 
     // MediaPlayers para cada botón
     private var mpInstrucciones: MediaPlayer? = null
@@ -40,6 +41,7 @@ class RegistrarP2Activity : AppCompatActivity() {
         btnSobresRP2 = findViewById<Button>(R.id.btnSobresRP2)
         btnDosisRP2 = findViewById<Button>(R.id.btnDosisRP2)
         btnCalcularNDx = findViewById<Button>(R.id.btnCalcularNDx)
+        editTextComentario = findViewById(R.id.comentario)
 
         val textViewNombre = findViewById<TextView>(R.id.rNombreRP2)
         val textViewFolio = findViewById<TextView>(R.id.rFolioRP2)
@@ -81,10 +83,10 @@ class RegistrarP2Activity : AppCompatActivity() {
             if (nuevoBrazoD != null) {
                 // El valor se convirtió correctamente a Double
                 muacNuevo = when {
-                    nuevoBrazoD <= 11.5 -> "Desnutrición grave"
-                    nuevoBrazoD <= 12.5 -> "Desnutrición moderada"
-                    nuevoBrazoD <= 13.5 -> "Riesgo de desnutrición"
-                    else -> "Sin desnutrición"
+                    nuevoBrazoD <= 11.5 -> "Desnutricion grave"
+                    nuevoBrazoD <= 12.5 -> "Desnutricion moderada"
+                    nuevoBrazoD <= 13.5 -> "Riesgo de desnutricion"
+                    else -> "Sin desnutricion"
                 }
             } else {
                 // El valor no se pudo convertir a Double, mostrar mensaje de error
@@ -100,7 +102,8 @@ class RegistrarP2Activity : AppCompatActivity() {
 
         btnGuardarRegistro.setOnClickListener {
             val nuevoBrazo = editTextBrazo.text.toString().toDouble()
-            val newRegistroSuccess = dbHelper.insertRegistro(folio, nuevoBrazo, muacNuevo)
+            val comentario=editTextComentario.text.toString()
+            val newRegistroSuccess = dbHelper.insertRegistro(folio, nuevoBrazo, muacNuevo, comentario)
 
             // Supongamos que updateDosis es una función que también retorna un booleano
             val updateDosisSuccess = dbHelper.updateDosis(folio, numPaquetes, dosis) // Asegúrate de proporcionar los parámetros correctos

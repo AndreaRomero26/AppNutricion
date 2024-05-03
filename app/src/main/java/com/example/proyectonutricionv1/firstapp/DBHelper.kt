@@ -30,15 +30,16 @@ data class dataModel(
     val value17: String,
     val value18: String,
     val value19: String,
-    val value20: String)
+    val value20: String,
+    val value21: String)
 
 class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     //Creacion de tablas, solo si no existen
     override fun onCreate(db: SQLiteDatabase) {
-        val CREATE_TABLE = ("CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_VALUE1 TEXT, $COLUMN_VALUE2 TEXT, $COLUMN_VALUE3 TEXT, $COLUMN_VALUE4 TEXT, $COLUMN_VALUE5 TEXT, $COLUMN_VALUE6 TEXT, $COLUMN_VALUE7 TEXT, $COLUMN_VALUE8 TEXT, $COLUMN_VALUE9 TEXT, $COLUMN_VALUE10 TEXT, $COLUMN_VALUE11 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE12 REAL, $COLUMN_VALUE13 TEXT, $COLUMN_VALUE14 TEXT, $COLUMN_VALUE15 TEXT, $COLUMN_VALUE16 TEXT, $COLUMN_VALUE17 TEXT, $COLUMN_VALUE18 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE19 TEXT, $COLUMN_VALUE20 TEXT)")
+        val CREATE_TABLE = ("CREATE TABLE $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_VALUE1 TEXT, $COLUMN_VALUE2 TEXT, $COLUMN_VALUE3 TEXT, $COLUMN_VALUE4 TEXT, $COLUMN_VALUE5 TEXT, $COLUMN_VALUE6 TEXT, $COLUMN_VALUE7 TEXT, $COLUMN_VALUE8 TEXT, $COLUMN_VALUE9 TEXT, $COLUMN_VALUE10 TEXT, $COLUMN_VALUE11 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE12 REAL, $COLUMN_VALUE13 TEXT, $COLUMN_VALUE14 TEXT, $COLUMN_VALUE15 TEXT, $COLUMN_VALUE16 TEXT, $COLUMN_VALUE17 TEXT, $COLUMN_VALUE18 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE19 TEXT, $COLUMN_VALUE20 TEXT, $COLUMN_VALUE21 TEXT)")
         db.execSQL(CREATE_TABLE)
-        val CREATE_TABLE_REGISTROS = ("CREATE TABLE $TABLE_REGISTROS ($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_VALUE1 INTEGER, $COLUMN_VALUE11 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE12 TEXT, $COLUMN_VALUE13 TEXT, FOREIGN KEY($COLUMN_VALUE1) REFERENCES $TABLE_NAME($COLUMN_VALUE1))")
+        val CREATE_TABLE_REGISTROS = ("CREATE TABLE $TABLE_REGISTROS ($COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_VALUE1 INTEGER, $COLUMN_VALUE11 TEXT DEFAULT CURRENT_TIMESTAMP, $COLUMN_VALUE12 TEXT, $COLUMN_VALUE13 TEXT, $COLUMN_VALUE21 TEXT, FOREIGN KEY($COLUMN_VALUE1) REFERENCES $TABLE_NAME($COLUMN_VALUE1))")
         db.execSQL(CREATE_TABLE_REGISTROS)
 
         //El trigger es para actualizar la tabla principal cuando se ingresa un registro en table registros
@@ -49,7 +50,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             UPDATE $TABLE_NAME
             SET $COLUMN_VALUE11 = NEW.$COLUMN_VALUE11, 
                 $COLUMN_VALUE12 = NEW.$COLUMN_VALUE12,
-                $COLUMN_VALUE13 = NEW.$COLUMN_VALUE13
+                $COLUMN_VALUE13 = NEW.$COLUMN_VALUE13,
+                $COLUMN_VALUE21 = NEW.$COLUMN_VALUE21
             WHERE $COLUMN_VALUE1 = NEW.$COLUMN_VALUE1;
         END;
     """.trimIndent()
@@ -66,7 +68,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
     }
 
     //Metodo para insertar los datos de cada paciente en la tabla principal
-    fun insertData(value1: String, value2: String, value3: String, value4: String, value5: String,value6: String,value7: String, value8: String, value9: String, value10: String, value12: Double, value13: String, value14: String, value15: String, value16: String, value17: String, value19: String, value20: String): Boolean {
+    fun insertData(value1: String, value2: String, value3: String, value4: String, value5: String,value6: String,value7: String, value8: String, value9: String, value10: String, value12: Double, value13: String, value14: String, value15: String, value16: String, value17: String, value19: String, value20: String, value21: String): Boolean {
         val db = this.writableDatabase
         val values = ContentValues()
         values.put(COLUMN_VALUE1, value1)
@@ -87,18 +89,20 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         values.put(COLUMN_VALUE17, value17)
         values.put(COLUMN_VALUE19, value19)
         values.put(COLUMN_VALUE20, value20)
+        values.put(COLUMN_VALUE21, value21)
         val id = db.insert(TABLE_NAME, null, values)
         db.close()
         return id != -1L
     }
 
     //Metodo para insertar los valores en la tabla de registros, para el progreso de los pacientes
-    fun insertRegistro(folio: String, nuevoBrazo: Double, muacNuevo: String): Boolean {
+    fun insertRegistro(folio: String, nuevoBrazo: Double, muacNuevo: String, comentario: String): Boolean {
         val db = this.writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_VALUE1, folio)
             put(COLUMN_VALUE12, nuevoBrazo)
             put(COLUMN_VALUE13, muacNuevo)
+            put(COLUMN_VALUE21, comentario)
         }
         val id = db.insert(TABLE_REGISTROS, null, values)
         db.close()
@@ -133,7 +137,8 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
                 val value18 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE18) })
                 val value19 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE19) })
                 val value20 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE20) })
-                dataList.add(dataModel(value1, value2, value3, value4,value5,value6,value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17, value18, value19, value20))
+                val value21 = cursor.getString(with(cursor) { getColumnIndex(COLUMN_VALUE21) })
+                dataList.add(dataModel(value1, value2, value3, value4,value5,value6,value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17, value18, value19, value20, value21))
             } while (cursor.moveToNext())
         }
         cursor.close()
@@ -254,8 +259,9 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
             val value18 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE18))
             val value19 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE19))
             val value20 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE20))
+            val value21 = cursor.getString(cursor.getColumnIndex(COLUMN_VALUE21))
 
-            paciente = dataModel(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17, value18, value19, value20)
+            paciente = dataModel(value1, value2, value3, value4, value5, value6, value7, value8, value9, value10, value11, value12, value13, value14, value15, value16, value17, value18, value19, value20, value21)
         }
 
         cursor.close()
@@ -322,6 +328,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         private const val COLUMN_VALUE18 = "InstruFecha"
         private const val COLUMN_VALUE19 = "Sobre"
         private const val COLUMN_VALUE20 = "Dosis"
+        private const val COLUMN_VALUE21 = "Comentario"
 
         // Tabla Registros
         private const val TABLE_REGISTROS = "Registros"
