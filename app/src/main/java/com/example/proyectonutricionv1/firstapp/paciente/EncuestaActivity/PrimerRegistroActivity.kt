@@ -163,7 +163,7 @@ class PrimerRegistroActivity : AppCompatActivity() {
                 value9 = editText6.text.toString().toDouble()
             } catch (e: NumberFormatException) {
                 // Manejar el error si el texto no es un número
-                Toast.makeText(this, "Por favor, ingrese un número en perimetro de brazo.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor, ingrese un número en perímetro de brazo.", Toast.LENGTH_SHORT).show()
             }
             if (value9 == null) {
                 return@setOnClickListener  // No continúa con el proceso si value9 es nulo

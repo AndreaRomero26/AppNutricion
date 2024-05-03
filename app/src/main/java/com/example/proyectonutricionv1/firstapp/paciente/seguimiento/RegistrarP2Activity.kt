@@ -72,7 +72,7 @@ class RegistrarP2Activity : AppCompatActivity() {
         val dataDosis = dbHelper.getDosis(folio)
         textViewNewDosis.text=dataDosis.first().first
         btnSobresRP2.text= "${dataDosis.first().second} Sobres"
-        btnDosisRP2.text= "${dataDosis.first().third} Al dia"
+        btnDosisRP2.text= "${dataDosis.first().third} Al día"
 
         var numPaquetes=dataDosis.first().second
         var dosis=dataDosis.first().third
@@ -83,14 +83,14 @@ class RegistrarP2Activity : AppCompatActivity() {
             if (nuevoBrazoD != null) {
                 // El valor se convirtió correctamente a Double
                 muacNuevo = when {
-                    nuevoBrazoD <= 11.5 -> "Desnutricion grave"
-                    nuevoBrazoD <= 12.5 -> "Desnutricion moderada"
-                    nuevoBrazoD <= 13.5 -> "Riesgo de desnutricion"
-                    else -> "Sin desnutricion"
+                    nuevoBrazoD <= 11.5 -> "Desnutrición grave"
+                    nuevoBrazoD <= 12.5 -> "Desnutrición moderada"
+                    nuevoBrazoD <= 13.5 -> "Riesgo de desnutrición"
+                    else -> "Sin desnutrición"
                 }
             } else {
                 // El valor no se pudo convertir a Double, mostrar mensaje de error
-                Toast.makeText(this, "Por favor, inserte un número válido para el perimetro del brazo.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Por favor, inserte un número válido para el perímetro del brazo.", Toast.LENGTH_LONG).show()
                 muacNuevo = "Error"
             }
             textViewNewDx.text = muacNuevo.uppercase()

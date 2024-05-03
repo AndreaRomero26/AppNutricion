@@ -634,7 +634,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
             android:layout_marginBottom="60dp"
-            android:backgroundTint="#D9D9D9"
+
             android:foregroundGravity="center_horizontal"
             android:gravity="center"
             android:text="@string/button_next"
