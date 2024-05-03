@@ -152,8 +152,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#5F248B"
-        android:textColor="#FFFFFF"
         android:text="Establecer nuevo diagnóstico"
+        android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/rBrazoNuevo"
@@ -301,8 +301,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:text="No más formula"
         android:backgroundTint="#5F248B"
+        android:text="No más formula"
         android:textColor="#FFFFFF"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="@+id/btnNuevaDosis"
@@ -323,15 +323,18 @@
         app:layout_constraintStart_toStartOf="@+id/dxNuevo"
         app:layout_constraintTop_toBottomOf="@+id/dxNuevo"
         app:layout_constraintVertical_bias="0.035" />
+
     <EditText
         android:id="@+id/comentario"
-        android:layout_width="650dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="20dp"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
         android:ems="30"
-        android:hint="Agregar comentario: "
+        android:hint="Agregar comentario:"
         android:textColor="#000000"
         android:textSize="22dp"
-        app:layout_constraintStart_toEndOf="@id/rBrazoNuevo"
-        app:layout_constraintBottom_toTopOf="@id/btnCalcularNDx" />
+        app:layout_constraintBottom_toBottomOf="@+id/rBrazoNuevo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rBrazoNuevo"
+        app:layout_constraintTop_toTopOf="@+id/rBrazoNuevo"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
